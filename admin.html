@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Thearning-Rekapan nilai</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="text/javascript" src="chartjs/Chart.js"></script>
+  </head>
+  <body>
+    <div class="sidebar">
+      <div class="logo-details">
+        <i class="bx bx-bar-chart-alt-2"></i>
+        <span class="logo_name">Thearning</span>
+      </div>
+      <ul class="nav-links">
+        <li>
+          <a href="#" class="active">
+            <i class="bx bx-grid-alt bx-tada"></i>
+            <span class="links_name">Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="riwayat.html">
+            <i class="bx bx-history"></i>
+            <span class="links_name">Riwayat Login</span>
+          </a>
+        </li>
+        <li>
+          <a href="laporan.html">
+            <i class="bx bxs-report"></i>
+            <span class="links_name">Laporan Akhir</span>
+          </a>
+        </li>
+        <li class="log_out">
+          <a href="#" onclick="konfirmasi()">
+            <i class="bx bx-log-out"></i>
+            <span class="links_name">Log out</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <section class="home-section">
+      <nav>
+        <div class="sidebar-button">
+          <i class="bx bxs-user-circle"></i>
+          <span class="dashboard">Dashboard</span>
+        </div>
+        <div class="search-box">
+          <input type="text" placeholder="Search..." />
+          <i class="bx bx-search"></i>
+        </div>
+        <div class="profile-details">
+          <i class="bx bxs-user-circle"></i>
+          <span class="admin_name">Username (Level)</span>
+          <i class="bx bx-chevron-down"></i>
+        </div>
+      </nav>
+
+      <div class="home-content">
+        <div class="overview-boxes">
+          <div class="box">
+            <div class="right-side">
+              <div class="box-topic">Guru</div>
+              <div class="number">100</div>
+              <div class="indicator">
+                <i class="bx bxs-edit"></i>
+                <span class="text">Terkahir Diedit</span>
+              </div>
+            </div>
+            <i class="bx bxs-circle-three-quarter logo bx-spin"></i>
+          </div>
+          <div class="box">
+            <div class="right-side">
+              <div class="box-topic">Kelas</div>
+              <div class="number">38</div>
+              <div class="indicator">
+                <i class="bx bxs-edit"></i>
+                <span class="text">Terkahir Diedit</span>
+              </div>
+            </div>
+            <i class="bx bxs-circle-three-quarter logo two bx-spin"></i>
+          </div>
+          <div class="box">
+            <div class="right-side">
+              <div class="box-topic">Siswa</div>
+              <div class="number">300</div>
+              <div class="indicator">
+                <i class="bx bxs-edit"></i>
+                <span class="text">Terakhir Diedit</span>
+              </div>
+            </div>
+            <i class="bx bxs-circle-three-quarter logo three bx-spin"></i>
+          </div>
+          <div class="box">
+            <div class="right-side">
+              <div class="box-topic">Mapel</div>
+              <div class="number">15</div>
+              <div class="indicator">
+                <i class="bx bxs-edit"></i>
+                <span class="text">Terkahir Diedit</span>
+              </div>
+            </div>
+            <i class="bx bxs-circle-three-quarter logo four bx-spin"></i>
+          </div>
+        </div>
+
+        <div class="update-boxes">
+          <div class="recent-update box">
+            <div class="title">Update</div>
+            <div class="update-details">
+              <ul class="details">
+                <li class="topic">Tanggal</li>
+                <li>17-02-2022</li>
+                <li>18-02-2022</li>
+              </ul>
+              <ul class="details">
+                <li class="topic">User</li>
+                <li>Username</li>
+                <li>Username</li>
+              </ul>
+              <ul class="details">
+                <li class="topic">Kelas</li>
+                <li>XI-RPL 1</li>
+                <li>XI-RPL 2</li>
+              </ul>
+              <ul class="details">
+                <li class="topic">Tindakan</li>
+                <li>Input</li>
+                <li>Update</li>
+              </ul>
+            </div>
+            <div class="button">
+              <a href="#">See All</a>
+            </div>
+          </div>
+          <div class="top-update box">
+            <div class="title">Progres(%)</div>
+            <ul class="top-update-details">
+              <li>
+                <a href="#">
+                  <i class="bx bx-loader-alt bx-spin"></i>
+                  <span class="item">XI-RPL1</span>
+                </a>
+                <span class="desc">10%</span>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="bx bx-loader-alt bx-spin"></i>
+                  <span class="item">XI-RPL2</span>
+                </a>
+                <span class="desc">30%</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      let sidebar = document.querySelector(".sidebar");
+      let sidebarBtn = document.querySelector(".sidebarBtn");
+      sidebarBtn.onclick = function () {
+        sidebar.classList.toggle("active");
+        if (sidebar.classList.contains("active")) {
+          sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+        } else sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+      };
+
+      function konfirmasi() {
+        var tanya = confirm("Apakah Anda Yakin ?");
+
+        if (tanya === true) {
+          window.location = "login.html";
+        } else {
+        }
+      }
+    </script>
+  </body>
+</html>
