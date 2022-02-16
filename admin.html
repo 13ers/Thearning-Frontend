@@ -10,6 +10,7 @@
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script type="text/javascript" src="chartjs/Chart.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   </head>
   <body>
     <div class="sidebar">
@@ -63,7 +64,7 @@
 
       <div class="home-content">
         <div class="overview-boxes">
-          <div class="box">
+          <div class="box" data-aos="fade-right">
             <div class="right-side">
               <div class="box-topic">Guru</div>
               <div class="number">100</div>
@@ -74,7 +75,7 @@
             </div>
             <i class="bx bxs-circle-three-quarter logo bx-spin"></i>
           </div>
-          <div class="box">
+          <div class="box" data-aos="fade-down">
             <div class="right-side">
               <div class="box-topic">Kelas</div>
               <div class="number">38</div>
@@ -85,7 +86,7 @@
             </div>
             <i class="bx bxs-circle-three-quarter logo two bx-spin"></i>
           </div>
-          <div class="box">
+          <div class="box" data-aos="fade-down">
             <div class="right-side">
               <div class="box-topic">Siswa</div>
               <div class="number">300</div>
@@ -96,7 +97,7 @@
             </div>
             <i class="bx bxs-circle-three-quarter logo three bx-spin"></i>
           </div>
-          <div class="box">
+          <div class="box" data-aos="fade-left">
             <div class="right-side">
               <div class="box-topic">Mapel</div>
               <div class="number">15</div>
@@ -110,7 +111,7 @@
         </div>
 
         <div class="update-boxes">
-          <div class="recent-update box">
+          <div class="recent-update box" data-aos="fade-right">
             <div class="title">Update</div>
             <div class="update-details">
               <ul class="details">
@@ -138,19 +139,19 @@
               <a href="#">See All</a>
             </div>
           </div>
-          <div class="top-update box">
+          <div class="top-update box" data-aos="fade-left">
             <div class="title">Progres(%)</div>
             <ul class="top-update-details">
               <li>
                 <a href="#">
-                  <i class="bx bx-loader-alt bx-spin"></i>
+                  <i class="bx bx-loader-alt bx-spin" style="color: blue"></i>
                   <span class="item">XI-RPL1</span>
                 </a>
                 <span class="desc">10%</span>
               </li>
               <li>
                 <a href="#">
-                  <i class="bx bx-loader-alt bx-spin"></i>
+                  <i class="bx bx-loader-alt bx-spin" style="color: blue"></i>
                   <span class="item">XI-RPL2</span>
                 </a>
                 <span class="desc">30%</span>
@@ -179,6 +180,18 @@
         } else {
         }
       }
+    </script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        offset: 200,
+        delay: 100,
+        duration: 400,
+        easing: "ease",
+        once: false,
+        mirror: false,
+        anchorPlacement: "top-bottom",
+      });
     </script>
   </body>
 </html>

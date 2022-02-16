@@ -10,6 +10,7 @@
     />
     <link rel="stylesheet" href="fontawesome/css/all.min.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   </head>
   <body>
     <div class="sidebar">
@@ -62,7 +63,7 @@
       </nav>
 
       <div class="home-content">
-        <div class="update-boxes">
+        <div class="update-boxes" data-aos="fade-right">
           <div class="recent-update box">
             <div class="title">Riwayat</div>
             <div class="update-details">
@@ -91,7 +92,7 @@
               <a href="#">See All</a>
             </div>
           </div>
-          <div class="top-update box">
+          <div class="top-update box" data-aos="fade-left">
             <div class="title">Wali Kelas</div>
             <ul class="top-update-details">
               <li>
@@ -136,6 +137,18 @@
         } else {
         }
       }
+    </script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        offset: 200,
+        delay: 100,
+        duration: 400,
+        easing: "ease",
+        once: false,
+        mirror: false,
+        anchorPlacement: "top-bottom",
+      });
     </script>
   </body>
 </html>
