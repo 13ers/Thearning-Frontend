@@ -76,3 +76,17 @@ a {
   color: #fafafa;
   border-radius: 20px;
 }
+
+.container form input.ubah {
+  width: 20%;
+  height: 25px;
+  font-size: 15px;
+  padding: 0px;
+  border: none;
+  background-color: #02225f;
+  color: #fafafa;
+  border-radius: 20px;
+  position: absolute;
+  left: 250px;
+  top: 240px;
+}
