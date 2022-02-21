@@ -476,3 +476,23 @@ ul.details li ul.action li a.delete {
 ul.details li ul.action li a.delete:hover {
   background: #520909;
 }
+
+.update-boxes2 .box .button2 {
+  width: 70px;
+  position: absolute;
+  right: -220px;
+  bottom: 20px;
+}
+.update-boxes2 .box .button2 a {
+  color: #fff;
+  background: #0a2558;
+  padding: 4px 12px;
+  font-size: 15px;
+  font-weight: 400;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.update-boxes2 .box .button2 a:hover {
+  background: #0d3073;
+}

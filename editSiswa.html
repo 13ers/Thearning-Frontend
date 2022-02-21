@@ -22,7 +22,7 @@
         <li>
           <a href="admin.html">
             <i class="bx bx-grid-alt"></i>
-            <span class="links_name">Profil</span>
+            <span class="links_name">Dashboard</span>
           </a>
         </li>
         <li>
@@ -39,13 +39,13 @@
         </li>
         <li>
           <a href="guru.html">
-            <i class="bx bxs-user-rectangle"></i>
+            <i class="bx bxs-file-plus"></i>
             <span class="links_name">Data Guru</span>
           </a>
         </li>
         <li>
-          <a href="siswa.html">
-            <i class="bx bx-book-reader"></i>
+          <a href="siswa.html" class="active">
+            <i class="bx bx-book-reader bx-tada"></i>
             <span class="links_name">Data Siswa</span>
           </a>
         </li>
@@ -61,13 +61,13 @@
       <nav>
         <div class="sidebar-button">
           <i class="bx bxs-user-circle"></i>
-          <span class="dashboard">Dashboard</span>
+          <span class="dashboard">Edit Siswa</span>
         </div>
         <div class="search-box">
           <input type="text" placeholder="Search..." />
           <i class="bx bx-search"></i>
         </div>
-        <div class="profile-details">
+        <div class="profile-details" onclick="pindah('profil.html')">
           <i class="bx bxs-user-circle"></i>
           <span class="admin_name">Username (Level)</span>
           <i class="bx bx-chevron-down"></i>
@@ -77,7 +77,7 @@
       <div class="home-content">
         <div class="update-boxes2" data-aos="fade-right">
           <div class="recent-update box">
-            <div class="title">Profil</div>
+            <div class="title">Siswa</div>
             <div class="update-details">
               <ul class="details" style="width: 150px; height: 150px">
                 <li class="topic" style="width: 150px; height: 150px">
@@ -85,32 +85,60 @@
                 </li>
               </ul>
               <ul class="details">
-                <li class="topic">Username(Level)</li>
-                <li class="topic">Password</li>
+                <li class="topic">Username</li>
+                <li class="topic">NIK</li>
+                <li class="topic">Jenis Kelamin</li>
                 <li class="topic">Kelas</li>
               </ul>
               <ul class="details">
                 <li>:</li>
                 <li>:</li>
                 <li>:</li>
+                <li>:</li>
               </ul>
               <ul class="details">
                 <li>
-                  Username
-                  <hr />
+                  <input
+                    type="text"
+                    name="username"
+                    id="username"
+                    placeholder="Nama"
+                    style="width: 230%"
+                  />
                 </li>
                 <li>
-                  ********
-                  <hr />
+                  <input
+                    type="text"
+                    name="nik"
+                    id="nik"
+                    placeholder="NIK"
+                    style="width: 230%"
+                  />
                 </li>
                 <li>
-                  XI-RPL 1
-                  <hr />
+                  <input
+                    type="text"
+                    name="jk"
+                    id="jk"
+                    placeholder="Jenis Kelamin"
+                    style="width: 230%"
+                  />
+                </li>
+                <li>
+                  <input
+                    type="text"
+                    name="kelas"
+                    id="kelas"
+                    placeholder="Kelas"
+                    style="width: 230%"
+                  />
                 </li>
               </ul>
             </div>
             <div class="button">
-              <a href="edit.html">Edit Profil</a>
+              <a href="siswa.html" onClick="alert('Guru Berhasil Didaftarkan')"
+                ><i class="bx bx-save" style="margin-right: 5px"></i>Simpan</a
+              >
             </div>
           </div>
         </div>
@@ -134,6 +162,9 @@
           window.location = "login.html";
         } else {
         }
+      }
+      function pindah(url) {
+        window.location = url;
       }
     </script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>

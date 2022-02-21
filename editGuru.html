@@ -61,7 +61,7 @@
       <nav>
         <div class="sidebar-button">
           <i class="bx bxs-user-circle"></i>
-          <span class="dashboard">Input Guru</span>
+          <span class="dashboard">Edit</span>
         </div>
         <div class="search-box">
           <input type="text" placeholder="Search..." />
@@ -77,7 +77,7 @@
       <div class="home-content">
         <div class="update-boxes2" data-aos="fade-right">
           <div class="recent-update box">
-            <div class="title">Tambah Guru</div>
+            <div class="title">Edit Guru</div>
             <div class="update-details">
               <ul class="details" style="width: 150px; height: 150px">
                 <li class="topic" style="width: 150px; height: 150px">
@@ -87,6 +87,13 @@
               <ul class="details">
                 <li class="topic">Username</li>
                 <li class="topic">Password</li>
+                <section
+                  class="change"
+                  style="visibility: hidden; position: absolute"
+                >
+                  <li class="topic">Password Baru</li>
+                  <li class="topic">kondirmasi Password</li>
+                </section>
                 <li class="topic">NIP</li>
                 <li class="topic">Jenis Kelamin</li>
                 <li class="topic">Level</li>
@@ -95,6 +102,13 @@
               <ul class="details">
                 <li>:</li>
                 <li>:</li>
+                <section
+                  class="change2"
+                  style="visibility: hidden; position: absolute"
+                >
+                  <li>:</li>
+                  <li>:</li>
+                </section>
                 <li>:</li>
                 <li>:</li>
                 <li>:</li>
@@ -106,7 +120,8 @@
                     type="text"
                     name="username"
                     id="username"
-                    placeholder="Masukan Nama"
+                    placeholder="Nama"
+                    style="width: 230%"
                   />
                 </li>
                 <li>
@@ -114,15 +129,43 @@
                     type="password"
                     name="password"
                     id="password"
-                    placeholder="Masukan Password"
+                    placeholder="Password"
+                    style="width: 180%"
                   />
+                  <div class="button2">
+                    <a href="#" onclick="showHide()">Ubah</a>
+                  </div>
                 </li>
+                <section
+                  class="change3"
+                  style="visibility: hidden; position: absolute"
+                >
+                  <li>
+                    <input
+                      type="password"
+                      name="passwordBaru"
+                      id="passwordBaru"
+                      placeholder="Masukan Password Baru"
+                      style="width: 230%"
+                    />
+                  </li>
+                  <li>
+                    <input
+                      type="password"
+                      name="validPassword"
+                      id="validPassword"
+                      placeholder="konfirmasi Password"
+                      style="width: 230%"
+                    />
+                  </li>
+                </section>
                 <li>
                   <input
                     type="text"
                     name="nip"
                     id="nip"
-                    placeholder="Masukkan NIP"
+                    placeholder="NIP"
+                    style="width: 230%"
                   />
                 </li>
                 <li>
@@ -130,7 +173,8 @@
                     type="text"
                     name="jk"
                     id="jk"
-                    placeholder="Masukkan Jenis Kelamin"
+                    placeholder="Jenis Kelamin"
+                    style="width: 230%"
                   />
                 </li>
                 <li>
@@ -138,7 +182,8 @@
                     type="text"
                     name="admin"
                     id="admin"
-                    placeholder="Masukkan Level"
+                    placeholder="Level"
+                    style="width: 230%"
                   />
                 </li>
                 <li>
@@ -146,14 +191,15 @@
                     type="text"
                     name="kelas"
                     id="kelas"
-                    placeholder="Masukkan Kelas"
+                    placeholder="Kelas"
+                    style="width: 230%"
                   />
                 </li>
               </ul>
             </div>
             <div class="button">
-              <a href="#" onClick="alert('Guru Berhasil Didaftarkan')"
-                >Simpan</a
+              <a href="guru.html" onClick="alert('Guru Berhasil Didaftarkan')"
+                ><i class="bx bx-save" style="margin-right: 5px"></i>Simpan</a
               >
             </div>
           </div>
@@ -194,6 +240,33 @@
         mirror: false,
         anchorPlacement: "top-bottom",
       });
+
+      function showHide() {
+        var x = document.querySelector(".change");
+        var y = document.querySelector(".change2");
+        var z = document.querySelector(".change3");
+        if (x.style.visibility === "hidden") {
+          x.style.visibility = "visible";
+          x.style.position = "relative";
+        } else {
+          x.style.visibility = "hidden";
+          x.style.position = "absolute";
+        }
+        if (y.style.visibility === "hidden") {
+          y.style.visibility = "visible";
+          y.style.position = "relative";
+        } else {
+          y.style.visibility = "hidden";
+          y.style.position = "absolute";
+        }
+        if (z.style.visibility === "hidden") {
+          z.style.visibility = "visible";
+          z.style.position = "relative";
+        } else {
+          z.style.visibility = "hidden";
+          z.style.position = "absolute";
+        }
+      }
     </script>
   </body>
 </html>
