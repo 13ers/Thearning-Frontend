@@ -8,8 +8,8 @@
       href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="fontawesome/css/all.min.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script type="text/javascript" src="chartjs/Chart.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   </head>
   <body>
@@ -26,14 +26,14 @@
           </a>
         </li>
         <li>
-          <a href="riwayat.html">
+          <a href="#">
             <i class="bx bx-history"></i>
             <span class="links_name">Riwayat Login</span>
           </a>
         </li>
         <li>
-          <a href="#" class="active">
-            <i class="bx bxs-report bx-tada"></i>
+          <a href="laporan.html">
+            <i class="bx bxs-report"></i>
             <span class="links_name">Laporan Akhir</span>
           </a>
         </li>
@@ -56,8 +56,8 @@
           </a>
         </li>
         <li>
-          <a href="mapel.html">
-            <i class="bx bx-book-open"></i>
+          <a href="#" class="active">
+            <i class="bx bx-book-open bx-tada"></i>
             <span class="links_name">Data Mapel</span>
           </a>
         </li>
@@ -73,7 +73,7 @@
       <nav>
         <div class="sidebar-button">
           <i class="bx bxs-user-circle"></i>
-          <span class="dashboard">Laporan</span>
+          <span class="dashboard">Data mapel</span>
         </div>
         <div class="search-box">
           <input type="text" placeholder="Search..." />
@@ -87,69 +87,59 @@
       </nav>
 
       <div class="home-content">
-        <div class="update-boxes" data-aos="fade-up">
+        <div class="update-boxes2" data-aos="fade-right">
           <div class="recent-update box">
-            <div class="title">Laporan Akhir</div>
-            <div class="update-details">
+            <div class="title">Mapel</div>
+            <div class="update-details" style="float: none">
               <ul class="details">
-                <li class="topic">No</li>
-                <li>1</li>
-                <li>2</li>
-              </ul>
-              <ul class="details">
-                <li class="topic">Tanggal</li>
-                <li>17-02-2022</li>
-                <li>18-02-2022</li>
+                <li class="topic">Nama</li>
+                <li>MTK</li>
+                <li>PBO</li>
               </ul>
               <ul class="details">
                 <li class="topic">Jurusan</li>
-                <li>AK</li>
+                <li>Umum</li>
                 <li>RPL</li>
               </ul>
               <ul class="details">
-                <li class="topic">Kelas</li>
-                <li>XI-RPL 1</li>
-                <li>XI-RPL 2</li>
+                <li class="topic">Pengajar</li>
+                <li>nama 1</li>
+                <li>nama 2</li>
+              </ul>
+              <ul class="details" style="text-align: center">
+                <li class="topic">Tindakan</li>
+                <li>
+                  <ul class="action">
+                    <li>
+                      <a href="editMapel.html" class="edit">Edit</a>
+                    </li>
+                    <li>
+                      <a href="#" class="delete" onclick="konfirmasi2()"
+                        >Hapus</a
+                      >
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <ul class="action">
+                    <li>
+                      <a href="editMapel.html" class="edit">Edit</a>
+                    </li>
+                    <li>
+                      <a href="#" class="delete" onclick="konfirmasi2()"
+                        >Hapus</a
+                      >
+                    </li>
+                  </ul>
+                </li>
               </ul>
             </div>
             <div class="button">
-              <a href="#">See All</a>
+              <a href="tambahMapel.html"
+                ><i class="bx bxs-user-plus bx-xs" style="margin-right: 5px"></i
+                >Tambah</a
+              >
             </div>
-          </div>
-          <div class="top-update box" data-aos="fade-down">
-            <div class="title">
-              Export
-              <i class="bx bxs-file-export"></i>
-            </div>
-            <ul class="top-update-details">
-              <li>
-                <a href="#">
-                  <i class="bx bxs-x-circle" style="color: red"></i>
-                  <span class="item">XI-RPL1</span>
-                </a>
-                <div class="button">
-                  <a
-                    href="admin.html"
-                    onclick="return false"
-                    style="background: rgb(61, 61, 61); cursor: default"
-                    ><i class="bx bx-printer" style="margin-right: 5px"></i
-                    >Print</a
-                  >
-                </div>
-              </li>
-              <li>
-                <a href="#">
-                  <i class="bx bxs-check-circle" style="color: green"></i>
-                  <span class="item">XI-RPL2</span>
-                </a>
-                <div class="button">
-                  <a href="admin.html"
-                    ><i class="bx bx-printer" style="margin-right: 5px"></i
-                    >Print</a
-                  >
-                </div>
-              </li>
-            </ul>
           </div>
         </div>
       </div>
@@ -170,6 +160,15 @@
 
         if (tanya === true) {
           window.location = "login.html";
+        } else {
+        }
+      }
+
+      function konfirmasi2() {
+        var tanya = confirm("Apakah Anda Yakin ?");
+
+        if (tanya === true) {
+          alert("Data Berhasil Dihapus");
         } else {
         }
       }

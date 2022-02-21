@@ -277,6 +277,11 @@ nav .profile-details i {
   font-weight: 500;
   /* margin-bottom: 10px; */
 }
+
+.home-content .update-boxes ul {
+  text-align: center;
+}
+
 .update-boxes .update-details li.topic {
   font-size: 20px;
   font-weight: 500;
@@ -376,6 +381,9 @@ nav .profile-details i {
   font-size: 24px;
   font-weight: 500;
   /* margin-bottom: 10px; */
+}
+.home-content .update-boxes2 ul {
+  text-align: center;
 }
 .home-content .update-boxes2 li {
   position: relative;
