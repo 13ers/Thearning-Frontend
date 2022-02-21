@@ -26,7 +26,7 @@
           </a>
         </li>
         <li>
-          <a href="riwayat.html">
+          <a href="#">
             <i class="bx bx-history"></i>
             <span class="links_name">Riwayat Login</span>
           </a>
@@ -44,14 +44,14 @@
           </a>
         </li>
         <li>
-          <a href="siswa.html" class="active">
-            <i class="bx bx-book-reader bx-tada"></i>
+          <a href="siswa.html">
+            <i class="bx bx-book-reader"></i>
             <span class="links_name">Data Siswa</span>
           </a>
         </li>
         <li>
-          <a href="kelas.html">
-            <i class="bx bx-building-house"></i>
+          <a href="kelas.html" class="active">
+            <i class="bx bx-building-house bx-tada"></i>
             <span class="links_name">Data Kelas</span>
           </a>
         </li>
@@ -67,7 +67,7 @@
       <nav>
         <div class="sidebar-button">
           <i class="bx bxs-user-circle"></i>
-          <span class="dashboard">Edit</span>
+          <span class="dashboard">Data Kelas</span>
         </div>
         <div class="search-box">
           <input type="text" placeholder="Search..." />
@@ -83,67 +83,55 @@
       <div class="home-content">
         <div class="update-boxes2" data-aos="fade-right">
           <div class="recent-update box">
-            <div class="title">Siswa</div>
-            <div class="update-details">
-              <ul class="details" style="width: 150px; height: 150px">
-                <li class="topic" style="width: 150px; height: 150px">
-                  <i class="bx bxs-user-circle" style="font-size: 150px"></i>
-                </li>
+            <div class="title">Kelas</div>
+            <div class="update-details" style="float: none">
+              <ul class="details">
+                <li class="topic">Tingkat</li>
+                <li>10</li>
+                <li>11</li>
               </ul>
               <ul class="details">
-                <li class="topic">Nama</li>
-                <li class="topic">NIK</li>
-                <li class="topic">Jenis Kelamin</li>
-                <li class="topic">Kelas</li>
+                <li class="topic">Jurusan</li>
+                <li>RPL</li>
+                <li>AK</li>
               </ul>
               <ul class="details">
-                <li>:</li>
-                <li>:</li>
-                <li>:</li>
-                <li>:</li>
+                <li class="topic">Jumlah Kelas</li>
+                <li>2</li>
+                <li>6</li>
               </ul>
-              <ul class="details">
+              <ul class="details" style="text-align: center">
+                <li class="topic">Tindakan</li>
                 <li>
-                  <input
-                    type="text"
-                    name="username"
-                    id="username"
-                    placeholder="Nama"
-                    style="width: 230%"
-                  />
+                  <ul class="action">
+                    <li>
+                      <a href="editKelas.html" class="edit">Edit</a>
+                    </li>
+                    <li>
+                      <a href="#" class="delete" onclick="konfirmasi2()"
+                        >Hapus</a
+                      >
+                    </li>
+                  </ul>
                 </li>
                 <li>
-                  <input
-                    type="text"
-                    name="nik"
-                    id="nik"
-                    placeholder="NIK"
-                    style="width: 230%"
-                  />
-                </li>
-                <li>
-                  <input
-                    type="text"
-                    name="jk"
-                    id="jk"
-                    placeholder="Jenis Kelamin"
-                    style="width: 230%"
-                  />
-                </li>
-                <li>
-                  <input
-                    type="text"
-                    name="kelas"
-                    id="kelas"
-                    placeholder="Kelas"
-                    style="width: 230%"
-                  />
+                  <ul class="action">
+                    <li>
+                      <a href="editKelas.html" class="edit">Edit</a>
+                    </li>
+                    <li>
+                      <a href="#" class="delete" onclick="konfirmasi2()"
+                        >Hapus</a
+                      >
+                    </li>
+                  </ul>
                 </li>
               </ul>
             </div>
             <div class="button">
-              <a href="siswa.html" onClick="alert('Data Siswa Berhasil Diubah')"
-                ><i class="bx bx-save" style="margin-right: 5px"></i>Simpan</a
+              <a href="tambahKelas.html"
+                ><i class="bx bxs-user-plus bx-xs" style="margin-right: 5px"></i
+                >Tambah</a
               >
             </div>
           </div>
@@ -169,6 +157,16 @@
         } else {
         }
       }
+
+      function konfirmasi2() {
+        var tanya = confirm("Apakah Anda Yakin ?");
+
+        if (tanya === true) {
+          alert("Data Berhasil Dihapus");
+        } else {
+        }
+      }
+
       function pindah(url) {
         window.location = url;
       }

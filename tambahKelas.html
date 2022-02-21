@@ -39,19 +39,19 @@
         </li>
         <li>
           <a href="guru.html">
-            <i class="bx bxs-user-rectangle"></i>
+            <i class="bx bxs-user-rectangle bx-tada"></i>
             <span class="links_name">Data Guru</span>
           </a>
         </li>
         <li>
-          <a href="siswa.html" class="active">
-            <i class="bx bx-book-reader bx-tada"></i>
+          <a href="siswa.html">
+            <i class="bx bx-book-reader"></i>
             <span class="links_name">Data Siswa</span>
           </a>
         </li>
         <li>
-          <a href="kelas.html">
-            <i class="bx bx-building-house"></i>
+          <a href="kelas.html" class="active">
+            <i class="bx bx-building-house bx-tada"></i>
             <span class="links_name">Data Kelas</span>
           </a>
         </li>
@@ -67,7 +67,7 @@
       <nav>
         <div class="sidebar-button">
           <i class="bx bxs-user-circle"></i>
-          <span class="dashboard">Edit</span>
+          <span class="dashboard">Input</span>
         </div>
         <div class="search-box">
           <input type="text" placeholder="Search..." />
@@ -83,7 +83,7 @@
       <div class="home-content">
         <div class="update-boxes2" data-aos="fade-right">
           <div class="recent-update box">
-            <div class="title">Siswa</div>
+            <div class="title">Kelas</div>
             <div class="update-details">
               <ul class="details" style="width: 150px; height: 150px">
                 <li class="topic" style="width: 150px; height: 150px">
@@ -91,59 +91,47 @@
                 </li>
               </ul>
               <ul class="details">
-                <li class="topic">Nama</li>
-                <li class="topic">NIK</li>
-                <li class="topic">Jenis Kelamin</li>
-                <li class="topic">Kelas</li>
+                <li class="topic">Tingkat</li>
+                <li class="topic">Jurusan</li>
+                <li class="topic">Jumlah</li>
               </ul>
               <ul class="details">
                 <li>:</li>
                 <li>:</li>
                 <li>:</li>
-                <li>:</li>
               </ul>
               <ul class="details">
                 <li>
                   <input
                     type="text"
-                    name="username"
-                    id="username"
-                    placeholder="Nama"
-                    style="width: 230%"
+                    name="tingkat"
+                    id="tingkat"
+                    placeholder="Masukan Tingkat"
                   />
                 </li>
                 <li>
                   <input
                     type="text"
-                    name="nik"
-                    id="nik"
-                    placeholder="NIK"
-                    style="width: 230%"
+                    name="jurusan"
+                    id="jurusan"
+                    placeholder="Masukan Jurusan"
                   />
                 </li>
                 <li>
                   <input
                     type="text"
-                    name="jk"
-                    id="jk"
-                    placeholder="Jenis Kelamin"
-                    style="width: 230%"
-                  />
-                </li>
-                <li>
-                  <input
-                    type="text"
-                    name="kelas"
-                    id="kelas"
-                    placeholder="Kelas"
-                    style="width: 230%"
+                    name="jumlah"
+                    id="jumlah"
+                    placeholder="Masukkan Jumlah Kelas"
                   />
                 </li>
               </ul>
             </div>
             <div class="button">
-              <a href="siswa.html" onClick="alert('Data Siswa Berhasil Diubah')"
-                ><i class="bx bx-save" style="margin-right: 5px"></i>Simpan</a
+              <a
+                href="kelas.html"
+                onClick="alert('Data Kelas Berhasil Ditambahkan')"
+                >Simpan</a
               >
             </div>
           </div>
