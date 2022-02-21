@@ -26,8 +26,8 @@
           </a>
         </li>
         <li>
-          <a href="#" class="active">
-            <i class="bx bx-history bx-spin"></i>
+          <a href="#">
+            <i class="bx bx-history"></i>
             <span class="links_name">Riwayat Login</span>
           </a>
         </li>
@@ -38,8 +38,8 @@
           </a>
         </li>
         <li>
-          <a href="guru.html">
-            <i class="bx bxs-user-rectangle"></i>
+          <a href="#" class="active">
+            <i class="bx bxs-user-rectangle bx-tada"></i>
             <span class="links_name">Data Guru</span>
           </a>
         </li>
@@ -55,7 +55,7 @@
       <nav>
         <div class="sidebar-button">
           <i class="bx bxs-user-circle"></i>
-          <span class="dashboard">Riwayat</span>
+          <span class="dashboard">Data Guru</span>
         </div>
         <div class="search-box">
           <input type="text" placeholder="Search..." />
@@ -69,57 +69,64 @@
       </nav>
 
       <div class="home-content">
-        <div class="update-boxes" data-aos="fade-right">
+        <div class="update-boxes2" data-aos="fade-right">
           <div class="recent-update box">
-            <div class="title">Riwayat</div>
-            <div class="update-details">
+            <div class="title">Guru</div>
+            <div class="update-details" style="float: none">
               <ul class="details">
-                <li class="topic">Waktu</li>
-                <li>09.30</li>
-                <li>08.00</li>
+                <li class="topic">Nama</li>
+                <li>nama1</li>
+                <li>nama2</li>
               </ul>
               <ul class="details">
-                <li class="topic">Tanggal</li>
-                <li>17-02-2022</li>
-                <li>18-02-2022</li>
+                <li class="topic">NIP</li>
+                <li>010101</li>
+                <li>020202</li>
               </ul>
               <ul class="details">
-                <li class="topic">User</li>
-                <li>Username</li>
-                <li>Username</li>
+                <li class="topic">Jenis Kelamin</li>
+                <li>Laki-Laki</li>
+                <li>Perempuan</li>
               </ul>
               <ul class="details">
                 <li class="topic">Kelas</li>
                 <li>XI-RPL 1</li>
                 <li>XI-RPL 2</li>
               </ul>
+              <ul class="details" style="text-align: center">
+                <li class="topic">Tindakan</li>
+                <li>
+                  <ul class="action">
+                    <li>
+                      <a href="edit.html" class="edit">Edit</a>
+                    </li>
+                    <li>
+                      <a href="#" class="delete" onclick="konfirmasi2()"
+                        >Hapus</a
+                      >
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <ul class="action">
+                    <li>
+                      <a href="edit.html" class="edit">Edit</a>
+                    </li>
+                    <li>
+                      <a href="#" class="delete" onclick="konfirmasi2()"
+                        >Hapus</a
+                      >
+                    </li>
+                  </ul>
+                </li>
+              </ul>
             </div>
             <div class="button">
-              <a href="#">See All</a>
+              <a href="tambahGuru.html"
+                ><i class="bx bxs-user-plus bx-xs" style="margin-right: 5px"></i
+                >Tambah</a
+              >
             </div>
-          </div>
-          <div class="top-update box" data-aos="fade-left">
-            <div class="title">Wali Kelas</div>
-            <ul class="top-update-details">
-              <li>
-                <a href="#">
-                  <img
-                    src="https://img.icons8.com/external-nawicon-flat-nawicon/50/000000/external-teacher-back-to-school-nawicon-flat-nawicon.png"
-                  />
-                  <span class="item">Nama</span>
-                </a>
-                <span class="desc">Kelas</span>
-              </li>
-              <li>
-                <a href="#">
-                  <img
-                    src="https://img.icons8.com/external-nawicon-flat-nawicon/50/000000/external-teacher-back-to-school-nawicon-flat-nawicon-2.png"
-                  />
-                  <span class="item">Nama</span>
-                </a>
-                <span class="desc">kelas</span>
-              </li>
-            </ul>
           </div>
         </div>
       </div>
@@ -140,6 +147,15 @@
 
         if (tanya === true) {
           window.location = "login.html";
+        } else {
+        }
+      }
+
+      function konfirmasi2() {
+        var tanya = confirm("Apakah Anda Yakin ?");
+
+        if (tanya === true) {
+          alert("Data Berhasil Dihapus");
         } else {
         }
       }

@@ -385,7 +385,10 @@ nav .profile-details i {
 }
 
 .home-content .update-boxes2 li hr {
-  width: 570%;
+  width: 500%;
+}
+.home-content .update-boxes2 li input {
+  width: 280%;
 }
 
 .home-content .update-boxes2 li a {
@@ -430,4 +433,46 @@ nav .profile-details i {
   width: 770px;
   margin: auto;
   margin-top: 80px;
+}
+
+ul.details li ul.action {
+  height: auto;
+  width: 100%;
+  text-align: center;
+  align-items: center;
+}
+
+ul.details li ul.action li {
+  display: inline;
+  list-style: none;
+  float: left;
+  text-align: center;
+  align-items: center;
+  height: 30px;
+}
+
+ul.details li ul.action li a {
+  text-decoration: none;
+  border-radius: 4px;
+  text-decoration: none;
+  padding: 5px;
+  margin: 0px;
+}
+
+ul.details li ul.action li a.edit {
+  color: #fff;
+  background: #0f8819;
+}
+
+ul.details li ul.action li a.edit:hover {
+  background: #06440b;
+}
+
+ul.details li ul.action li a.delete {
+  color: #fff;
+  background: #961313;
+}
+
+ul.details li ul.action li a.delete:hover {
+  background: #520909;
 }
