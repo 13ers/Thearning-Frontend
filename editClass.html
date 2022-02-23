@@ -26,43 +26,43 @@
           </a>
         </li>
         <li>
-          <a href="#">
+          <a href="history.html">
             <i class="bx bx-history"></i>
             <span class="links_name">Riwayat Login</span>
           </a>
         </li>
         <li>
-          <a href="laporan.html">
+          <a href="report.html">
             <i class="bx bxs-report"></i>
             <span class="links_name">Laporan Akhir</span>
           </a>
         </li>
         <li>
-          <a href="guru.html">
+          <a href="teacher.html">
             <i class="bx bxs-user-rectangle"></i>
             <span class="links_name">Data Guru</span>
           </a>
         </li>
         <li>
-          <a href="siswa.html">
-            <i class="bx bx-book-reader"></i>
+          <a href="student.html">
+            <i class="bx bx-book-reader bx-tada"></i>
             <span class="links_name">Data Siswa</span>
           </a>
         </li>
         <li>
-          <a href="kelas.html">
+          <a href="class.html" class="active">
             <i class="bx bx-building-house"></i>
             <span class="links_name">Data Kelas</span>
           </a>
         </li>
         <li>
-          <a href="#" class="active">
-            <i class="bx bx-book-open bx-tada"></i>
+          <a href="course.html">
+            <i class="bx bx-book-open"></i>
             <span class="links_name">Data Mapel</span>
           </a>
         </li>
         <li class="log_out">
-          <a href="#" onclick="konfirmasi()">
+          <a href="#" onclick="confirm()">
             <i class="bx bx-log-out"></i>
             <span class="links_name">Log out</span>
           </a>
@@ -73,13 +73,13 @@
       <nav>
         <div class="sidebar-button">
           <i class="bx bxs-user-circle"></i>
-          <span class="dashboard">Data mapel</span>
+          <span class="dashboard">Edit</span>
         </div>
         <div class="search-box">
           <input type="text" placeholder="Search..." />
           <i class="bx bx-search"></i>
         </div>
-        <div class="profile-details" onclick="pindah('profil.html')">
+        <div class="profile-details" onclick="move('profile.html')">
           <i class="bx bxs-user-circle"></i>
           <span class="admin_name">Username (Level)</span>
           <i class="bx bx-log-in-circle"></i>
@@ -89,55 +89,59 @@
       <div class="home-content">
         <div class="update-boxes2" data-aos="fade-right">
           <div class="recent-update box">
-            <div class="title">Mapel</div>
-            <div class="update-details" style="float: none">
-              <ul class="details">
-                <li class="topic">Nama</li>
-                <li>MTK</li>
-                <li>PBO</li>
+            <div class="title">kelas</div>
+            <div class="update-details">
+              <ul class="details" style="width: 150px; height: 150px">
+                <li class="topic" style="width: 150px; height: 150px">
+                  <i
+                    class="bx bx-building-house"
+                    style="color: #0a2558; font-size: 150px"
+                  ></i>
+                </li>
               </ul>
               <ul class="details">
+                <li class="topic">Tingkat</li>
                 <li class="topic">Jurusan</li>
-                <li>Umum</li>
-                <li>RPL</li>
+                <li class="topic">Jumlah</li>
               </ul>
               <ul class="details">
-                <li class="topic">Pengajar</li>
-                <li>nama 1</li>
-                <li>nama 2</li>
+                <li>:</li>
+                <li>:</li>
+                <li>:</li>
               </ul>
-              <ul class="details" style="text-align: center">
-                <li class="topic">Tindakan</li>
+              <ul class="details">
                 <li>
-                  <ul class="action">
-                    <li>
-                      <a href="editMapel.html" class="edit">Edit</a>
-                    </li>
-                    <li>
-                      <a href="#" class="delete" onclick="konfirmasi2()"
-                        >Hapus</a
-                      >
-                    </li>
-                  </ul>
+                  <input
+                    type="text"
+                    name="level"
+                    id="level"
+                    placeholder="Tingkat"
+                    style="width: 230%"
+                  />
                 </li>
                 <li>
-                  <ul class="action">
-                    <li>
-                      <a href="editMapel.html" class="edit">Edit</a>
-                    </li>
-                    <li>
-                      <a href="#" class="delete" onclick="konfirmasi2()"
-                        >Hapus</a
-                      >
-                    </li>
-                  </ul>
+                  <input
+                    type="text"
+                    name="major"
+                    id="major"
+                    placeholder="Jurusan"
+                    style="width: 230%"
+                  />
+                </li>
+                <li>
+                  <input
+                    type="text"
+                    name="total"
+                    id="total"
+                    placeholder="Jumlah Kelas"
+                    style="width: 230%"
+                  />
                 </li>
               </ul>
             </div>
             <div class="button">
-              <a href="tambahMapel.html"
-                ><i class="bx bxs-user-plus bx-xs" style="margin-right: 5px"></i
-                >Tambah</a
+              <a href="class.html" onClick="alert('Data Kelas Berhasil Diubah')"
+                ><i class="bx bx-save" style="margin-right: 5px"></i>Simpan</a
               >
             </div>
           </div>
@@ -155,25 +159,15 @@
         } else sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
       };
 
-      function konfirmasi() {
-        var tanya = confirm("Apakah Anda Yakin ?");
+      function confirm() {
+        var ask = confirm("Apakah Anda Yakin ?");
 
-        if (tanya === true) {
+        if (ask === true) {
           window.location = "login.html";
         } else {
         }
       }
-
-      function konfirmasi2() {
-        var tanya = confirm("Apakah Anda Yakin ?");
-
-        if (tanya === true) {
-          alert("Data Berhasil Dihapus");
-        } else {
-        }
-      }
-
-      function pindah(url) {
+      function move(url) {
         window.location = url;
       }
     </script>

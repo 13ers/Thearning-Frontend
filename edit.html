@@ -26,43 +26,43 @@
           </a>
         </li>
         <li>
-          <a href="riwayat.html">
+          <a href="history.html">
             <i class="bx bx-history"></i>
             <span class="links_name">Riwayat Login</span>
           </a>
         </li>
         <li>
-          <a href="laporan.html">
+          <a href="report.html">
             <i class="bx bxs-report"></i>
             <span class="links_name">Laporan Akhir</span>
           </a>
         </li>
         <li>
-          <a href="guru.html">
+          <a href="teacher.html">
             <i class="bx bxs-user-rectangle"></i>
             <span class="links_name">Data Guru</span>
           </a>
         </li>
         <li>
-          <a href="siswa.html">
+          <a href="student.html">
             <i class="bx bx-book-reader"></i>
             <span class="links_name">Data Siswa</span>
           </a>
         </li>
         <li>
-          <a href="kelas.html">
+          <a href="class.html">
             <i class="bx bx-building-house"></i>
             <span class="links_name">Data Kelas</span>
           </a>
         </li>
         <li>
-          <a href="mapel.html">
+          <a href="course.html">
             <i class="bx bx-book-open"></i>
             <span class="links_name">Data Mapel</span>
           </a>
         </li>
         <li class="log_out">
-          <a href="#" onclick="konfirmasi()">
+          <a href="#" onclick="confirm()">
             <i class="bx bx-log-out"></i>
             <span class="links_name">Log out</span>
           </a>
@@ -79,7 +79,7 @@
           <input type="text" placeholder="Search..." />
           <i class="bx bx-search"></i>
         </div>
-        <div class="profile-details" onclick="pindah('profil.html')">
+        <div class="profile-details" onclick="move('profile.html')">
           <i class="bx bx-user-circle"></i>
           <span class="admin_name">Username (Level)</span>
           <i class="bx bx-log-in-circle"></i>
@@ -158,8 +158,8 @@
                   <li>
                     <input
                       type="password"
-                      name="passwordBaru"
-                      id="passwordBaru"
+                      name="newPassword"
+                      id="newPassword"
                       placeholder="Masukan Password Baru"
                       style="width: 230%"
                     />
@@ -167,9 +167,9 @@
                   <li>
                     <input
                       type="password"
-                      name="validPassword"
-                      id="validPassword"
-                      placeholder="konfirmasi Password"
+                      name="confirmPassword"
+                      id="confirmPassword"
+                      placeholder="confirm Password"
                       style="width: 230%"
                     />
                   </li>
@@ -186,8 +186,8 @@
                 <li>
                   <input
                     type="text"
-                    name="jk"
-                    id="jk"
+                    name="gender"
+                    id="gender"
                     placeholder="Jenis Kelamin"
                     style="width: 230%"
                   />
@@ -204,8 +204,8 @@
                 <li>
                   <input
                     type="text"
-                    name="kelas"
-                    id="kelas"
+                    name="class"
+                    id="class"
                     placeholder="Kelas"
                     style="width: 230%"
                   />
@@ -213,7 +213,9 @@
               </ul>
             </div>
             <div class="button">
-              <a href="guru.html" onClick="alert('Guru Berhasil Didaftarkan')"
+              <a
+                href="teacher.html"
+                onClick="alert('Guru Berhasil Didaftarkan')"
                 ><i class="bx bx-save" style="margin-right: 5px"></i>Simpan</a
               >
             </div>
@@ -232,15 +234,15 @@
         } else sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
       };
 
-      function konfirmasi() {
-        var tanya = confirm("Apakah Anda Yakin ?");
+      function confirm() {
+        var ask = confirm("Apakah Anda Yakin ?");
 
-        if (tanya === true) {
+        if (ask === true) {
           window.location = "login.html";
         } else {
         }
       }
-      function pindah(url) {
+      function move(url) {
         window.location = url;
       }
     </script>

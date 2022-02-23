@@ -26,43 +26,43 @@
           </a>
         </li>
         <li>
-          <a href="riwayat.html">
+          <a href="history.html">
             <i class="bx bx-history"></i>
             <span class="links_name">Riwayat Login</span>
           </a>
         </li>
         <li>
-          <a href="laporan.html">
+          <a href="report.html">
             <i class="bx bxs-report"></i>
             <span class="links_name">Laporan Akhir</span>
           </a>
         </li>
         <li>
-          <a href="guru.html">
+          <a href="teacher.html">
             <i class="bx bxs-user-rectangle"></i>
             <span class="links_name">Data Guru</span>
           </a>
         </li>
         <li>
-          <a href="siswa.html">
-            <i class="bx bx-book-reader bx-tada"></i>
+          <a href="student.html">
+            <i class="bx bx-book-reader"></i>
             <span class="links_name">Data Siswa</span>
           </a>
         </li>
         <li>
-          <a href="kelas.html" class="active">
-            <i class="bx bx-building-house"></i>
+          <a href="class.html" class="active">
+            <i class="bx bx-building-house bx-tada"></i>
             <span class="links_name">Data Kelas</span>
           </a>
         </li>
         <li>
-          <a href="mapel.html">
+          <a href="course.html">
             <i class="bx bx-book-open"></i>
             <span class="links_name">Data Mapel</span>
           </a>
         </li>
         <li class="log_out">
-          <a href="#" onclick="konfirmasi()">
+          <a href="#" onclick="confirm()">
             <i class="bx bx-log-out"></i>
             <span class="links_name">Log out</span>
           </a>
@@ -73,13 +73,13 @@
       <nav>
         <div class="sidebar-button">
           <i class="bx bxs-user-circle"></i>
-          <span class="dashboard">Edit</span>
+          <span class="dashboard">Input</span>
         </div>
         <div class="search-box">
           <input type="text" placeholder="Search..." />
           <i class="bx bx-search"></i>
         </div>
-        <div class="profile-details" onclick="pindah('profil.html')">
+        <div class="profile-details" onclick="move('profile.html')">
           <i class="bx bxs-user-circle"></i>
           <span class="admin_name">Username (Level)</span>
           <i class="bx bx-log-in-circle"></i>
@@ -89,7 +89,7 @@
       <div class="home-content">
         <div class="update-boxes2" data-aos="fade-right">
           <div class="recent-update box">
-            <div class="title">kelas</div>
+            <div class="title">Kelas</div>
             <div class="update-details">
               <ul class="details" style="width: 150px; height: 150px">
                 <li class="topic" style="width: 150px; height: 150px">
@@ -113,35 +113,34 @@
                 <li>
                   <input
                     type="text"
-                    name="tingkat"
-                    id="tingkat"
-                    placeholder="Tingkat"
-                    style="width: 230%"
+                    name="level"
+                    id="level"
+                    placeholder="Masukan Tingkat"
                   />
                 </li>
                 <li>
                   <input
                     type="text"
-                    name="jurusan"
-                    id="jurusan"
-                    placeholder="Jurusan"
-                    style="width: 230%"
+                    name="major"
+                    id="major"
+                    placeholder="Masukan Jurusan"
                   />
                 </li>
                 <li>
                   <input
                     type="text"
-                    name="jumlah"
-                    id="jumlah"
-                    placeholder="Jumlah Kelas"
-                    style="width: 230%"
+                    name="total"
+                    id="total"
+                    placeholder="Masukkan Jumlah Kelas"
                   />
                 </li>
               </ul>
             </div>
             <div class="button">
-              <a href="kelas.html" onClick="alert('Data Kelas Berhasil Diubah')"
-                ><i class="bx bx-save" style="margin-right: 5px"></i>Simpan</a
+              <a
+                href="class.html"
+                onClick="alert('Data Kelas Berhasil Ditambahkan')"
+                >Simpan</a
               >
             </div>
           </div>
@@ -159,15 +158,15 @@
         } else sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
       };
 
-      function konfirmasi() {
-        var tanya = confirm("Apakah Anda Yakin ?");
+      function confirm() {
+        var ask = confirm("Apakah Anda Yakin ?");
 
-        if (tanya === true) {
+        if (ask === true) {
           window.location = "login.html";
         } else {
         }
       }
-      function pindah(url) {
+      function move(url) {
         window.location = url;
       }
     </script>
