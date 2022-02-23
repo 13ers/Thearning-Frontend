@@ -20,45 +20,33 @@
       </div>
       <ul class="nav-links">
         <li>
-          <a href="admin.html">
+          <a href="user.html">
             <i class="bx bx-grid-alt"></i>
             <span class="links_name">Dashboard</span>
           </a>
         </li>
         <li>
-          <a href="history.html">
-            <i class="bx bx-history"></i>
-            <span class="links_name">Riwayat Login</span>
+          <a href="grade.html">
+            <i class="bx bxs-file-plus"></i>
+            <span class="links_name">Input Nilai</span>
           </a>
         </li>
         <li>
-          <a href="report.html">
-            <i class="bx bxs-report"></i>
-            <span class="links_name">Laporan Akhir</span>
+          <a href="editGrade.html">
+            <i class="bx bx-edit"></i>
+            <span class="links_name">Edit Nilai</span>
           </a>
         </li>
         <li>
-          <a href="teacher.html">
-            <i class="bx bxs-user-rectangle"></i>
-            <span class="links_name">Data Guru</span>
+          <a href="changePassword.html">
+            <i class="bx bx-lock-open-alt"></i>
+            <span class="links_name">Ubah Password</span>
           </a>
         </li>
         <li>
-          <a href="student.html" class="active">
-            <i class="bx bx-book-reader bx-tada"></i>
-            <span class="links_name">Data Siswa</span>
-          </a>
-        </li>
-        <li>
-          <a href="class.html">
-            <i class="bx bx-building-house"></i>
-            <span class="links_name">Data Kelas</span>
-          </a>
-        </li>
-        <li>
-          <a href="course.html">
-            <i class="bx bx-book-open"></i>
-            <span class="links_name">Data Mapel</span>
+          <a href="#" class="active">
+            <i class="bx bxs-user-account bx-tada"></i>
+            <span class="links_name">Wali Kelas</span>
           </a>
         </li>
         <li class="log_out">
@@ -73,7 +61,7 @@
       <nav>
         <div class="sidebar-button">
           <i class="bx bxs-user-circle"></i>
-          <span class="dashboard">Edit</span>
+          <span class="dashboard">Data Kelas</span>
         </div>
         <div class="search-box">
           <input type="text" placeholder="Search..." />
@@ -89,73 +77,56 @@
       <div class="home-content">
         <div class="update-boxes2" data-aos="fade-right">
           <div class="recent-update box">
-            <div class="title">Siswa</div>
-            <div class="update-details">
-              <ul class="details" style="width: 150px; height: 150px">
-                <li class="topic" style="width: 150px; height: 150px">
-                  <i
-                    class="bx bx-user-circle"
-                    style="font-size: 150px; color: #0a2558"
-                  ></i>
-                </li>
+            <div class="title">Kelas</div>
+            <div class="update-details" style="float: none">
+              <ul class="details">
+                <li class="topic">No</li>
+                <li>1</li>
+                <li>2</li>
               </ul>
               <ul class="details">
                 <li class="topic">Nama</li>
+                <li>nama 1</li>
+                <li>nam 2</li>
+              </ul>
+              <ul class="details">
                 <li class="topic">NIK</li>
+                <li>001</li>
+                <li>002</li>
+              </ul>
+              <ul class="details">
                 <li class="topic">Jenis Kelamin</li>
-                <li class="topic">Kelas</li>
+                <li>Laki-Laki</li>
+                <li>Perempuan</li>
               </ul>
               <ul class="details">
-                <li>:</li>
-                <li>:</li>
-                <li>:</li>
-                <li>:</li>
+                <li class="topic">Progres</li>
+                <li>80%</li>
+                <li>70%</li>
               </ul>
-              <ul class="details">
+              <ul class="details" style="text-align: center">
+                <li class="topic">Tindakan</li>
                 <li>
-                  <input
-                    type="text"
-                    name="username"
-                    id="username"
-                    placeholder="Nama"
-                    style="width: 230%"
-                  />
+                  <ul class="action">
+                    <li>
+                      <a href="#" class="print"
+                        ><i class="bx bx-printer" style="margin-right: 10px"></i
+                        >Print</a
+                      >
+                    </li>
+                  </ul>
                 </li>
                 <li>
-                  <input
-                    type="text"
-                    name="nik"
-                    id="nik"
-                    placeholder="NIK"
-                    style="width: 230%"
-                  />
-                </li>
-                <li>
-                  <input
-                    type="text"
-                    name="gender"
-                    id="gender"
-                    placeholder="Jenis Kelamin"
-                    style="width: 230%"
-                  />
-                </li>
-                <li>
-                  <input
-                    type="text"
-                    name="class"
-                    id="class"
-                    placeholder="Kelas"
-                    style="width: 230%"
-                  />
+                  <ul class="action">
+                    <li>
+                      <a href="#" class="print"
+                        ><i class="bx bx-printer" style="margin-right: 10px"></i
+                        >Print</a
+                      >
+                    </li>
+                  </ul>
                 </li>
               </ul>
-            </div>
-            <div class="button">
-              <a
-                href="student.html"
-                onClick="alert('Data Siswa Berhasil Diubah')"
-                ><i class="bx bx-save" style="margin-right: 5px"></i>Simpan</a
-              >
             </div>
           </div>
         </div>
@@ -180,6 +151,16 @@
         } else {
         }
       }
+
+      function confirmation2() {
+        var ask = confirm("Apakah Anda Yakin ?");
+
+        if (ask === true) {
+          alert("Data Berhasil Dihapus");
+        } else {
+        }
+      }
+
       function move(url) {
         window.location = url;
       }

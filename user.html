@@ -8,8 +8,8 @@
       href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="fontawesome/css/all.min.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="text/javascript" src="chartjs/Chart.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   </head>
   <body>
@@ -20,45 +20,33 @@
       </div>
       <ul class="nav-links">
         <li>
-          <a href="admin.html">
-            <i class="bx bx-grid-alt"></i>
+          <a href="#" class="active">
+            <i class="bx bx-grid-alt bx-tada"></i>
             <span class="links_name">Dashboard</span>
           </a>
         </li>
         <li>
-          <a href="#" class="active">
-            <i class="bx bx-history bx-spin"></i>
-            <span class="links_name">Riwayat Login</span>
+          <a href="grade.html">
+            <i class="bx bxs-file-plus"></i>
+            <span class="links_name">Input Nilai</span>
           </a>
         </li>
         <li>
-          <a href="report.html">
-            <i class="bx bxs-report"></i>
-            <span class="links_name">Laporan Akhir</span>
+          <a href="editGrade.html">
+            <i class="bx bx-edit"></i>
+            <span class="links_name">Edit Nilai</span>
           </a>
         </li>
         <li>
-          <a href="teacher.html">
-            <i class="bx bxs-user-rectangle"></i>
-            <span class="links_name">Data Guru</span>
+          <a href="changePassword.html">
+            <i class="bx bx-lock-open-alt"></i>
+            <span class="links_name">Ubah Password</span>
           </a>
         </li>
         <li>
-          <a href="student.html">
-            <i class="bx bx-book-reader"></i>
-            <span class="links_name">Data Siswa</span>
-          </a>
-        </li>
-        <li>
-          <a href="class.html">
-            <i class="bx bx-building-house"></i>
-            <span class="links_name">Data Kelas</span>
-          </a>
-        </li>
-        <li>
-          <a href="course.html">
-            <i class="bx bx-book-open"></i>
-            <span class="links_name">Data Mapel</span>
+          <a href="hrTeacher.html">
+            <i class="bx bxs-user-account"></i>
+            <span class="links_name">Wali Kelas</span>
           </a>
         </li>
         <li class="log_out">
@@ -73,13 +61,13 @@
       <nav>
         <div class="sidebar-button">
           <i class="bx bxs-user-circle"></i>
-          <span class="dashboard">Riwayat</span>
+          <span class="dashboard">Dashboard</span>
         </div>
         <div class="search-box">
           <input type="text" placeholder="Search..." />
           <i class="bx bx-search"></i>
         </div>
-        <div class="profile-details" onclick="move('profile.html')">
+        <div class="profile-details" onclick="move('profileUser.html')">
           <i class="bx bxs-user-circle"></i>
           <span class="admin_name">Username (Level)</span>
           <i class="bx bx-log-in-circle"></i>
@@ -87,14 +75,61 @@
       </nav>
 
       <div class="home-content">
-        <div class="update-boxes" data-aos="fade-right">
-          <div class="recent-update box">
-            <div class="title">Riwayat</div>
+        <div class="overview-boxes">
+          <div class="box" data-aos="fade-right">
+            <div class="right-side">
+              <div class="box-topic">Nilai Yang Diisi</div>
+              <div class="number">100</div>
+              <div class="indicator">
+                <i class="bx bxs-edit"></i>
+                <span class="text">Terkahir Diedit</span>
+              </div>
+            </div>
+            <i class="bx bx-task logo two bx-tada"></i>
+          </div>
+          <div class="box" data-aos="fade-down">
+            <div class="right-side">
+              <div class="box-topic">Nilai Kosong</div>
+              <div class="number">38</div>
+              <div class="indicator">
+                <i class="bx bxs-edit"></i>
+                <span class="text">Terkahir Diedit</span>
+              </div>
+            </div>
+            <i class="bx bx-task-x logo four bx-tada"></i>
+          </div>
+          <div class="box" data-aos="fade-down">
+            <div class="right-side">
+              <div class="box-topic">Nilai Perbaikan</div>
+              <div class="number">300</div>
+              <div class="indicator">
+                <i class="bx bxs-edit"></i>
+                <span class="text">Terakhir Diedit</span>
+              </div>
+            </div>
+            <i class="bx bx-sync logo three bx-tada"></i>
+          </div>
+          <div class="box" data-aos="fade-left">
+            <div class="right-side">
+              <div class="box-topic">KKM</div>
+              <div class="number">75</div>
+              <div class="indicator">
+                <i class="bx bxs-edit"></i>
+                <span class="text">Terkahir Diedit</span>
+              </div>
+            </div>
+            <i class="bx bx-error-circle logo bx-tada"></i>
+          </div>
+        </div>
+
+        <div class="update-boxes">
+          <div class="recent-update box" data-aos="fade-right">
+            <div class="title">Update</div>
             <div class="update-details">
               <ul class="details">
-                <li class="topic">No</li>
-                <li>1</li>
-                <li>2</li>
+                <li class="topic">Tanggal</li>
+                <li>17-02-2022</li>
+                <li>18-02-2022</li>
               </ul>
               <ul class="details">
                 <li class="topic">Waktu</li>
@@ -102,19 +137,14 @@
                 <li>08.00</li>
               </ul>
               <ul class="details">
-                <li class="topic">Tanggal</li>
-                <li>17-02-2022</li>
-                <li>18-02-2022</li>
-              </ul>
-              <ul class="details">
-                <li class="topic">User</li>
-                <li>Username</li>
-                <li>Username</li>
-              </ul>
-              <ul class="details">
                 <li class="topic">Kelas</li>
                 <li>XI-RPL 1</li>
                 <li>XI-RPL 2</li>
+              </ul>
+              <ul class="details">
+                <li class="topic">Tindakan</li>
+                <li>Input</li>
+                <li>Update</li>
               </ul>
             </div>
             <div class="button">
@@ -122,25 +152,21 @@
             </div>
           </div>
           <div class="top-update box" data-aos="fade-left">
-            <div class="title">Wali Kelas</div>
+            <div class="title">Progres(%)</div>
             <ul class="top-update-details">
               <li>
                 <a href="#">
-                  <img
-                    src="https://img.icons8.com/external-nawicon-flat-nawicon/50/000000/external-teacher-back-to-school-nawicon-flat-nawicon.png"
-                  />
-                  <span class="item">Nama</span>
+                  <i class="bx bx-loader-alt bx-spin" style="color: blue"></i>
+                  <span class="item">XI-RPL1</span>
                 </a>
-                <span class="desc">Kelas</span>
+                <span class="desc">10%</span>
               </li>
               <li>
                 <a href="#">
-                  <img
-                    src="https://img.icons8.com/external-nawicon-flat-nawicon/50/000000/external-teacher-back-to-school-nawicon-flat-nawicon-2.png"
-                  />
-                  <span class="item">Nama</span>
+                  <i class="bx bx-loader-alt bx-spin" style="color: blue"></i>
+                  <span class="item">XI-RPL2</span>
                 </a>
-                <span class="desc">kelas</span>
+                <span class="desc">30%</span>
               </li>
             </ul>
           </div>

@@ -433,6 +433,84 @@ nav .profile-details i {
   background: #0d3073;
 }
 
+/* .home-content .update-boxes2 .top-update {
+  position: absolute;
+  width: 35%;
+  color: pink;
+  left: 115px;
+  background: #fff;
+  padding: 20px 30px;
+  margin: 0 20px 0 0;
+  border-radius: 12px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.home-content .update-boxes2 .top-update2 {
+  right: 95px;
+  position: absolute;
+  width: 35%;
+  color: red;
+  background: #fff;
+  padding: 20px 30px;
+  margin: 0 20px 0 0;
+  border-radius: 12px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+.update-boxes2 .top-update li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+.update-boxes2 .top-update li a img {
+  height: 40px;
+  width: 40px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-right: 10px;
+  background: white;
+}
+.update-boxes2 .top-update li a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  text-align: center;
+}
+.update-boxes2 .top-update li .item,
+.desc {
+  font-size: 17px;
+  font-weight: 400;
+  color: #333;
+  width: 80px;
+}
+
+.update-boxes2 .top-update2 li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+.update-boxes2 .top-update2 li a img {
+  height: 40px;
+  width: 40px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-right: 10px;
+  background: white;
+}
+.update-boxes2 .top-update2 li a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  text-align: center;
+}
+.update-boxes2 .top-update2 li .item,
+.desc {
+  font-size: 17px;
+  font-weight: 400;
+  color: #333;
+  width: 80px;
+} */
 .menu-wrap {
   background-color: #0d3073;
   height: 50px;
@@ -483,6 +561,15 @@ ul.details li ul.action li a.delete {
 
 ul.details li ul.action li a.delete:hover {
   background: #520909;
+}
+
+ul.details li ul.action li a.print {
+  color: #fff;
+  background: #0a2558;
+}
+
+ul.details li ul.action li a.ptint:hover {
+  background: #0d3073;
 }
 
 .update-boxes2 .box .button2 {

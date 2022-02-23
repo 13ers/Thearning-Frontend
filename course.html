@@ -62,7 +62,7 @@
           </a>
         </li>
         <li class="log_out">
-          <a href="#" onclick="confirm()">
+          <a href="#" onclick="confirmation()">
             <i class="bx bx-log-out"></i>
             <span class="links_name">Log out</span>
           </a>
@@ -119,7 +119,9 @@
                       <a href="editCourse.html" class="edit">Edit</a>
                     </li>
                     <li>
-                      <a href="#" class="delete" onclick="confirm2()">Hapus</a>
+                      <a href="#" class="delete" onclick="confirmation2()"
+                        >Hapus</a
+                      >
                     </li>
                   </ul>
                 </li>
@@ -129,7 +131,9 @@
                       <a href="editCourse.html" class="edit">Edit</a>
                     </li>
                     <li>
-                      <a href="#" class="delete" onclick="confirm2()">Hapus</a>
+                      <a href="#" class="delete" onclick="confirmation2()"
+                        >Hapus</a
+                      >
                     </li>
                   </ul>
                 </li>
@@ -156,7 +160,7 @@
         } else sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
       };
 
-      function confirm() {
+      function confirmation() {
         var ask = confirm("Apakah Anda Yakin ?");
 
         if (ask === true) {
@@ -165,7 +169,7 @@
         }
       }
 
-      function confirm2() {
+      function confirmation2() {
         var ask = confirm("Apakah Anda Yakin ?");
 
         if (ask === true) {

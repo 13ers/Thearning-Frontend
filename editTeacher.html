@@ -62,7 +62,7 @@
           </a>
         </li>
         <li class="log_out">
-          <a href="#" onclick="confirm()">
+          <a href="#" onclick="confirmation()">
             <i class="bx bx-log-out"></i>
             <span class="links_name">Log out</span>
           </a>
@@ -107,11 +107,12 @@
                   style="visibility: hidden; position: absolute"
                 >
                   <li class="topic">Password Baru</li>
-                  <li class="topic">kondirmasi Password</li>
+                  <li class="topic">konfirmasi Password</li>
                 </section>
                 <li class="topic">NIP</li>
                 <li class="topic">Jenis Kelamin</li>
                 <li class="topic">Level</li>
+                <li class="topic">Mata Pelajaran</li>
                 <li class="topic">Kelas</li>
               </ul>
               <ul class="details">
@@ -124,6 +125,7 @@
                   <li>:</li>
                   <li>:</li>
                 </section>
+                <li>:</li>
                 <li>:</li>
                 <li>:</li>
                 <li>:</li>
@@ -167,9 +169,9 @@
                   <li>
                     <input
                       type="password"
-                      name="validPassword"
-                      id="validPassword"
-                      placeholder="confirm Password"
+                      name="confirmPassword"
+                      id="confirmPassword"
+                      placeholder="Konfirmasi Password"
                       style="width: 230%"
                     />
                   </li>
@@ -198,6 +200,15 @@
                     name="level"
                     id="level"
                     placeholder="Level"
+                    style="width: 230%"
+                  />
+                </li>
+                <li>
+                  <input
+                    type="text"
+                    name="course"
+                    id="course"
+                    placeholder="Mata Pelajaran"
                     style="width: 230%"
                   />
                 </li>
@@ -234,8 +245,8 @@
         } else sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
       };
 
-      function confirm() {
-        var ask = confirm("Apakah Anda Yakin ?");
+      function confirmation() {
+        var ask = confirmation("Apakah Anda Yakin ?");
 
         if (ask === true) {
           window.location = "login.html";

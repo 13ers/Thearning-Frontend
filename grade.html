@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Thearning-Rekapan nilai</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="fontawesome/css/all.min.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  </head>
+  <body>
+    <div class="sidebar">
+      <div class="logo-details">
+        <i class="bx bx-bar-chart-alt-2"></i>
+        <span class="logo_name">Thearning</span>
+      </div>
+      <ul class="nav-links">
+        <li>
+          <a href="user.html">
+            <i class="bx bx-grid-alt"></i>
+            <span class="links_name">Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="active">
+            <i class="bx bxs-file-plus bx-tada"></i>
+            <span class="links_name">Input Nilai</span>
+          </a>
+        </li>
+        <li>
+          <a href="editGrade.html">
+            <i class="bx bx-edit"></i>
+            <span class="links_name">Edit Nilai</span>
+          </a>
+        </li>
+        <li>
+          <a href="changePassword.html">
+            <i class="bx bx-lock-open-alt"></i>
+            <span class="links_name">Ubah Password</span>
+          </a>
+        </li>
+        <li>
+          <a href="hrTeacher.html">
+            <i class="bx bxs-user-account"></i>
+            <span class="links_name">Wali Kelas</span>
+          </a>
+        </li>
+        <li class="log_out">
+          <a href="#" onclick="confirmation()">
+            <i class="bx bx-log-out"></i>
+            <span class="links_name">Log out</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <section class="home-section">
+      <nav>
+        <div class="sidebar-button">
+          <i class="bx bxs-user-circle"></i>
+          <span class="dashboard">Input</span>
+        </div>
+        <div class="search-box">
+          <input type="text" placeholder="Search..." />
+          <i class="bx bx-search"></i>
+        </div>
+        <div class="profile-details" onclick="move('profileUser.html')">
+          <i class="bx bxs-user-circle"></i>
+          <span class="admin_name">Username (Level)</span>
+          <i class="bx bx-log-in-circle"></i>
+        </div>
+      </nav>
+
+      <div class="home-content">
+        <div class="update-boxes2" data-aos="fade-right">
+          <div class="recent-update box">
+            <div class="title">Nilai</div>
+            <div class="update-details">
+              <ul class="details" style="width: 150px; height: 150px">
+                <li class="topic" style="width: 150px; height: 150px">
+                  <i
+                    class="bx bxs-graduation"
+                    style="font-size: 150px; color: #0a2558"
+                  ></i>
+                </li>
+              </ul>
+              <ul class="details">
+                <li class="topic">Mata pelajaran</li>
+                <li class="topic">Nama Siswa</li>
+                <li class="topic">Kelas</li>
+                <li class="topic">Nilai</li>
+              </ul>
+              <ul class="details">
+                <li>:</li>
+                <li>:</li>
+                <li>:</li>
+                <li>:</li>
+              </ul>
+              <ul class="details">
+                <li>
+                  <input
+                    list="courses"
+                    name="course"
+                    id="course"
+                    placeholder="Pilih Mata Pelajaran"
+                    class="inputs"
+                  />
+                  <datalist id="courses">
+                    <option value="MTK"></option>
+                    <option value="Inggris"></option>
+                    <option value="PWPB"></option>
+                    <option value="Kimia"></option>
+                    <option value="Sejarah"></option>
+                  </datalist>
+                </li>
+                <li>
+                  <input
+                    list="nameStudents"
+                    name="nameStudent"
+                    id="nameStudent"
+                    placeholder="Pilih Nama"
+                    class="inputs"
+                  />
+                  <datalist id="nameStudents">
+                    <option value="nama 1"></option>
+                    <option value="nama 2"></option>
+                    <option value="nama 3"></option>
+                    <option value="nama 4"></option>
+                    <option value="nama 5"></option>
+                  </datalist>
+                </li>
+                <li>
+                  <input
+                    list="classes"
+                    name="class"
+                    id="class"
+                    placeholder="Pilih Kelas"
+                    class="inputs"
+                  />
+                  <datalist id="classes">
+                    <option value="XI-RPL 1"></option>
+                    <option value="XI-RPL 2"></option>
+                    <option value="XI-TKJ 3"></option>
+                    <option value="X-AK 4"></option>
+                    <option value="XII-AK 5"></option>
+                  </datalist>
+                </li>
+                <li>
+                  <input
+                    type="number"
+                    name="grade"
+                    id="grade"
+                    placeholder="Masukkan Nilai"
+                    class="inputs"
+                  />
+                </li>
+              </ul>
+            </div>
+            <div class="button">
+              <a
+                href="grade.html"
+                onClick="alert('Nilai Berhasil Disimpan'); resetInput();"
+                >Simpan</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="update-boxes2" data-aos="fade-right">
+          <div class="recent-update box">
+            <div class="title">Daftar Nilai</div>
+            <div class="update-details" style="float: none">
+              <ul class="details">
+                <li class="topic">No</li>
+                <li>1</li>
+                <li>2</li>
+              </ul>
+              <ul class="details">
+                <li class="topic">Nama</li>
+                <li>nama 1</li>
+                <li>nam 2</li>
+              </ul>
+              <ul class="details">
+                <li class="topic">NIK</li>
+                <li>001</li>
+                <li>002</li>
+              </ul>
+              <ul class="details">
+                <li class="topic">Jenis Kelamin</li>
+                <li>Laki-Laki</li>
+                <li>Perempuan</li>
+              </ul>
+              <ul class="details">
+                <li class="topic">Nilai</li>
+                <li>80</li>
+                <li>70</li>
+              </ul>
+              <ul class="details" style="text-align: center">
+                <li class="topic">Tindakan</li>
+                <li>
+                  <ul class="action">
+                    <li>
+                      <a href="#" class="delete"> Hapus</a>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <ul class="action">
+                    <li>
+                      <a href="#" class="delete"> Hapus</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      let sidebar = document.querySelector(".sidebar");
+      let sidebarBtn = document.querySelector(".sidebarBtn");
+      sidebarBtn.onclick = function () {
+        sidebar.classList.toggle("active");
+        if (sidebar.classList.contains("active")) {
+          sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+        } else sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+      };
+
+      function confirmation() {
+        var ask = confirm("Apakah Anda Yakin ?");
+
+        if (ask === true) {
+          window.location = "login.html";
+        } else {
+        }
+      }
+      function move(url) {
+        window.location = url;
+      }
+
+      function resetInput() {
+        document.getElementsByClassName("inputs").reset();
+      }
+    </script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        offset: 200,
+        delay: 100,
+        duration: 400,
+        easing: "ease",
+        once: false,
+        mirror: false,
+        anchorPlacement: "top-bottom",
+      });
+    </script>
+  </body>
+</html>

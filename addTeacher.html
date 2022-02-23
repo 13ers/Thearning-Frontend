@@ -62,7 +62,7 @@
           </a>
         </li>
         <li class="log_out">
-          <a href="#" onclick="confirm()">
+          <a href="#" onclick="confirmation()">
             <i class="bx bx-log-out"></i>
             <span class="links_name">Log out</span>
           </a>
@@ -105,9 +105,11 @@
                 <li class="topic">NIP</li>
                 <li class="topic">Jenis Kelamin</li>
                 <li class="topic">Level</li>
+                <li class="topic">Mata Pelajaran</li>
                 <li class="topic">Kelas</li>
               </ul>
               <ul class="details">
+                <li>:</li>
                 <li>:</li>
                 <li>:</li>
                 <li>:</li>
@@ -159,6 +161,15 @@
                 <li>
                   <input
                     type="text"
+                    name="course"
+                    id="course"
+                    placeholder="Mata Pelajaran"
+                    style="width: 230%"
+                  />
+                </li>
+                <li>
+                  <input
+                    type="text"
                     name="class"
                     id="class"
                     placeholder="Masukkan Kelas"
@@ -188,7 +199,7 @@
         } else sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
       };
 
-      function confirm() {
+      function confirmation() {
         var ask = confirm("Apakah Anda Yakin ?");
 
         if (ask === true) {
