@@ -324,6 +324,24 @@ nav .profile-details i {
   background: #0d3073;
 }
 
+.update-boxes2 .box .buttonSave {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.update-boxes2 .box .buttonSave a {
+  color: #fff;
+  background: #0a2558;
+  padding: 4px 12px;
+  font-size: 15px;
+  font-weight: 400;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.update-boxes2 .box .buttonSave a:hover {
+  background: #0d3073;
+}
 /* Right box */
 .home-content .update-boxes .top-update {
   width: 35%;
@@ -564,6 +582,9 @@ td a.delete:hover {
   }
 }
 @media (max-width: 550px) {
+  * {
+    font-size: 0, 5em;
+  }
   .home-content nav {
     position: fixed;
     width: auto;
@@ -584,15 +605,12 @@ td a.delete:hover {
 
   .home-content .update-boxes .recent-update {
     width: auto;
-    padding-top: 0px;
-    data-aos: "none";
   }
 
   .home-content .update-boxes .top-update {
     width: auto;
     padding: 20px 30px;
     margin: 0 5% 5% 5%;
-    data-aos: "none";
   }
 
   .home-content .update-boxes2 .recent-update {
@@ -605,10 +623,73 @@ td a.delete:hover {
 
   .update-boxes2 .box .button {
     position: relative;
-    right: -370px;
+    right: -58vw;
+  }
+  .update-boxes2.v2 .recent-update.box .button {
+    position: relative;
+    right: -98vw;
   }
 
-  table {
-    border-spacing: 0px;
+  .update-boxes2.v3 .recent-update.box .button {
+    position: relative;
+    right: -78vw;
+  }
+  .home-content .update-boxes2 table.input {
+    font-size: 0.8em;
+    position: relative;
+    border-spacing: 0.5;
+  }
+  .home-content .update-boxes2 {
+    width: 100%;
+  }
+  .home-content .update-boxes2 .recent-update.input {
+    width: 70vw;
+    overflow: hidden;
+  }
+
+  .home-content .update-boxes2 .update-details {
+    width: 10vw;
+    display: inline;
+  }
+  .home-content .update-boxes2 table.input {
+    margin-top: 3vh;
+    width: 5vw;
+  }
+  .home-content .update-boxes2 table.input colgroup col:nth-child(1) {
+    width: 0%;
+  }
+  .home-content .update-boxes2 table.input colgroup col:nth-child(2) {
+    width: 20%;
+  }
+  .home-content .update-boxes2 table.input colgroup col:nth-child(3) {
+    width: 70%;
+  }
+  .home-content .update-boxes2 table.input tbody tr.details.icon {
+    display: none;
+  }
+  .home-content .update-boxes2 table.input tbody tr {
+    top: -30px;
+    height: 3;
+    position: relative;
+    left: -20px;
+  }
+  .home-content .update-boxes2 table.input tr td input {
+    font-size: 0.8em;
+    width: 35vw;
+    height: 6.2vh;
+  }
+  .home-content .update-boxes2 .recent-update.v2 table.input tr td {
+    font-size: 0.75em;
+    width: 30vw;
+    height: 6.2vh;
+  }
+  .update-boxes2 .box .buttonSave a {
+    position: relative;
+    top: -3vh;
+    padding: 1px 3px;
+  }
+  .update-boxes2 .box .buttonSave.v2 a {
+    font-size: 0.75em;
+    margin-right: 5px;
   }
 }
