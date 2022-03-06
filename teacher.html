@@ -91,63 +91,46 @@
           <div class="recent-update box">
             <div class="title">Guru</div>
             <div class="update-details" style="float: none">
-              <ul class="details">
-                <li class="topic">No</li>
-                <li>1</li>
-                <li>2</li>
-              </ul>
-              <ul class="details">
-                <li class="topic">Nama</li>
-                <li>nama 1</li>
-                <li>nama 2</li>
-              </ul>
-              <ul class="details">
-                <li class="topic">NIP</li>
-                <li>010101</li>
-                <li>020202</li>
-              </ul>
-              <ul class="details">
-                <li class="topic">Jenis Kelamin</li>
-                <li>Laki-Laki</li>
-                <li>Perempuan</li>
-              </ul>
-              <ul class="details">
-                <li class="topic">Mapel</li>
-                <li>B.Inggris</li>
-                <li>MTK</li>
-              </ul>
-              <ul class="details">
-                <li class="topic">Kelas</li>
-                <li>XI-RPL 1</li>
-                <li>XI-RPL 2</li>
-              </ul>
-              <ul class="details" style="text-align: center">
-                <li class="topic">Tindakan</li>
-                <li>
-                  <ul class="action">
-                    <li>
-                      <a href="editTeacher.html" class="edit">Edit</a>
-                    </li>
-                    <li>
-                      <a href="#" class="delete" onclick="confirmation2()"
-                        >Hapus</a
-                      >
-                    </li>
-                  </ul>
-                </li>
-                <li>
-                  <ul class="action">
-                    <li>
-                      <a href="editTeacher.html" class="edit">Edit</a>
-                    </li>
-                    <li>
-                      <a href="#" class="delete" onclick="confirmation2()"
-                        >Hapus</a
-                      >
-                    </li>
-                  </ul>
-                </li>
-              </ul>
+              <table>
+              <tr class="details">
+                <th class="topic">No</th>
+                <th class="topic">Nama</th>
+                <th class="topic">NIP</th>
+                <th class="topic">Jenis Kelamin</th>
+                <th class="topic">Mapel</th>
+                <th class="topic">Kelas</th>
+                <th class="topic" colspan="2">Tindakan</th>
+              </tr>
+              <tr class="details">
+                <td>1</td>
+                <td>nama 1</td>
+                <td>020202</td>
+                <td>Laki-Laki</td>
+                <td>MTK</td>
+                <td>XI-RPL 1</td>
+                <td class="action">
+                  <a href="editTeacher.html" class="edit">Edit</a>
+                </td>
+                <td class="action">
+                  <a href="#" class="delete" onclick="confirmation2()">Hapus</a>
+                </td>
+              </tr>
+              <tr class="details">
+                <td>2</td>
+                <td>nama 2</td>
+                <td>010101</td>
+                <td>Perempuan</td>
+                <td>B.Inggris</td>
+                <td>XI-RPL 2</td>
+                <td class="action">
+                <a href="editTeacher.html" class="edit">Edit</a>
+                </td>
+                <td class="action">
+                <a href="#" class="delete" onclick="confirmation2()">Hapus</a>
+                </td>
+              </tr>
+                </td>
+              </table>
             </div>
             <div class="button">
               <a href="addTeacher.html"

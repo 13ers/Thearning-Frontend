@@ -91,27 +91,28 @@
           <div class="recent-update box">
             <div class="title">Laporan Akhir</div>
             <div class="update-details">
-              <ul class="details">
-                <li class="topic">No</li>
-                <li>1</li>
-                <li>2</li>
-              </ul>
-              <ul class="details">
-                <li class="topic">Tanggal</li>
-                <li>17-02-2022</li>
-                <li>18-02-2022</li>
-              </ul>
-              <ul class="details">
-                <li class="topic">Jurusan</li>
-                <li>AK</li>
-                <li>RPL</li>
-              </ul>
-              <ul class="details">
-                <li class="topic">Kelas</li>
-                <li>XI-RPL 1</li>
-                <li>XI-RPL 2</li>
-              </ul>
+              <table>
+                <tr class="details">
+                  <th class="topic">No</th>
+                  <th class="topic">Tanggal</th>
+                  <th class="topic">Jurusan</th>
+                  <th class="topic">Kelas</th>
+                </tr>
+                <tr class="details">
+                  <td>1</td>
+                  <td>17-02-2022</td>
+                  <td>AK</td>
+                  <td>XI-RPL 1</td>
+                </tr>
+                <tr class="details">
+                  <td>2</td>
+                  <td>18-02-2022</td>
+                  <td>RPL</td>
+                  <td>XI-RPL 2</td>
+                </tr>
+              </table>
             </div>
+
             <div class="button">
               <a href="#">See All</a>
             </div>
@@ -121,35 +122,45 @@
               Export
               <i class="bx bxs-file-export"></i>
             </div>
-            <ul class="top-update-details">
-              <li>
-                <a href="#">
-                  <i class="bx bxs-x-circle" style="color: red"></i>
-                  <span class="item">XI-RPL1</span>
-                </a>
-                <div class="button">
-                  <a
-                    href="admin.html"
-                    onclick="return false"
-                    style="background: rgb(61, 61, 61); cursor: default"
-                    ><i class="bx bx-printer" style="margin-right: 5px"></i
-                    >Print</a
-                  >
-                </div>
-              </li>
-              <li>
-                <a href="#">
-                  <i class="bx bxs-check-circle" style="color: green"></i>
-                  <span class="item">XI-RPL2</span>
-                </a>
-                <div class="button">
-                  <a href="admin.html"
-                    ><i class="bx bx-printer" style="margin-right: 5px"></i
-                    >Print</a
-                  >
-                </div>
-              </li>
-            </ul>
+            <table>
+              <colgroup>
+                <col span="1" style="width: 10%" />
+                <col span="1" style="width: 60%" />
+                <col span="1" style="width: 30%" />
+              </colgroup>
+              <tr class="top-update-details">
+                <td class="notAva"><i class="bx bxs-x-circle"></i></td>
+                <td>
+                  <a href="#">
+                    <span class="item">XI-RPL1</span>
+                  </a>
+                </td>
+                <td class="print">
+                  <div class="buttonPrint">
+                    <a href="#" onclick="return false" class="disabled"
+                      ><i class="bx bx-printer" style="margin-right: 5px"></i
+                      >Print</a
+                    >
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="available"><i class="bx bxs-check-circle"></i></td>
+                <td>
+                  <a href="#">
+                    <span class="item">XI-RPL1</span>
+                  </a>
+                </td>
+                <td class="print">
+                  <div class="buttonPrint">
+                    <a href="#" onclick="return false"
+                      ><i class="bx bx-printer" style="margin-right: 5px"></i
+                      >Print</a
+                    >
+                  </div>
+                </td>
+              </tr>
+            </table>
           </div>
         </div>
       </div>

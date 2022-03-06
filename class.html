@@ -91,53 +91,43 @@
           <div class="recent-update box">
             <div class="title">Kelas</div>
             <div class="update-details" style="float: none">
-              <ul class="details">
-                <li class="topic">No</li>
-                <li>1</li>
-                <li>2</li>
-              </ul>
-              <ul class="details">
-                <li class="topic">Tingkat</li>
-                <li>10</li>
-                <li>11</li>
-              </ul>
-              <ul class="details">
-                <li class="topic">Jurusan</li>
-                <li>RPL</li>
-                <li>AK</li>
-              </ul>
-              <ul class="details">
-                <li class="topic">Jumlah Kelas</li>
-                <li>2</li>
-                <li>6</li>
-              </ul>
-              <ul class="details" style="text-align: center">
-                <li class="topic">Tindakan</li>
-                <li>
-                  <ul class="action">
-                    <li>
-                      <a href="editClass.html" class="edit">Edit</a>
-                    </li>
-                    <li>
-                      <a href="#" class="delete" onclick="confirmation2()"
-                        >Hapus</a
-                      >
-                    </li>
-                  </ul>
-                </li>
-                <li>
-                  <ul class="action">
-                    <li>
-                      <a href="editClass.html" class="edit">Edit</a>
-                    </li>
-                    <li>
-                      <a href="#" class="delete" onclick="confirmation2()"
-                        >Hapus</a
-                      >
-                    </li>
-                  </ul>
-                </li>
-              </ul>
+              <table>
+                <tr class="details">
+                  <th class="topic">No</th>
+                  <th class="topic">Tingkat</th>
+                  <th class="topic">Jurusan</th>
+                  <th class="topic">Jumlah Kelas</th>
+                  <th class="topic" colspan="2">Tindakan</th>
+                </tr>
+                <tr class="details">
+                  <td>1</td>
+                  <td>10</td>
+                  <td>AK</td>
+                  <td>2</td>
+                  <td class="action">
+                    <a href="editClass.html" class="edit">Edit</a>
+                  </td>
+                  <td class="action">
+                    <a href="#" class="delete" onclick="confirmation2()"
+                      >Hapus</a
+                    >
+                  </td>
+                </tr>
+                <tr class="details">
+                  <td>2</td>
+                  <td>11</td>
+                  <td>RPL</td>
+                  <td>6</td>
+                  <td class="action">
+                    <a href="editClass.html" class="edit">Edit</a>
+                  </td>
+                  <td class="action">
+                    <a href="#" class="delete" onclick="confirmation2()"
+                      >Hapus</a
+                    >
+                  </td>
+                </tr>
+              </table>
             </div>
             <div class="button">
               <a href="addClass.html"

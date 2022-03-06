@@ -126,26 +126,26 @@
           <div class="recent-update box" data-aos="fade-right">
             <div class="title">Update</div>
             <div class="update-details">
-              <ul class="details">
-                <li class="topic">Tanggal</li>
-                <li>17-02-2022</li>
-                <li>18-02-2022</li>
-              </ul>
-              <ul class="details">
-                <li class="topic">Waktu</li>
-                <li>09.30</li>
-                <li>08.00</li>
-              </ul>
-              <ul class="details">
-                <li class="topic">Kelas</li>
-                <li>XI-RPL 1</li>
-                <li>XI-RPL 2</li>
-              </ul>
-              <ul class="details">
-                <li class="topic">Tindakan</li>
-                <li>Input</li>
-                <li>Update</li>
-              </ul>
+              <table>
+                <tr class="details">
+                  <th class="topic">Tanggal</th>
+                  <th class="topic">Waktu</th>
+                  <th class="topic">Kelas</th>
+                  <th class="topic">Tindakan</th>
+                </tr>
+                <tr class="details">
+                  <td>17-02-2022</td>
+                  <td>08.20</td>
+                  <td>XI-RPL 2</td>
+                  <td>Input</td>
+                </tr>
+                <tr class="details">
+                  <td>18-02-2022</td>
+                  <td>09.00</td>
+                  <td>XI-RPL 1</td>
+                  <td>Update</td>
+                </tr>
+              </table>
             </div>
             <div class="button">
               <a href="#">See All</a>
@@ -153,22 +153,41 @@
           </div>
           <div class="top-update box" data-aos="fade-left">
             <div class="title">Progres(%)</div>
-            <ul class="top-update-details">
-              <li>
-                <a href="#">
-                  <i class="bx bx-loader-alt bx-spin" style="color: blue"></i>
-                  <span class="item">XI-RPL1</span>
-                </a>
-                <span class="desc">10%</span>
-              </li>
-              <li>
-                <a href="#">
-                  <i class="bx bx-loader-alt bx-spin" style="color: blue"></i>
-                  <span class="item">XI-RPL2</span>
-                </a>
-                <span class="desc">30%</span>
-              </li>
-            </ul>
+            <table>
+              <colgroup>
+                <col span="1" style="width: 5%" />
+                <col span="1" style="width: 35%" />
+                <col span="1" style="width: 60%" />
+              </colgroup>
+              <tbody>
+                <tr class="top-update-details">
+                  <td>
+                    <i class="bx bx-loader-alt bx-spin" style="color: blue"></i>
+                  </td>
+                  <td>
+                    <a href="#">
+                      <span class="item">XI-RPL1</span>
+                    </a>
+                  </td>
+                  <td>
+                    <span class="desc">10%</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <i class="bx bx-loader-alt bx-spin" style="color: blue"></i>
+                  </td>
+                  <td>
+                    <a href="#">
+                      <span class="item">XI-RPL2</span>
+                    </a>
+                  </td>
+                  <td>
+                    <span class="desc">15%</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

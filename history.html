@@ -91,31 +91,29 @@
           <div class="recent-update box">
             <div class="title">Riwayat</div>
             <div class="update-details">
-              <ul class="details">
-                <li class="topic">No</li>
-                <li>1</li>
-                <li>2</li>
-              </ul>
-              <ul class="details">
-                <li class="topic">Waktu</li>
-                <li>09.30</li>
-                <li>08.00</li>
-              </ul>
-              <ul class="details">
-                <li class="topic">Tanggal</li>
-                <li>17-02-2022</li>
-                <li>18-02-2022</li>
-              </ul>
-              <ul class="details">
-                <li class="topic">User</li>
-                <li>Username</li>
-                <li>Username</li>
-              </ul>
-              <ul class="details">
-                <li class="topic">Kelas</li>
-                <li>XI-RPL 1</li>
-                <li>XI-RPL 2</li>
-              </ul>
+              <table>
+                <tr class="details">
+                  <th class="topic">No</th>
+                  <th class="topic">Waktu</th>
+                  <th class="topic">Tanggal</th>
+                  <th class="topic">User</th>
+                  <th class="topic">Kelas</th>
+                </tr>
+                <tr class="details">
+                  <td>1</td>
+                  <td>08.00</td>
+                  <td>17-02-2022</td>
+                  <td>Username</td>
+                  <td>XI-RPL 1</td>
+                </tr>
+                <tr class="details">
+                  <td>2</td>
+                  <td>09.30</td>
+                  <td>18-02-2022</td>
+                  <td>Username</td>
+                  <td>XI-RPL 2</td>
+                </tr>
+              </table>
             </div>
             <div class="button">
               <a href="#">See All</a>
@@ -123,26 +121,45 @@
           </div>
           <div class="top-update box" data-aos="fade-left">
             <div class="title">Wali Kelas</div>
-            <ul class="top-update-details">
-              <li>
-                <a href="#">
-                  <img
-                    src="https://img.icons8.com/external-nawicon-flat-nawicon/50/000000/external-teacher-back-to-school-nawicon-flat-nawicon.png"
-                  />
-                  <span class="item">Nama</span>
-                </a>
-                <span class="desc">Kelas</span>
-              </li>
-              <li>
-                <a href="#">
-                  <img
-                    src="https://img.icons8.com/external-nawicon-flat-nawicon/50/000000/external-teacher-back-to-school-nawicon-flat-nawicon-2.png"
-                  />
-                  <span class="item">Nama</span>
-                </a>
-                <span class="desc">kelas</span>
-              </li>
-            </ul>
+            <table>
+              <colgroup>
+                <col span="1" style="width: 10%" />
+                <col span="1" style="width: 65%" />
+                <col span="1" style="width: 25%" />
+              </colgroup>
+              <tbody>
+                <tr class="top-update-details">
+                  <td>
+                    <img
+                      src="https://img.icons8.com/external-nawicon-flat-nawicon/50/000000/external-teacher-back-to-school-nawicon-flat-nawicon.png"
+                    />
+                  </td>
+                  <td>
+                    <a href="#">
+                      <span class="item">Nama</span>
+                    </a>
+                  </td>
+                  <td>
+                    <span class="desc">Kelas</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <img
+                      src="https://img.icons8.com/external-nawicon-flat-nawicon/50/000000/external-teacher-back-to-school-nawicon-flat-nawicon.png"
+                    />
+                  </td>
+                  <td>
+                    <a href="#">
+                      <span class="item">Nama</span>
+                    </a>
+                  </td>
+                  <td>
+                    <span class="desc">Kelas</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

@@ -26,7 +26,7 @@
           </a>
         </li>
         <li>
-          <a href="#">
+          <a href="history.html">
             <i class="bx bx-history"></i>
             <span class="links_name">Riwayat Login</span>
           </a>
@@ -91,53 +91,43 @@
           <div class="recent-update box">
             <div class="title">Mapel</div>
             <div class="update-details" style="float: none">
-              <ul class="details">
-                <li class="topic">No</li>
-                <li>1</li>
-                <li>2</li>
-              </ul>
-              <ul class="details">
-                <li class="topic">Nama</li>
-                <li>MTK</li>
-                <li>PBO</li>
-              </ul>
-              <ul class="details">
-                <li class="topic">Jurusan</li>
-                <li>Umum</li>
-                <li>RPL</li>
-              </ul>
-              <ul class="details">
-                <li class="topic">Pengajar</li>
-                <li>nama 1</li>
-                <li>nama 2</li>
-              </ul>
-              <ul class="details" style="text-align: center">
-                <li class="topic">Tindakan</li>
-                <li>
-                  <ul class="action">
-                    <li>
-                      <a href="editCourse.html" class="edit">Edit</a>
-                    </li>
-                    <li>
-                      <a href="#" class="delete" onclick="confirmation2()"
-                        >Hapus</a
-                      >
-                    </li>
-                  </ul>
-                </li>
-                <li>
-                  <ul class="action">
-                    <li>
-                      <a href="editCourse.html" class="edit">Edit</a>
-                    </li>
-                    <li>
-                      <a href="#" class="delete" onclick="confirmation2()"
-                        >Hapus</a
-                      >
-                    </li>
-                  </ul>
-                </li>
-              </ul>
+              <table>
+                <tr class="details">
+                  <th class="topic">No</th>
+                  <th class="topic">Nama</th>
+                  <th class="topic">Jurusan</th>
+                  <th class="topic">Pengajar</th>
+                  <th class="topic" colspan="2">Tindakan</th>
+                </tr>
+                <tr class="details">
+                  <td>1</td>
+                  <td>MTK</td>
+                  <td>Umum</td>
+                  <td>nama 1</td>
+                  <td class="action">
+                    <a href="editCourse.html" class="edit">Edit</a>
+                  </td>
+                  <td class="action">
+                    <a href="#" class="delete" onclick="confirmation2()"
+                      >Hapus</a
+                    >
+                  </td>
+                </tr>
+                <tr class="details">
+                  <td>2</td>
+                  <td>PBO</td>
+                  <td>RPL</td>
+                  <td>nama 2</td>
+                  <td class="action">
+                    <a href="editCourse.html" class="edit">Edit</a>
+                  </td>
+                  <td class="action">
+                    <a href="#" class="delete" onclick="confirmation2()"
+                      >Hapus</a
+                    >
+                  </td>
+                </tr>
+              </table>
             </div>
             <div class="button">
               <a href="addCourse.html"

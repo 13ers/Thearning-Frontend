@@ -91,53 +91,56 @@
           <div class="recent-update box">
             <div class="title">Mapel</div>
             <div class="update-details">
-              <ul class="details" style="width: 150px; height: 150px">
-                <li class="topic" style="width: 150px; height: 150px">
-                  <i
-                    class="bx bx-book-open"
-                    style="color: #0a2558; font-size: 150px"
-                  ></i>
-                </li>
-              </ul>
-              <ul class="details">
-                <li class="topic">Nama</li>
-                <li class="topic">Jurusan</li>
-                <li class="topic">Pengajar</li>
-              </ul>
-              <ul class="details">
-                <li>:</li>
-                <li>:</li>
-                <li>:</li>
-              </ul>
-              <ul class="details">
-                <li>
-                  <input
-                    type="text"
-                    name="courseName"
-                    id="courseName"
-                    placeholder="Nama Mapel"
-                    style="width: 230%"
-                  />
-                </li>
-                <li>
-                  <input
-                    type="text"
-                    name="major"
-                    id="major"
-                    placeholder="Jurusan"
-                    style="width: 230%"
-                  />
-                </li>
-                <li>
-                  <input
-                    type="text"
-                    name="teacher"
-                    id="teacher"
-                    placeholder="Pengajar"
-                    style="width: 230%"
-                  />
-                </li>
-              </ul>
+              <table class="input">
+                <colgroup>
+                  <col span="1" style="width: 10%" />
+                  <col span="1" style="width: 20%" />
+                  <col span="1" style="width: 70%" />
+                </colgroup>
+                <tbody>
+                  <tr class="details">
+                    <td class="topic" rowspan="8">
+                      <i
+                        class="bx bx-book-open"
+                        style="font-size: 150px; color: #0a2558"
+                      ></i>
+                    </td>
+                  </tr>
+                  <tr class="details">
+                    <td class="topic">Nama</td>
+                    <td>
+                      <input
+                        type="text"
+                        name="courseName"
+                        id="courseName"
+                        placeholder="Nama Jurusan"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="topic">Jurusan</td>
+                    <td>
+                      <input
+                        type="text"
+                        name="major"
+                        id="major"
+                        placeholder="Jurusan"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="topic">Pengajar</td>
+                    <td>
+                      <input
+                        type="text"
+                        name="teacher"
+                        id="teacher"
+                        placeholder="Nama Pengajar"
+                      />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
             <div class="button">
               <a

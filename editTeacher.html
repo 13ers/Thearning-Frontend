@@ -91,139 +91,106 @@
           <div class="recent-update box">
             <div class="title">Guru</div>
             <div class="update-details">
-              <ul class="details" style="width: 150px; height: 150px">
-                <li class="topic" style="width: 150px; height: 150px">
-                  <i
-                    class="bx bx-user-circle"
-                    style="font-size: 150px; color: #0a2558"
-                  ></i>
-                </li>
-              </ul>
-              <ul class="details">
-                <li class="topic">Username</li>
-                <li class="topic">Password</li>
-                <section
-                  class="change"
-                  style="visibility: hidden; position: absolute"
-                >
-                  <li class="topic">Password Baru</li>
-                  <li class="topic">konfirmasi Password</li>
-                </section>
-                <li class="topic">NIP</li>
-                <li class="topic">Jenis Kelamin</li>
-                <li class="topic">Level</li>
-                <li class="topic">Mata Pelajaran</li>
-                <li class="topic">Kelas</li>
-              </ul>
-              <ul class="details">
-                <li>:</li>
-                <li>:</li>
-                <section
-                  class="change2"
-                  style="visibility: hidden; position: absolute"
-                >
-                  <li>:</li>
-                  <li>:</li>
-                </section>
-                <li>:</li>
-                <li>:</li>
-                <li>:</li>
-                <li>:</li>
-                <li>:</li>
-              </ul>
-              <ul class="details">
-                <li>
-                  <input
-                    type="text"
-                    name="username"
-                    id="username"
-                    placeholder="Nama"
-                    style="width: 230%"
-                  />
-                </li>
-                <li>
-                  <input
-                    type="password"
-                    name="password"
-                    id="password"
-                    placeholder="Password"
-                    style="width: 180%"
-                  />
-                  <div class="button2">
-                    <a href="#" onclick="showHide()">Ubah</a>
-                  </div>
-                </li>
-                <section
-                  class="change3"
-                  style="visibility: hidden; position: absolute"
-                >
-                  <li>
-                    <input
-                      type="password"
-                      name="newPassword"
-                      id="newPassword"
-                      placeholder="Masukan Password Baru"
-                      style="width: 230%"
-                    />
-                  </li>
-                  <li>
-                    <input
-                      type="password"
-                      name="confirmPassword"
-                      id="confirmPassword"
-                      placeholder="Konfirmasi Password"
-                      style="width: 230%"
-                    />
-                  </li>
-                </section>
-                <li>
-                  <input
-                    type="text"
-                    name="nip"
-                    id="nip"
-                    placeholder="NIP"
-                    style="width: 230%"
-                  />
-                </li>
-                <li>
-                  <input
-                    type="text"
-                    name="gender"
-                    id="gender"
-                    placeholder="Jenis Kelamin"
-                    style="width: 230%"
-                  />
-                </li>
-                <li>
-                  <input
-                    type="text"
-                    name="level"
-                    id="level"
-                    placeholder="Level"
-                    style="width: 230%"
-                  />
-                </li>
-                <li>
-                  <input
-                    type="text"
-                    name="course"
-                    id="course"
-                    placeholder="Mata Pelajaran"
-                    style="width: 230%"
-                  />
-                </li>
-                <li>
-                  <input
-                    type="text"
-                    name="class"
-                    id="class"
-                    placeholder="Kelas"
-                    style="width: 230%"
-                  />
-                </li>
-              </ul>
+              <table class="input">
+                <colgroup>
+                  <col span="1" style="width: 10%" />
+                  <col span="1" style="width: 20%" />
+                  <col span="1" style="width: 70%" />
+                </colgroup>
+                <tbody>
+                  <tr class="details">
+                    <td class="topic" rowspan="8">
+                      <i
+                        class="bx bx-user-circle"
+                        style="font-size: 150px; color: #0a2558"
+                      ></i>
+                    </td>
+                  </tr>
+                  <tr class="details">
+                    <td class="topic">Username</td>
+                    <td>
+                      <input
+                        type="text"
+                        name="username"
+                        id="username"
+                        placeholder="Nama"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="topic">Password</td>
+                    <td>
+                      <input
+                        type="password"
+                        name="password"
+                        id="password"
+                        placeholder="Password"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="topic">NIP</td>
+                    <td>
+                      <input
+                        type="text"
+                        name="nip"
+                        id="nip"
+                        placeholder="NIP"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="topic">Jenis Kelamin</td>
+                    <td>
+                      <input
+                        type="text"
+                        name="gender"
+                        id="gender"
+                        placeholder="Jenis Kelamin"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="topic">Level</td>
+                    <td>
+                      <input
+                        type="text"
+                        name="level"
+                        id="level"
+                        placeholder="Level"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="topic">Mata Pelajaran</td>
+                    <td>
+                      <input
+                        type="text"
+                        name="course"
+                        id="course"
+                        placeholder="Mata Pelajaran"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="topic">Kelas</td>
+                    <td>
+                      <input
+                        type="text"
+                        name="class"
+                        id="class"
+                        placeholder="Kelas"
+                      />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
             <div class="button">
+              <a href="#" onClick="showHide()" class="edit"
+                ><i class="bx bx-edit" style="margin-right: 5px"></i>Edit
+                Password</a
+              >
               <a
                 href="teacher.html"
                 onClick="alert('Data Guru Berhasil Diubah')"
@@ -270,29 +237,18 @@
       });
 
       function showHide() {
-        var x = document.querySelector(".change");
-        var y = document.querySelector(".change2");
-        var z = document.querySelector(".change3");
-        if (x.style.visibility === "hidden") {
-          x.style.visibility = "visible";
-          x.style.position = "relative";
+        let text;
+        let password = prompt("Masukkan Password Baru");
+        if (password == null || password == "") {
+          alert("Password Tidak Diubah");
         } else {
-          x.style.visibility = "hidden";
-          x.style.position = "absolute";
-        }
-        if (y.style.visibility === "hidden") {
-          y.style.visibility = "visible";
-          y.style.position = "relative";
-        } else {
-          y.style.visibility = "hidden";
-          y.style.position = "absolute";
-        }
-        if (z.style.visibility === "hidden") {
-          z.style.visibility = "visible";
-          z.style.position = "relative";
-        } else {
-          z.style.visibility = "hidden";
-          z.style.position = "absolute";
+          let conPassword = prompt("Konfirmasi Password");
+          if (password == conPassword) {
+            alert("Password Berhasil Diubah");
+            document.getElementById("password").value = password;
+          } else {
+            alert("Password Tidak Sama");
+          }
         }
       }
     </script>

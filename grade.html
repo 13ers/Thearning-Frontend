@@ -79,85 +79,67 @@
           <div class="recent-update box">
             <div class="title">Nilai</div>
             <div class="update-details">
-              <ul class="details" style="width: 150px; height: 150px">
-                <li class="topic" style="width: 150px; height: 150px">
-                  <i
-                    class="bx bxs-graduation"
-                    style="font-size: 150px; color: #0a2558"
-                  ></i>
-                </li>
-              </ul>
-              <ul class="details">
-                <li class="topic">Mata pelajaran</li>
-                <li class="topic">Nama Siswa</li>
-                <li class="topic">Kelas</li>
-                <li class="topic">Nilai</li>
-              </ul>
-              <ul class="details">
-                <li>:</li>
-                <li>:</li>
-                <li>:</li>
-                <li>:</li>
-              </ul>
-              <ul class="details">
-                <li>
-                  <input
-                    list="courses"
-                    name="course"
-                    id="course"
-                    placeholder="Pilih Mata Pelajaran"
-                    class="inputs"
-                  />
-                  <datalist id="courses">
-                    <option value="MTK"></option>
-                    <option value="Inggris"></option>
-                    <option value="PWPB"></option>
-                    <option value="Kimia"></option>
-                    <option value="Sejarah"></option>
-                  </datalist>
-                </li>
-                <li>
-                  <input
-                    list="nameStudents"
-                    name="nameStudent"
-                    id="nameStudent"
-                    placeholder="Pilih Nama"
-                    class="inputs"
-                  />
-                  <datalist id="nameStudents">
-                    <option value="nama 1"></option>
-                    <option value="nama 2"></option>
-                    <option value="nama 3"></option>
-                    <option value="nama 4"></option>
-                    <option value="nama 5"></option>
-                  </datalist>
-                </li>
-                <li>
-                  <input
-                    list="classes"
-                    name="class"
-                    id="class"
-                    placeholder="Pilih Kelas"
-                    class="inputs"
-                  />
-                  <datalist id="classes">
-                    <option value="XI-RPL 1"></option>
-                    <option value="XI-RPL 2"></option>
-                    <option value="XI-TKJ 3"></option>
-                    <option value="X-AK 4"></option>
-                    <option value="XII-AK 5"></option>
-                  </datalist>
-                </li>
-                <li>
-                  <input
-                    type="number"
-                    name="grade"
-                    id="grade"
-                    placeholder="Masukkan Nilai"
-                    class="inputs"
-                  />
-                </li>
-              </ul>
+              <table class="input">
+                <colgroup>
+                  <col span="1" style="width: 10%" />
+                  <col span="1" style="width: 20%" />
+                  <col span="1" style="width: 70%" />
+                </colgroup>
+                <tbody>
+                  <tr class="details">
+                    <td class="topic" rowspan="8">
+                      <i
+                        class="bx bxs-graduation"
+                        style="font-size: 150px; color: #0a2558"
+                      ></i>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="topic">Mata Pelajaran</td>
+                    <td>
+                      <input
+                        type="text"
+                        name="course"
+                        id="course"
+                        placeholder="Mata Pelajaran"
+                      />
+                    </td>
+                  </tr>
+                  <tr class="details">
+                    <td class="topic">Nama Siswa</td>
+                    <td>
+                      <input
+                        type="text"
+                        name="nameStudent"
+                        id="nameStudent"
+                        placeholder="Nama Siswa"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="topic">Kelas</td>
+                    <td>
+                      <input
+                        type="text"
+                        name="class"
+                        id="class"
+                        placeholder="Kelas"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="topic">Nilai</td>
+                    <td>
+                      <input
+                        type="text"
+                        name="grade"
+                        id="grade"
+                        placeholder="Nilai"
+                      />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
             <div class="button">
               <a
@@ -172,48 +154,29 @@
           <div class="recent-update box">
             <div class="title">Daftar Nilai</div>
             <div class="update-details" style="float: none">
-              <ul class="details">
-                <li class="topic">No</li>
-                <li>1</li>
-                <li>2</li>
-              </ul>
-              <ul class="details">
-                <li class="topic">Nama</li>
-                <li>nama 1</li>
-                <li>nam 2</li>
-              </ul>
-              <ul class="details">
-                <li class="topic">NIK</li>
-                <li>001</li>
-                <li>002</li>
-              </ul>
-              <ul class="details">
-                <li class="topic">Jenis Kelamin</li>
-                <li>Laki-Laki</li>
-                <li>Perempuan</li>
-              </ul>
-              <ul class="details">
-                <li class="topic">Nilai</li>
-                <li>80</li>
-                <li>70</li>
-              </ul>
-              <ul class="details" style="text-align: center">
-                <li class="topic">Tindakan</li>
-                <li>
-                  <ul class="action">
-                    <li>
-                      <a href="#" class="delete"> Hapus</a>
-                    </li>
-                  </ul>
-                </li>
-                <li>
-                  <ul class="action">
-                    <li>
-                      <a href="#" class="delete"> Hapus</a>
-                    </li>
-                  </ul>
-                </li>
-              </ul>
+              <table>
+                <tr class="details">
+                  <th class="topic">No</th>
+                  <th class="topic">Nama</th>
+                  <th class="topic">NIK</th>
+                  <th class="topic">Jenis Kelamin</th>
+                  <th class="topic">Nilai</th>
+                </tr>
+                <tr class="details">
+                  <td>1</td>
+                  <td>nama 1</td>
+                  <td>002</td>
+                  <td>Perempuan</td>
+                  <td>80</td>
+                </tr>
+                <tr class="details">
+                  <td>2</td>
+                  <td>nam 2</td>
+                  <td>001</td>
+                  <td>Laki-Laki</td>
+                  <td>70</td>
+                </tr>
+              </table>
             </div>
           </div>
         </div>

@@ -39,7 +39,7 @@
         </li>
         <li>
           <a href="teacher.html">
-            <i class="bx bxs-user-rectangle bx-tada"></i>
+            <i class="bx bxs-user-rectangle"></i>
             <span class="links_name">Data Guru</span>
           </a>
         </li>
@@ -91,66 +91,73 @@
           <div class="recent-update box">
             <div class="title">Siswa</div>
             <div class="update-details">
-              <ul class="details" style="width: 150px; height: 150px">
-                <li class="topic" style="width: 150px; height: 150px">
-                  <i
-                    class="bx bx-user-circle"
-                    style="font-size: 150px; color: #0a2558"
-                  ></i>
-                </li>
-              </ul>
-              <ul class="details">
-                <li class="topic">Nama Siswa</li>
-                <li class="topic">NIK</li>
-                <li class="topic">Jenis Kelamin</li>
-                <li class="topic">Kelas</li>
-              </ul>
-              <ul class="details">
-                <li>:</li>
-                <li>:</li>
-                <li>:</li>
-                <li>:</li>
-              </ul>
-              <ul class="details">
-                <li>
-                  <input
-                    type="text"
-                    name="studentName"
-                    id="studentName"
-                    placeholder="Masukan Nama"
-                  />
-                </li>
-                <li>
-                  <input
-                    type="text"
-                    name="nik"
-                    id="nik"
-                    placeholder="Masukan NIK"
-                  />
-                </li>
-                <li>
-                  <input
-                    type="text"
-                    name="gender"
-                    id="gender"
-                    placeholder="Masukkan Jenis Kelamin"
-                  />
-                </li>
-                <li>
-                  <input
-                    type="text"
-                    name="class"
-                    id="class"
-                    placeholder="Masukkan Kelas"
-                  />
-                </li>
-              </ul>
+              <table class="input">
+                <colgroup>
+                  <col span="1" style="width: 10%" />
+                  <col span="1" style="width: 20%" />
+                  <col span="1" style="width: 70%" />
+                </colgroup>
+                <tbody>
+                  <tr class="details">
+                    <td class="topic" rowspan="8">
+                      <i
+                        class="bx bx-user-circle"
+                        style="font-size: 150px; color: #0a2558"
+                      ></i>
+                    </td>
+                  </tr>
+                  <tr class="details">
+                    <td class="topic">Nama</td>
+                    <td>
+                      <input
+                        type="text"
+                        name="username"
+                        id="username"
+                        placeholder="Nama"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="topic">NIK</td>
+                    <td>
+                      <input
+                        type="text"
+                        name="nip"
+                        id="nik"
+                        placeholder="NIK"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="topic">Jenis Kelamin</td>
+                    <td>
+                      <input
+                        type="text"
+                        name="gender"
+                        id="gender"
+                        placeholder="Jenis Kelamin"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="topic">Kelas</td>
+                    <td>
+                      <input
+                        type="text"
+                        name="class"
+                        id="class"
+                        placeholder="Kelas"
+                      />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
             <div class="button">
               <a
                 href="student.html"
                 onClick="alert('Data Siswa Berhasil Ditambahkan')"
-                >Simpan</a
+                ><i class="bx bxs-file-plus" style="margin: 5px"></i>Simpan</a
               >
             </div>
           </div>

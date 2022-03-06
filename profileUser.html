@@ -20,45 +20,27 @@
       </div>
       <ul class="nav-links">
         <li>
-          <a href="admin.html">
+          <a href="user.html">
             <i class="bx bx-grid-alt"></i>
             <span class="links_name">Dashboard</span>
           </a>
         </li>
         <li>
-          <a href="history.html">
-            <i class="bx bx-history"></i>
-            <span class="links_name">Riwayat Login</span>
+          <a href="grade.html">
+            <i class="bx bxs-file-plus"></i>
+            <span class="links_name">Input Nilai</span>
           </a>
         </li>
         <li>
-          <a href="report.html">
-            <i class="bx bxs-report"></i>
-            <span class="links_name">Laporan Akhir</span>
+          <a href="editGrade.html">
+            <i class="bx bx-edit"></i>
+            <span class="links_name">Edit Nilai</span>
           </a>
         </li>
         <li>
-          <a href="teacher.html">
-            <i class="bx bxs-user-rectangle"></i>
-            <span class="links_name">Data Guru</span>
-          </a>
-        </li>
-        <li>
-          <a href="student.html">
-            <i class="bx bx-book-reader"></i>
-            <span class="links_name">Data Siswa</span>
-          </a>
-        </li>
-        <li>
-          <a href="class.html">
-            <i class="bx bx-building-house"></i>
-            <span class="links_name">Data Kelas</span>
-          </a>
-        </li>
-        <li>
-          <a href="course.html">
-            <i class="bx bx-book-open"></i>
-            <span class="links_name">Data Mapel</span>
+          <a href="changePassword.html">
+            <i class="bx bx-lock-open-alt"></i>
+            <span class="links_name">Ubah Password</span>
           </a>
         </li>
         <li>
@@ -97,44 +79,67 @@
           <div class="recent-update box">
             <div class="title">Profil</div>
             <div class="update-details">
-              <ul class="details" style="width: 150px; height: 150px">
-                <li class="topic" style="width: 150px; height: 150px">
-                  <i
-                    class="bx bx-user-circle"
-                    style="font-size: 150px; color: #0a2558"
-                  ></i>
-                </li>
-              </ul>
-              <ul class="details">
-                <li class="topic">Username(Level)</li>
-                <li class="topic">Password</li>
-                <li class="topic">Mata Pelajaran</li>
-                <li class="topic">Kelas</li>
-              </ul>
-              <ul class="details">
-                <li>:</li>
-                <li>:</li>
-                <li>:</li>
-                <li>:</li>
-              </ul>
-              <ul class="details">
-                <li>
-                  Username
-                  <hr />
-                </li>
-                <li>
-                  ********
-                  <hr />
-                </li>
-                <li>
-                  MTK
-                  <hr />
-                </li>
-                <li>
-                  XI-RPL 1
-                  <hr />
-                </li>
-              </ul>
+              <table class="input">
+                <colgroup>
+                  <col span="1" style="width: 10%" />
+                  <col span="1" style="width: 20%" />
+                  <col span="1" style="width: 70%" />
+                </colgroup>
+                <tbody>
+                  <tr class="details">
+                    <td class="topic" rowspan="8">
+                      <i
+                        class="bx bx-user-circle"
+                        style="font-size: 150px; color: #0a2558"
+                      ></i>
+                    </td>
+                  </tr>
+                  <tr class="details">
+                    <td class="topic">Username (Level)</td>
+                    <td>
+                      <input
+                        type="text"
+                        name="username"
+                        id="username"
+                        placeholder="Nama"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="topic">Password</td>
+                    <td>
+                      <input
+                        type="password"
+                        name="password"
+                        id="password"
+                        placeholder="Password"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="topic">Mata Pelajaran</td>
+                    <td>
+                      <input
+                        type="text"
+                        name="course"
+                        id="course"
+                        placeholder="Mata Pelajaran"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="topic">Kelas</td>
+                    <td>
+                      <input
+                        type="text"
+                        name="class"
+                        id="class"
+                        placeholder="Kelas"
+                      />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>

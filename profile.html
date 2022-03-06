@@ -91,38 +91,100 @@
           <div class="recent-update box">
             <div class="title">Profil</div>
             <div class="update-details">
-              <ul class="details" style="width: 150px; height: 150px">
-                <li class="topic" style="width: 150px; height: 150px">
-                  <i
-                    class="bx bx-user-circle"
-                    style="font-size: 150px; color: #0a2558"
-                  ></i>
-                </li>
-              </ul>
-              <ul class="details">
-                <li class="topic">Username(Level)</li>
-                <li class="topic">Password</li>
-                <li class="topic">Kelas</li>
-              </ul>
-              <ul class="details">
-                <li>:</li>
-                <li>:</li>
-                <li>:</li>
-              </ul>
-              <ul class="details">
-                <li>
-                  Username
-                  <hr />
-                </li>
-                <li>
-                  ********
-                  <hr />
-                </li>
-                <li>
-                  XI-RPL 1
-                  <hr />
-                </li>
-              </ul>
+              <table class="input">
+                <colgroup>
+                  <col span="1" style="width: 10%" />
+                  <col span="1" style="width: 20%" />
+                  <col span="1" style="width: 70%" />
+                </colgroup>
+                <tbody>
+                  <tr class="details">
+                    <td class="topic" rowspan="8">
+                      <i
+                        class="bx bx-user-circle"
+                        style="font-size: 150px; color: #0a2558"
+                      ></i>
+                    </td>
+                  </tr>
+                  <tr class="details">
+                    <td class="topic">Username</td>
+                    <td>
+                      <input
+                        type="text"
+                        name="username"
+                        id="username"
+                        placeholder="Nama"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="topic">Password</td>
+                    <td>
+                      <input
+                        type="password"
+                        name="password"
+                        id="password"
+                        placeholder="Password"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="topic">NIP</td>
+                    <td>
+                      <input
+                        type="text"
+                        name="nip"
+                        id="nip"
+                        placeholder="NIP"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="topic">Jenis Kelamin</td>
+                    <td>
+                      <input
+                        type="text"
+                        name="gender"
+                        id="gender"
+                        placeholder="Jenis Kelamin"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="topic">Level</td>
+                    <td>
+                      <input
+                        type="text"
+                        name="level"
+                        id="level"
+                        placeholder="Level"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="topic">Mata Pelajaran</td>
+                    <td>
+                      <input
+                        type="text"
+                        name="course"
+                        id="course"
+                        placeholder="Mata Pelajaran"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="topic">Kelas</td>
+                    <td>
+                      <input
+                        type="text"
+                        name="class"
+                        id="class"
+                        placeholder="Kelas"
+                      />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
             <div class="button">
               <a href="edit.html">Edit Profil</a>
