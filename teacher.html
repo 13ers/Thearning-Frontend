@@ -87,11 +87,12 @@
       </nav>
 
       <div class="home-content">
-        <div class="update-boxes2 v2" data-aos="fade-right">
+        <div class="update-boxes2" data-aos="fade-right">
           <div class="recent-update box">
             <div class="title">Guru</div>
             <div class="update-details" style="float: none">
-              <table>
+              <table class="table">
+                <thead>
               <tr class="details">
                 <th class="topic">No</th>
                 <th class="topic">Nama</th>
@@ -101,13 +102,15 @@
                 <th class="topic">Kelas</th>
                 <th class="topic" colspan="2">Tindakan</th>
               </tr>
+            </thead>
+            <tbody>
               <tr class="details">
-                <td>1</td>
-                <td>nama 1</td>
-                <td>020202</td>
-                <td>Laki-Laki</td>
-                <td>MTK</td>
-                <td>XI-RPL 1</td>
+                <td data-label="No">1</td>
+                <td data-label="Nama">nama 1</td>
+                <td data-label="NIP">020202</td>
+                <td data-label="Gender" class="gender">Laki-Laki</td>
+                <td data-label="Mapel">MTK</td>
+                <td data-label="Kelas">XI-RPL 1</td>
                 <td class="action">
                   <a href="editTeacher.html" class="edit">Edit</a>
                 </td>
@@ -116,12 +119,12 @@
                 </td>
               </tr>
               <tr class="details">
-                <td>2</td>
-                <td>nama 2</td>
-                <td>010101</td>
-                <td>Perempuan</td>
-                <td>B.Inggris</td>
-                <td>XI-RPL 2</td>
+                <td data-label="No">2</td>
+                <td data-label="Nama">nama 2</td>
+                <td data-label="NIP">020675</td>
+                <td data-label="Gender" class="gender">Perempuan</td>
+                <td data-label="Mapel">PWPB</td>
+                <td data-label="Kelas">XI-RPL 2</td>
                 <td class="action">
                 <a href="editTeacher.html" class="edit">Edit</a>
                 </td>
@@ -130,6 +133,7 @@
                 </td>
               </tr>
                 </td>
+              </tbody>
               </table>
             </div>
             <div class="button">

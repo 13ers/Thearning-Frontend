@@ -91,42 +91,46 @@
           <div class="recent-update box">
             <div class="title">Kelas</div>
             <div class="update-details" style="float: none">
-              <table>
-                <tr class="details">
-                  <th class="topic">No</th>
-                  <th class="topic">Tingkat</th>
-                  <th class="topic">Jurusan</th>
-                  <th class="topic">Jumlah Kelas</th>
-                  <th class="topic" colspan="2">Tindakan</th>
-                </tr>
-                <tr class="details">
-                  <td>1</td>
-                  <td>10</td>
-                  <td>AK</td>
-                  <td>2</td>
-                  <td class="action">
-                    <a href="editClass.html" class="edit">Edit</a>
-                  </td>
-                  <td class="action">
-                    <a href="#" class="delete" onclick="confirmation2()"
-                      >Hapus</a
-                    >
-                  </td>
-                </tr>
-                <tr class="details">
-                  <td>2</td>
-                  <td>11</td>
-                  <td>RPL</td>
-                  <td>6</td>
-                  <td class="action">
-                    <a href="editClass.html" class="edit">Edit</a>
-                  </td>
-                  <td class="action">
-                    <a href="#" class="delete" onclick="confirmation2()"
-                      >Hapus</a
-                    >
-                  </td>
-                </tr>
+              <table class="table">
+                <thead>
+                  <tr class="details">
+                    <th class="topic">No</th>
+                    <th class="topic">Tingkat</th>
+                    <th class="topic">Jurusan</th>
+                    <th class="topic">Jumlah Kelas</th>
+                    <th class="topic" colspan="2">Tindakan</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="details input">
+                    <td data-label="No">1</td>
+                    <td data-label="Tingkat">10</td>
+                    <td data-label="Jurusan">AK</td>
+                    <td data-label="Jumlah" class="totalClass">2</td>
+                    <td class="action">
+                      <a href="editClass.html" class="edit">Edit</a>
+                    </td>
+                    <td class="action del">
+                      <a href="#" class="delete" onclick="confirmation2()"
+                        >Hapus</a
+                      >
+                    </td>
+                  </tr>
+                  <tr class="details input">
+                    <td data-label="No">2</td>
+                    <td data-label="Tingkat">12</td>
+                    <td data-label="Jurusan">RPL</td>
+                    <td data-label="Jumlah">8</td>
+                    <td class="action">
+                      <a href="editClass.html" class="edit">Edit</a>
+                    </td>
+                    <td class="action del">
+                      <a href="#" class="delete" onclick="confirmation2()"
+                        >Hapus</a
+                      >
+                    </td>
+                  </tr>
+                </tbody>
               </table>
             </div>
             <div class="button">

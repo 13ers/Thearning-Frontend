@@ -585,6 +585,71 @@ td a.delete:hover {
   * {
     font-size: 0, 5em;
   }
+
+  .home-content .recent-update.box .update-details {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .recent-update.box table.table thead {
+    display: none;
+  }
+
+  .recent-update.box,
+  .table tbody,
+  .table tr,
+  .table td {
+    display: block;
+    width: 100%;
+  }
+
+  .recent-update.box .table tr {
+    margin-bottom: 20px;
+    border: 1px solid rgb(194, 194, 194);
+    border-collapse: collapse;
+    padding: 5px;
+    width: 100%;
+  }
+
+  .recent-update.box .table.v2 tr td:nth-child(even) {
+    background-color: rgb(245, 245, 245);
+  }
+
+  .recent-update.box .table tbody tr td {
+    text-align: right;
+    position: relative;
+  }
+
+  .recent-update.box .table td::before {
+    content: attr(data-label);
+    float: left;
+    text-align: left;
+
+    font-weight: 600;
+    width: 50%;
+  }
+  .home-content .update-boxes2 .recent-update.box table.table tbody tr td {
+    margin-bottom: 10px;
+  }
+
+  .home-content .update-boxes2 .recent-update.box table.table tbody tr.v2 td {
+    margin-bottom: 10px;
+  }
+
+  .home-content
+    .update-boxes2
+    .recent-update.box
+    table.table
+    tbody
+    tr
+    td.gender {
+    font-size: 0.8em;
+  }
+
+  .home-content .update-boxes .recent-update.box table.table tbody tr td.date {
+    font-size: 0.85em;
+  }
+
   .home-content nav {
     position: fixed;
     width: auto;
@@ -618,13 +683,14 @@ td a.delete:hover {
   }
   .update-boxes .box .button {
     position: relative;
-    right: -330px;
+    right: 0px;
   }
 
   .update-boxes2 .box .button {
     position: relative;
-    right: -58vw;
+    right: 0px;
   }
+
   .update-boxes2.v2 .recent-update.box .button {
     position: relative;
     right: -98vw;
@@ -636,6 +702,7 @@ td a.delete:hover {
   }
   .home-content .update-boxes2 table.input {
     font-size: 0.8em;
+    font-weight: 600;
     position: relative;
     border-spacing: 0.5;
   }
@@ -675,11 +742,13 @@ td a.delete:hover {
   }
   .home-content .update-boxes2 table.input tr td input {
     font-size: 0.8em;
+    font-weight: 600;
     width: 35vw;
     height: 6.2vh;
   }
   .home-content .update-boxes2 .recent-update.v2 table.input tr td {
     font-size: 0.75em;
+    font-weight: 600;
     width: 30vw;
     height: 6.2vh;
   }
