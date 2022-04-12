@@ -47,7 +47,7 @@ function Register() {
 
         alert(file_name);
         //send data to server
-        await axios.post('http://thearning.resultoption.tech/api/user', formData)
+        await axios.post('http://127.0.0.1:8000/api/user', formData)
         .then(() => {
 
             //redirect to logi page

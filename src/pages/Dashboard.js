@@ -24,7 +24,7 @@ function Dashboard() {
         //set axios header dengan type Authorization + Bearer token
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
         //fetch user from Rest API
-        await axios.get('http://thearning.resultoption.tech/api/user')
+        await axios.get('http://127.0.0.1:8000/api/user')
         .then((response) => {
 
             //set response user to state
@@ -52,15 +52,15 @@ function Dashboard() {
         //set axios header dengan type Authorization + Bearer token
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
         //fetch Rest API
-        await axios.post('http://thearning.resultoption.tech/api/logout')
-        .then(() => {
+        // await axios.post('http://thearning.resultoption.tech/api/logout')
+        // .then(() => {
 
-            //remove token from localStorage
-            localStorage.removeItem("token");
+        //     //remove token from localStorage
+        //     localStorage.removeItem("token");
 
-            //redirect halaman login
-            history.push('/');
-        });
+        //     //redirect halaman login
+        //     history.push('/');
+        // });
     };
 
     return (
