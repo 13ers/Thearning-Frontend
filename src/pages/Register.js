@@ -1,3 +1,4 @@
+import '../style/index.css';
 //import hook react
 import React, { useState } from 'react';
 
@@ -14,6 +15,8 @@ function Register() {
     const [fullname, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [birth_place, setBirth_place] = useState("");
+    const [birth_date, setBirth_date] = useState("");
     const [bio, setBio] = useState("");
     const [status, setStatus] = useState("");
     const [image, setImage] = useState("");
@@ -40,18 +43,18 @@ function Register() {
         formData.append('fullname', fullname);
         formData.append('email', email);
         formData.append('password', password);
+        formData.append('birth_place', birth_place);
+        formData.append('birth_date', birth_date);
         formData.append('bio', bio);
         formData.append('status', status);
         formData.append('image', image);
         formData.append('file_name', file_name);
-
-        alert(file_name);
         //send data to server
-        await axios.post('http://thearning.resultoption.tech/api/user', formData)
+        await axios.post('http://localhost:8000/api/user', formData)
         .then(() => {
 
             //redirect to logi page
-            history.push('/');
+            history.push('/login');
         })
         .catch((error) => {
 
@@ -61,7 +64,7 @@ function Register() {
     };
 
     return (
-        <div className="container" style={{ marginTop: "120px" }}>
+        <div className="container" style={{ marginTop: "2px" }}>
             <div className="row justify-content-center">
                 <div className="col-md-8">
                     <div className="card border-0 rounded shadow-sm">
@@ -118,6 +121,32 @@ function Register() {
                                             validation.password && (
                                                 <div className="alert alert-danger">
                                                     {validation.password[0]}
+                                                </div>
+                                            )
+                                        }
+                                    </div>
+                                    <div className="col-md-6">
+                                        <div className="mb-3">
+                                            <label className="form-label">Tempat Lahir</label>
+                                            <input type="text" className="form-control" value={birth_place} onChange={(e) => setBirth_place(e.target.value)} placeholder="Masukkan Tempat"/>
+                                        </div>
+                                        {
+                                            validation.password && (
+                                                <div className="alert alert-danger">
+                                                    {validation.birth_place[0]}
+                                                </div>
+                                            )
+                                        }
+                                    </div>
+                                    <div className="col-md-6">
+                                        <div className="mb-3">
+                                            <label className="form-label">Tanggal Lahir</label>
+                                            <input type="date" className="form-control" value={birth_date} onChange={(e) => setBirth_date(e.target.value)} placeholder="thn-bln-tgl"/>
+                                        </div>
+                                        {
+                                            validation.password && (
+                                                <div className="alert alert-danger">
+                                                    {validation.birth_date[0]}
                                                 </div>
                                             )
                                         }

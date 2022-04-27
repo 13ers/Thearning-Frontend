@@ -1,3 +1,4 @@
+import '../style/index.css';
 //import hook react
 import React, { useState } from 'react';
 
@@ -20,7 +21,7 @@ function Login() {
         let a = user_id;
         let b = password;
         let mystorage = window.localStorage;
-        let url = "http://thearning.resultoption.tech/api/auth";
+        let url = "http://localhost:8000/api/auth";
         (async () => {
           const rawResponse = await fetch(url, {
             method: "POST",
@@ -36,37 +37,41 @@ function Login() {
           mystorage.setItem("token", content["token"]);
           console.log(content);
           if(localStorage.getItem('token')) {
-            history.push('/dashboard');
+            history.push('/');
         }
         })();
     };
+    
 
     return (
-        <div className="container" style={{ marginTop: "120px" }}>
-            <div className="row justify-content-center">
-                <div className="col-md-4">
-                    <div className="card border-0 rounded shadow-sm">
-                        <div className="card-body">
-                            <h4 className="fw-bold">HALAMAN LOGIN</h4>
-                            <hr/>
-                            <form onSubmit={loginHandler}>
-                                <div className="mb-3">
-                                    <label className="form-label">Username</label>
-                                    <input type="text" className="form-control" value={user_id} onChange={(e) => setUser(e.target.value)} placeholder="Masukkan Username"/>
+            <div className="container" style={{ marginTop: "120px" }}>
+                <div className="row justify-content-center">
+                    <div className="col-md-4">
+                        <div className="card border-0 rounded shadow-sm">
+                            <div className="card-body">
+                                <h4 className="fw-bold">HALAMAN LOGIN</h4>
+                                <hr/>
+                                <form onSubmit={loginHandler}>
+                                    <div className="mb-3">
+                                        <label className="form-label">Username</label>
+                                        <input type="text" className="form-control" value={user_id} onChange={(e) => setUser(e.target.value)} placeholder="Masukkan Username"/>
+                                    </div>
+                                    <div className="mb-3">
+                                        <label className="form-label">PASSWORD</label>
+                                        <input type="password" className="form-control" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Masukkan Password"/>
+                                    </div>
+                                    <div className="d-grid gap-2">
+                                        <button type="submit" className="btn btn-primary">LOGIN</button>
+                                    </div>
+                                </form>
+                                <div className="pt-2 d-grid gap-2">
+                                        <button type="button" className="btn btn-outline-primary" onClick={() => { history.push('/register') }}>Register</button>
                                 </div>
-                                <div className="mb-3">
-                                    <label className="form-label">PASSWORD</label>
-                                    <input type="password" className="form-control" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Masukkan Password"/>
-                                </div>
-                                <div className="d-grid gap-2">
-                                    <button type="submit" className="btn btn-primary">LOGIN</button>
-                                </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
     )
 
 }

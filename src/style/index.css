@@ -2,7 +2,7 @@
 
 body {
     background-color: lightgray !important;
-    background-image: url('./latar.png');
+    background-image: url('../img/latar.png');
     background-repeat: no-repeat;
     background-size: cover;
     font-family: 'Quicksand', sans-serif;

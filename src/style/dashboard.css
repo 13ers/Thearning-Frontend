@@ -1,0 +1,144 @@
+.wrapper{
+    position: absolute;
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    overflow: hidden;
+}
+
+.wrapper.v2{
+    padding: 30px;
+}
+
+.wrapper.v2 button{
+    position: absolute;
+    left: 500px;
+    width:200px;
+}
+
+.nav{
+    box-shadow: 0px 0px 1px;
+    width: 100%;
+    position:fixed;
+    padding:10px;
+}
+
+h2{
+    margin-left: 20px;
+}
+
+img.prof{
+    width: 40px;
+    height: 40px;
+    border-radius:30px;
+    position:absolute;
+    right:10px;
+    cursor: pointer;
+}
+
+.icon{
+    font-size:40px;
+    margin-left: 10px;
+}
+
+.btnClass{
+    position:absolute;
+    top: 15px;
+    right:70px;
+    background-color:transparent;
+    border: none;
+    background-image: url('../img/add.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width:30px;
+    height:30px;
+}
+
+.classOp{
+    display:none;
+    position:absolute;
+    z-index: 10;
+    background-color: white;
+    top: 30px;
+    right:100px;
+    border: 1px solid rgb(184, 184, 184);
+}
+
+.classOp2{
+    display:block;
+    position:absolute;
+    z-index: 10;
+    background-color: white;
+    top: 30px;
+    right:100px;
+    border: 1px solid rgb(184, 184, 184);
+    border-radius: 5px;
+}
+
+li{
+    list-style:none ;
+    color:black;
+    width:100%;
+    
+}
+
+a{
+    text-decoration:none;
+    color:black;
+}
+
+.btnOp{
+    width:100%;
+    border: none;
+    background-color:transparent;
+    padding:10px;
+}
+
+.btnOp:hover{
+    background-color:rgb(223, 223, 223);
+}
+
+.profile{
+    display: none;
+    position:absolute;
+    top: 55px;
+    right: 40px;
+    border: 1px solid rgb(184, 184, 184);
+    border-radius: 5px;
+    background-color: white;
+}
+
+.profile2{
+    display: block;
+    position:absolute;
+    top: 55px;
+    right: 40px;
+    border: 1px solid rgb(184, 184, 184);
+    border-radius: 5px;
+    background-color: white;
+}
+
+table{
+    height:210px;
+    width:200px;
+}
+
+tr{
+    text-align:center;
+    margin-bottom:50px;
+}
+
+td{
+    margin-bottom:10px;
+}
+
+td.name{
+    font-weight:bold;
+}
+
+img.prof2{
+    width: 70px;
+    height: 70px;
+    border-radius:40px;
+}

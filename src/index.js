@@ -5,9 +5,6 @@ import App from './App';
 //import bootstrap CSS
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-//import custom CSS
-import './index.css';
-
 //BrowserRouter dari react router
 import { BrowserRouter } from 'react-router-dom';
 
