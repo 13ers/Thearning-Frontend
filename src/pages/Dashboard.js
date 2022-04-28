@@ -1,7 +1,6 @@
 import { GoMortarBoard } from "react-icons/go";
 
 import '../style/dashboard.css';
-import '../style/index.css';
 
 //import hook react
 import React, { useState, useEffect } from 'react';
@@ -41,11 +40,15 @@ function Dashboard() {
     //state user
     const [user, setUser] = useState({});
 
+    
+
     //define history
     const history = useHistory();
 
     //token
     const token = localStorage.getItem("token");
+
+    const [classList, setList] = useState([]);
 
     //function "fetchData"
     const fetchData = async () => {
@@ -59,8 +62,16 @@ function Dashboard() {
             //set response user to state
             setUser(response.data.data);
         })
-    }
 
+        await axios.get('http://localhost:8000/api/classroom')
+        .then((response) => {
+
+            //set response user to state
+      
+            setList(response.data.class_ids);
+        })
+    }
+    
     //hook useEffect
     useEffect(() => {
 
@@ -88,21 +99,21 @@ function Dashboard() {
     };
 
     let photo = user.profile_photo;
-
     return (
         <div className="wrapper">
-             <nav className="nav">
+            <div>
+             <nav className="nav fixed-top">
              <GoMortarBoard className='icon'/>
                 <h2>Thearning</h2>
                 <button className="btnClass" onClick={changeDisplay}></button>
                 <img src={photo} alt='img' className='prof'onClick={changeDisplay2}/>
-            </nav>
-            <div className={display}>
-                <li><button className="btnOp" onClick={changePage}>Buat Kelas</button></li>
-                <li><button className="btnOp">Gabung Kelas</button></li>
-            </div>
-            <div className={profile}>
+                <div className={display}>
+                <li className='display'><button className="btnOp" onClick={changePage}>Buat Kelas</button></li>
+                <li className='display'><button className="btnOp">Gabung Kelas</button></li>
+                </div>
+                <div className={profile}>
                 <table>
+                    <tbody>
                     <tr>
                         <td><img src={photo} alt='img'className='prof2'/></td>
                     </tr>
@@ -117,10 +128,25 @@ function Dashboard() {
                         <button onClick={logoutHandler} className="btn btn-md btn-danger">LOGOUT</button>
                         </td>
                     </tr>
+                    </tbody>
                 </table>
+                </div>
+            </nav>
             </div>
+            <div className="container">   
+                        <h1>Kelas</h1>
+                    {classList.map((student) => (   
+                    <div class="card primary row" style={{width:'18rem',backgroundImage: `url(${student.class_image})`,backgroundSize:'100% 50%',backgroundRepeat:'no-repeat'}}>
+                        <div class="card-body col-sm">
+                            <h5 class="card-title">{student.class_name}</h5>
+                            <p class="card-title">{student.section}</p>
+                            <p class="card-text">{student.class_description}</p>
+                        </div>
+                    </div>
+                    ))}  
         </div>
-    )
+        </div>
+    );
 
 }
 

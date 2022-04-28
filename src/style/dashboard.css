@@ -1,9 +1,10 @@
 .wrapper{
+    padding-top: 67px;
     position: absolute;
     background-color: white;
     width: 100%;
     height: 100%;
-    z-index: 100;
+    z-index: 1;
     overflow: hidden;
 }
 
@@ -22,6 +23,7 @@
     width: 100%;
     position:fixed;
     padding:10px;
+    background-color: white;
 }
 
 h2{
@@ -55,6 +57,14 @@ img.prof{
     height:30px;
 }
 
+.container{
+    overflow-y: scroll;
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
 .classOp{
     display:none;
     position:absolute;
@@ -76,7 +86,7 @@ img.prof{
     border-radius: 5px;
 }
 
-li{
+li.display{
     list-style:none ;
     color:black;
     width:100%;
@@ -144,11 +154,16 @@ img.prof2{
 }
 
 .listClass{
-    height:400px;
-    width:700px;
-    background-color:black;
-    color:white;
-    position:absolute;
+    height:100%;
+    width:100%;
+    background-color:transparent;
+    color:black;
     top:100px;
     left:300px;
+    overflow-y: scroll;
+}
+
+.card.primary{
+    height: 200px;
+    color: white;
 }
