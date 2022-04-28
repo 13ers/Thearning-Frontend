@@ -1,6 +1,7 @@
 import { GoMortarBoard } from "react-icons/go";
 
 import '../style/dashboard.css';
+import '../style/index.css';
 
 //import hook react
 import React, { useState, useEffect } from 'react';
@@ -12,6 +13,7 @@ import { useHistory } from 'react-router';
 import axios from 'axios';
 
 function Dashboard() {
+
     function changePage(){
         history.push('/CreateClass');
     }
@@ -45,8 +47,6 @@ function Dashboard() {
     //token
     const token = localStorage.getItem("token");
 
-    let classId = [];
-
     //function "fetchData"
     const fetchData = async () => {
 
@@ -57,17 +57,10 @@ function Dashboard() {
         .then((response) => {
 
             //set response user to state
-            setUser(response.data);
-        })
-
-        await axios.get('http://localhost:8000/api/classroom')
-        .then((response) => {
-
-            //set response user to state
-            classId = response.data.class_ids;
+            setUser(response.data.data);
         })
     }
-    
+
     //hook useEffect
     useEffect(() => {
 
@@ -87,28 +80,22 @@ function Dashboard() {
 
         //set axios header dengan type Authorization + Bearer token
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
-         //remove token from localStorage
+            //remove token from localStorage
             localStorage.removeItem("token");
 
-         //redirect halaman login
+            //redirect halaman login
             history.push('/login');
     };
 
-    let sum =0;
-    classId.forEach(classList)
-
-    function classList(item) {
-        sum += item
-    }
-
+    let photo = user.profile_photo;
 
     return (
         <div className="wrapper">
-            <nav className="nav">
-                <GoMortarBoard className='icon'/>
+             <nav className="nav">
+             <GoMortarBoard className='icon'/>
                 <h2>Thearning</h2>
                 <button className="btnClass" onClick={changeDisplay}></button>
-                <img src={user.data.profile_photo} alt='img' className='prof'onClick={changeDisplay2}/>
+                <img src={photo} alt='img' className='prof'onClick={changeDisplay2}/>
             </nav>
             <div className={display}>
                 <li><button className="btnOp" onClick={changePage}>Buat Kelas</button></li>
@@ -117,13 +104,13 @@ function Dashboard() {
             <div className={profile}>
                 <table>
                     <tr>
-                        <td><img src={user.data.profile_photo} alt='img'className='prof2'/></td>
+                        <td><img src={photo} alt='img'className='prof2'/></td>
                     </tr>
                     <tr>
-                        <td className='name'>{user.data.fullname}</td>
+                        <td className='name'>{user.fullname}</td>
                     </tr>
                     <tr>
-                        <td className='email'>{user.data.email}</td>
+                        <td className='email'>{user.email}</td>
                     </tr>
                     <tr>
                         <td>
@@ -132,9 +119,6 @@ function Dashboard() {
                     </tr>
                 </table>
             </div>
-            <diV>
-                
-            </diV>
         </div>
     )
 

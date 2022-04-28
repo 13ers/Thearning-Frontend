@@ -24,10 +24,10 @@ function App() {
     <Router history={history}>
     <div>
       <Switch>
-        <Route path="/login" component={Login} />
-        <Route path="/register" component={Register} />
-        <Route path="/" component={Dashboard} />
-        <Route path="/CreateClass" component={CreateClass} />
+        <Route exact path="/" component={Dashboard} />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/register" component={Register} />
+        <Route exact path="/CreateClass" component={CreateClass} />
       </Switch>
     </div>
     </Router>
