@@ -65,8 +65,8 @@ function CreateClass() {
                                 <div className="row">
                                     <div className="col-md-6">
                                         <div className="mb-3">
-                                            <label className="form-label"> Nama Mata Pelajaran</label>
-                                            <input type="text" className="form-control" value={class_name} onChange={(e) => setClass(e.target.value)} placeholder="Masukkan Nama Mata Pelajaran"/>
+                                            <label className="form-label"> Nama Kelas</label>
+                                            <input type="text" className="form-control" value={class_name} onChange={(e) => setClass(e.target.value)} placeholder="Masukkan Nama Kelas"/>
                                         </div>
                                         {
                                         validation.class_name && (
@@ -78,8 +78,8 @@ function CreateClass() {
                                     </div>
                                     <div className="col-md-6">
                                         <div className="mb-3">
-                                            <label className="form-label">Nama Guru</label>
-                                            <input type="text" className="form-control" value={section} onChange={(e) => setSection(e.target.value)} placeholder="Masukkan Nama Guru"/>
+                                            <label className="form-label">Subjek</label>
+                                            <input type="text" className="form-control" value={section} onChange={(e) => setSection(e.target.value)} placeholder="Masukkan Subjek"/>
                                         </div>
                                         {
                                         validation.section && (
