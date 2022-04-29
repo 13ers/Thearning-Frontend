@@ -140,8 +140,8 @@ function Dashboard() {
                     <div class="card primary" style={{width:'18rem'}}>
                         <img src={student.class_image} alt='img'/>
                         <div class="card-body">
-                            <h5 class="card-title">{student.class_name}</h5>
-                            <p class="card-title">{student.section}</p>
+                            <h3 class="card-title">{student.class_name}</h3>
+                            <h6 class="card-title">{student.section}</h6>
                             <p class="card-text">{student.class_description}</p>
                         </div>
                     </div>
