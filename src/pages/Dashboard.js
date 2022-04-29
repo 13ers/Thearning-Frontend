@@ -133,7 +133,7 @@ function Dashboard() {
                 </div>
             </nav>
             </div>
-            <div className="container">   
+            <div className="container2">   
                         <h1>Kelas</h1>
                     {classList.map((student) => (   
                     <div class="card primary row" style={{width:'18rem',backgroundImage: `url(${student.class_image})`,backgroundSize:'100% 50%',backgroundRepeat:'no-repeat'}}>

@@ -14,11 +14,7 @@ function CreateClass() {
     const [class_name, setClass] = useState("");
     const [section, setSection] = useState("");
     const [class_description, setDescription] = useState("");
-    const [image, setImage] = useState("");
-
-    let fileName = image.substring(image.lastIndexOf("\\") + 1).split(".")[0];
-    let extension = image.split(".")[1];
-    let file_name = fileName + "." + extension;
+    const [selectedFile, setSelectedFile] = React.useState(null);
 
     //define state validation
     const [validation, setValidation] = useState([]);
@@ -37,8 +33,7 @@ function CreateClass() {
         formData.append('class_name', class_name);
         formData.append('section', section);
         formData.append('class_description', class_description);
-        formData.append('image', image);
-        formData.append('file_name', file_name);
+        formData.append('image', selectedFile);
         //send data to server
         await axios.post('http://localhost:8000/api/classroom', formData)
         .then(() => {
@@ -49,9 +44,14 @@ function CreateClass() {
         .catch((error) => {
 
             //assign error to state "validation"
-            setValidation(error.response.data);
+            setValidation(error.response.data.data);
         })
     };
+
+    const handleFileSelect = (e) => {
+        setSelectedFile(e.target.files[0])
+      }
+    
 
     return (
         <div className="wrapper v2">
@@ -65,8 +65,8 @@ function CreateClass() {
                                 <div className="row">
                                     <div className="col-md-6">
                                         <div className="mb-3">
-                                            <label className="form-label">Nama Kelas</label>
-                                            <input type="text" className="form-control" value={class_name} onChange={(e) => setClass(e.target.value)} placeholder="Masukkan Nama Kelas"/>
+                                            <label className="form-label"> Nama Mata Pelajaran</label>
+                                            <input type="text" className="form-control" value={class_name} onChange={(e) => setClass(e.target.value)} placeholder="Masukkan Nama Mata Pelajaran"/>
                                         </div>
                                         {
                                         validation.class_name && (
@@ -78,8 +78,8 @@ function CreateClass() {
                                     </div>
                                     <div className="col-md-6">
                                         <div className="mb-3">
-                                            <label className="form-label">Jurusan</label>
-                                            <input type="text" className="form-control" value={section} onChange={(e) => setSection(e.target.value)} placeholder="Masukkan Jurusan"/>
+                                            <label className="form-label">Nama Guru</label>
+                                            <input type="text" className="form-control" value={section} onChange={(e) => setSection(e.target.value)} placeholder="Masukkan Nama Guru"/>
                                         </div>
                                         {
                                         validation.section && (
@@ -106,9 +106,9 @@ function CreateClass() {
                                         }
                                     </div>
                                     <div className="col-md-6">
-                                        <div className="mb-3">
-                                            <label className="form-label">Foto</label>
-                                            <input type="file" className="form-control" value={image} onChange={(e) => setImage(e.target.value)} placeholder="Masukkan Foto" accept="image/*"/>
+                                    <div className="mb-3">
+                                            <label className="form-label">Foto Profil</label>
+                                            <input type="file" className="form-control"onChange={handleFileSelect} placeholder="Masukkan Foto" accept="image/*"/>
                                         </div>
                                         {
                                         validation.image && (

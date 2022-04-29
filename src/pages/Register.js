@@ -19,11 +19,8 @@ function Register() {
     const [birth_date, setBirth_date] = useState("");
     const [bio, setBio] = useState("");
     const [status, setStatus] = useState("");
-    const [image, setImage] = useState("");
+    const [selectedFile, setSelectedFile] = React.useState(null);
 
-    let fileName = image.substring(image.lastIndexOf("\\") + 1).split(".")[0];
-    let extension = image.split(".")[1];
-    let file_name = fileName + "." + extension;
 
     //define state validation
     const [validation, setValidation] = useState([]);
@@ -47,8 +44,7 @@ function Register() {
         formData.append('birth_date', birth_date);
         formData.append('bio', bio);
         formData.append('status', status);
-        formData.append('image', image);
-        formData.append('file_name', file_name);
+        formData.append('image', selectedFile);
         //send data to server
         await axios.post('http://localhost:8000/api/user', formData)
         .then(() => {
@@ -62,6 +58,11 @@ function Register() {
             setValidation(error.response.data);
         })
     };
+
+    const handleFileSelect = (e) => {
+        setSelectedFile(e.target.files[0])
+      }
+    
 
     return (
         <div className="container" style={{ marginTop: "2px" }}>
@@ -182,7 +183,7 @@ function Register() {
                                     <div className="col-md-6">
                                         <div className="mb-3">
                                             <label className="form-label">Foto Profil</label>
-                                            <input type="file" className="form-control" value={image} onChange={(e) => setImage(e.target.value)} placeholder="Masukkan Foto" accept="image/*"/>
+                                            <input type="file" className="form-control"onChange={handleFileSelect} placeholder="Masukkan Foto" accept="image/*"/>
                                         </div>
                                         {
                                         validation.image && (
