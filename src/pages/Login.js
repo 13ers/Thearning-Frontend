@@ -48,7 +48,7 @@ function Login() {
                 <div className="row justify-content-center">
                     <div className="col-md-4">
                         <div className="card border-0 rounded shadow-sm">
-                            <div className="card-body">
+                            <div className="card-body" style={{backgroundColor: "white"}}>
                                 <h4 className="fw-bold">HALAMAN LOGIN</h4>
                                 <hr/>
                                 <form onSubmit={loginHandler}>
