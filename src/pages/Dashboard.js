@@ -134,16 +134,19 @@ function Dashboard() {
             </nav>
             </div>
             <div className="container2">   
-                        <h1>Kelas</h1>
+                        <h1 style={{marginBottom:'20px'}}>Kelas</h1>
+                        <div className="grid-container">
                     {classList.map((student) => (   
-                    <div class="card primary row" style={{width:'18rem',backgroundImage: `url(${student.class_image})`,backgroundSize:'100% 50%',backgroundRepeat:'no-repeat'}}>
-                        <div class="card-body col-sm">
+                    <div class="card primary" style={{width:'18rem'}}>
+                        <img src={student.class_image} alt='img'/>
+                        <div class="card-body">
                             <h5 class="card-title">{student.class_name}</h5>
                             <p class="card-title">{student.section}</p>
                             <p class="card-text">{student.class_description}</p>
                         </div>
                     </div>
                     ))}  
+        </div>
         </div>
         </div>
     );
