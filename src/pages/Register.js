@@ -69,7 +69,7 @@ function Register() {
             <div className="row justify-content-center">
                 <div className="col-md-8">
                     <div className="card border-0 rounded shadow-sm">
-                        <div className="card-body">
+                        <div className="card-body" style={{backgroundColor: "white"}}>
                             <h4 className="fw-bold">HALAMAN REGISTER</h4>
                             <hr/>
                             <form onSubmit={registerHandler}>
