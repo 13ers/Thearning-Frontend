@@ -1,6 +1,7 @@
 import { GoMortarBoard } from "react-icons/go";
+import { useParams } from "react-router-dom";
 
-import '../style/dashboard.css';
+import '../../style/dashboard.css';
 
 //import hook react
 import React, { useState, useEffect } from 'react';
@@ -11,7 +12,9 @@ import { useHistory } from 'react-router';
 //import axios
 import axios from 'axios';
 
-function User() {
+function Class() {
+    const { id } = useParams();
+    const [classRoom, SetClass] = useState({});
 
     const [display2, setDisplay2] = useState("join");
 
@@ -65,8 +68,8 @@ function User() {
     //token
     const token = localStorage.getItem("token");
 
-    const [classList, setList] = useState([]);
-
+    let urlClass = 'http://localhost:8000/api/classroom/'+id;
+    console.log(urlClass);
     //function "fetchData"
     const fetchData = async () => {
 
@@ -80,12 +83,9 @@ function User() {
             setUser(response.data.data);
         })
 
-        await axios.get('http://localhost:8000/api/classroom')
+        await axios.get(urlClass)
         .then((response) => {
-
-            //set response user to state
-      
-            setList(response.data.class_ids);
+            SetClass(response.data.class);
         })
     }
     
@@ -130,6 +130,7 @@ function User() {
         window.location.reload(false);
     }
 
+
     return (
         <div className="wrapper">
             <div>
@@ -169,24 +170,23 @@ function User() {
                 </div>
             </nav>
             </div>
-            <div className="container2">   
-                        <h1 style={{marginBottom:'20px'}}>User</h1>
-                        <div className="grid-container">
-                    {classList.map((student) => (   
-                    <div class="card primary" style={{width:'18rem'}}>
-                        <img src={student.class_image} alt='img'/>
-                        <div class="card-body">
-                            <h3 class="card-title">{student.class_name}</h3>
-                            <h6 class="card-title">{student.section}</h6>
-                            <p class="card-text">{student.class_description}</p>
+            <div className="container3">   
+            <center>
+                        <div className="photoClass">
+                        <img src={classRoom.class_image} alt='img'/>
+                        <div className="about">
+                            <h1>{classRoom.class_name}</h1>
+                            <h3>{classRoom.section}</h3>
+                            </div>
+                            <h5 className="codeClass">
+                                {classRoom.class_id}
+                            </h5>
                         </div>
-                    </div>
-                    ))}  
-        </div>
+                        </center>
         </div>
         </div>
     );
 
 }
 
-export default User;
+export default Class;

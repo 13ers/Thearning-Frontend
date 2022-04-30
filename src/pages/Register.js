@@ -1,4 +1,7 @@
 import '../style/index.css';
+import '../style/dashboard.css';
+import { ImCross } from "react-icons/im";
+
 //import hook react
 import React, { useState } from 'react';
 
@@ -62,6 +65,10 @@ function Register() {
     const handleFileSelect = (e) => {
         setSelectedFile(e.target.files[0])
       }
+
+      function back(){
+        history.push('/login');
+    }
     
 
     return (
@@ -71,6 +78,7 @@ function Register() {
                     <div className="card border-0 rounded shadow-sm">
                         <div className="card-body" style={{backgroundColor: "white"}}>
                             <h4 className="fw-bold">HALAMAN REGISTER</h4>
+                            <ImCross className="back" onClick={back}/>
                             <hr/>
                             <form onSubmit={registerHandler}>
                                 <div className="row">

@@ -1,6 +1,8 @@
 import { GoMortarBoard } from "react-icons/go";
+import { ImInfo } from "react-icons/im";
+import { Link } from "react-router-dom";
 
-import '../style/dashboard.css';
+import '../../style/dashboard.css';
 
 //import hook react
 import React, { useState, useEffect } from 'react';
@@ -11,11 +13,7 @@ import { useHistory } from 'react-router';
 //import axios
 import axios from 'axios';
 
-function Dashboard() {
-
-    function changePage(){
-        history.push('/CreateClass');
-    }
+function User() {
 
     const [display2, setDisplay2] = useState("join");
 
@@ -58,7 +56,6 @@ function Dashboard() {
             setDisplay("classOp");
             setDisplay2("join");}
     };
-
     //state user
     const [user, setUser] = useState({});
 
@@ -124,12 +121,6 @@ function Dashboard() {
 
     let photo = user.profile_photo;
 
-    let stats = user.status;
-
-    if(stats==='student'){
-        history.push('/User')
-    }
-
     const joinHandler = async (e) => {
         e.preventDefault();
 
@@ -150,7 +141,6 @@ function Dashboard() {
                 <button className="btnClass" onClick={changeDisplay}></button>
                 <img src={photo} alt='img' className='prof'onClick={changeDisplay2}/>
                 <div className={display}>
-                <li className='display'><button className="btnOp" onClick={changePage}>Buat Kelas</button></li>
                 <li className='display'><button className="btnOp" onClick={changeDisplay3}>Gabung Kelas</button></li>
                 </div>
                 <div className={profile}>
@@ -163,7 +153,7 @@ function Dashboard() {
                         <td className='name'>{user.fullname}</td>
                     </tr>
                     <tr>
-                        <td className='email'>{user.email}</td>
+                        <td className='email'>{user.status}</td>
                     </tr>
                     <tr>
                         <td>
@@ -182,17 +172,22 @@ function Dashboard() {
             </nav>
             </div>
             <div className="container2">   
-                        <h1 style={{marginBottom:'20px'}}>Kelas</h1>
+                        <h1 style={{marginBottom:'20px'}}>User</h1>
                         <div className="grid-container">
-                    {classList.map((student) => (   
+                    {classList.map((room) => ( 
+                        <article key={room.class_id}>
                     <div class="card primary" style={{width:'18rem'}}>
-                        <img src={student.class_image} alt='img'/>
+                        <img src={room.class_image} alt='img'/>
                         <div class="card-body">
-                            <h3 class="card-title">{student.class_name}</h3>
-                            <h6 class="card-title">{student.section}</h6>
-                            <p class="card-text">{student.class_description}</p>
+                        <Link to={`/Class/${room.class_id}`} style={{color:'white',textDecoration:'none'}}>
+                            <h3 class="card-title">{room.class_name}</h3>
+                        </Link>
+                            <h6 class="card-title">{room.section}</h6>
+                            <p class="card-text">{room.class_description}</p>
+                            <ImInfo  onClick={() =>  navigator.clipboard.writeText(room.class_id)} className="info"/>
                         </div>
                     </div>
+                    </article>
                     ))}  
         </div>
         </div>
@@ -201,4 +196,4 @@ function Dashboard() {
 
 }
 
-export default Dashboard;
+export default User;

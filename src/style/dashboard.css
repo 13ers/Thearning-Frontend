@@ -190,9 +190,7 @@ img.prof2{
 }
 
 .card.primary:hover{
-    background-color:rgb(240, 240, 240);
-    opacity: 0.8;
-    box-shadow: 1px grey;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1.5px 5px 0 rgba(0, 0, 0, 0.19);
 }
 
 .card-body{
@@ -258,4 +256,92 @@ img.prof2{
 
 .join2 input.btn{
     padding: 3px;
+}
+
+input.pass{
+    width: 80%;
+}
+
+button.show{
+    position: absolute;
+    font-size:12px;
+    right: 7px;
+    bottom: 120px;
+}
+
+.exit{
+    color: red;
+    font-size:30px;
+    position: absolute;
+    right: 35px;
+    top: 25px;
+}
+
+.exit:hover{
+    color: rgb(163, 0, 0);
+    cursor: pointer;
+}
+
+.back{
+    color: red;
+    font-size:20px;
+    position: absolute;
+    right: 25px;
+    top: 15px;
+}
+
+.back:hover{
+    color: rgb(163, 0, 0);
+    cursor: pointer;
+}
+
+.card-body.list{
+    width: 100%;
+}
+
+.info{
+    font-size:20px;
+    position: absolute;
+    top:10px;
+    right: 10px;
+}
+
+.info:hover{
+    cursor: pointer;
+    color: rgb(250, 250, 250);
+}
+
+.container3{
+    width:100%;
+    height:100%;
+    background-color: white;
+    overflow-y: auto;
+}
+
+.photoClass{
+    padding:20px;
+width:80%;
+text-align: left;
+color: white;
+}
+
+.photoClass img{
+    width:100%;
+    object-fit:cover;
+    height: 230px;
+    border-radius: 10px;
+    filter: brightness(50%);
+}
+
+.about{
+    position:absolute;
+    top: 210px;
+    left: 180px;
+}
+
+.codeClass{
+    color: white;
+    position: absolute;
+    top: 270px;
+    right: 180px;
 }

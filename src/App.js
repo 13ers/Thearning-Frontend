@@ -12,11 +12,13 @@ import Register from './pages/Register';
 import Login from './pages/Login';
 
 //import component Register
-import Dashboard from './pages/Dashboard';
+import Dashboard from './pages/admin/Dashboard';
 
-import CreateClass from './pages/CreateClass';
+import CreateClass from './pages/admin/CreateClass';
 
-import User from './pages/user';
+import Class from './pages/admin/Class';
+
+import User from './pages/user/user';
 
 const history = createBrowserHistory();
 
@@ -27,10 +29,11 @@ function App() {
     <div>
       <Switch>
         <Route exact path="/" component={Dashboard} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/register" component={Register} />
-        <Route exact path="/CreateClass" component={CreateClass} />
-        <Route exact path="/User" component={User} />
+        <Route path="/login" component={Login} />
+        <Route path="/register" component={Register} />
+        <Route path="/CreateClass" component={CreateClass} />
+        <Route path="/User" component={User} />
+        <Route path="/Class/:id" component={Class} />
       </Switch>
     </div>
     </Router>

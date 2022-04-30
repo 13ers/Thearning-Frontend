@@ -1,4 +1,5 @@
-import '../style/index.css';
+import '../../style/index.css';
+import { ImCross } from "react-icons/im";
 //import hook react
 import React, { useState } from 'react';
 
@@ -51,6 +52,10 @@ function CreateClass() {
     const handleFileSelect = (e) => {
         setSelectedFile(e.target.files[0])
       }
+
+      function back(){
+        history.push('/');
+    }
     
 
     return (
@@ -60,6 +65,7 @@ function CreateClass() {
                     <div>
                         <div>
                             <h4 className="fw-bold">Tambah Kelas</h4>
+                            <ImCross className="exit" onClick={back}/>
                             <hr/>
                             <form onSubmit={registerHandler}>
                                 <div className="row">
