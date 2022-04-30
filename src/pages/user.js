@@ -139,7 +139,7 @@ function User() {
                 <button className="btnClass" onClick={changeDisplay}></button>
                 <img src={photo} alt='img' className='prof'onClick={changeDisplay2}/>
                 <div className={display}>
-                <li className='display'><button className="btnOp">Gabung Kelas</button></li>
+                <li className='display'><button className="btnOp" onClick={changeDisplay3}>Gabung Kelas</button></li>
                 </div>
                 <div className={profile}>
                 <table>
