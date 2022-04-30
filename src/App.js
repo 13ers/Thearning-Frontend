@@ -16,6 +16,8 @@ import Dashboard from './pages/Dashboard';
 
 import CreateClass from './pages/CreateClass';
 
+import User from './pages/user';
+
 const history = createBrowserHistory();
 
 
@@ -28,6 +30,7 @@ function App() {
         <Route exact path="/login" component={Login} />
         <Route exact path="/register" component={Register} />
         <Route exact path="/CreateClass" component={CreateClass} />
+        <Route exact path="/User" component={User} />
       </Switch>
     </div>
     </Router>
