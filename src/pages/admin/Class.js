@@ -212,6 +212,7 @@ function Class() {
                 total_marks : parseInt(mark)
             }}),
         });
+        window.location.reload(false);
         })();
     };
 
