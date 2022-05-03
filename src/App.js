@@ -20,6 +20,10 @@ import Class from './pages/admin/Class';
 
 import User from './pages/user/user';
 
+import UserClass from './pages/user/UserClass';
+
+import CreateAssignment from './pages/admin/CreateAssignment';
+
 const history = createBrowserHistory();
 
 
@@ -34,6 +38,8 @@ function App() {
         <Route path="/CreateClass" component={CreateClass} />
         <Route path="/User" component={User} />
         <Route path="/Class/:id" component={Class} />
+        <Route path="/UserClass/:id" component={UserClass} />
+        <Route path="/CreateAssignment" component={CreateAssignment} />
       </Switch>
     </div>
     </Router>

@@ -178,7 +178,10 @@ function Register() {
                                     <div className="col-md-6">
                                         <div className="mb-3">
                                             <label className="form-label">Status</label>
-                                            <input type="text" className="form-control" value={status} onChange={(e) => setStatus(e.target.value)} placeholder="Masukkan Status"/>
+                                            <select name="stats" id="stats"value={status} onChange={(e) => setStatus(e.target.value)}>
+                                        <option value="admin">Admin</option>
+                                        <option value="student">Siswa</option>
+                                    </select>
                                         </div>
                                         {
                                         validation.status && (

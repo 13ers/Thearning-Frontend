@@ -1,6 +1,5 @@
 import { GoMortarBoard } from "react-icons/go";
-import { ImInfo } from "react-icons/im";
-import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import '../../style/dashboard.css';
 
@@ -13,7 +12,9 @@ import { useHistory } from 'react-router';
 //import axios
 import axios from 'axios';
 
-function User() {
+function Class() {
+    const { id } = useParams();
+    const [classRoom, SetClass] = useState({});
 
     const [display2, setDisplay2] = useState("join");
 
@@ -67,8 +68,8 @@ function User() {
     //token
     const token = localStorage.getItem("token");
 
-    const [classList, setList] = useState([]);
-
+    let urlClass = 'http://localhost:8000/api/classroom/'+id;
+    console.log(urlClass);
     //function "fetchData"
     const fetchData = async () => {
 
@@ -82,12 +83,9 @@ function User() {
             setUser(response.data.data);
         })
 
-        await axios.get('http://localhost:8000/api/classroom')
+        await axios.get(urlClass)
         .then((response) => {
-
-            //set response user to state
-      
-            setList(response.data.class_ids);
+            SetClass(response.data.class);
         })
     }
     
@@ -132,13 +130,13 @@ function User() {
         window.location.reload(false);
     }
 
+
     return (
         <div className="wrapper">
             <div>
              <nav className="nav fixed-top">
              <GoMortarBoard className='icon'/>
                 <h2>Thearning</h2>
-                <button className="btnClass" onClick={changeDisplay}></button>
                 <img src={photo} alt='img' className='prof'onClick={changeDisplay2}/>
                 <div className={display}>
                 <li className='display'><button className="btnOp" onClick={changeDisplay3}>Gabung Kelas</button></li>
@@ -153,7 +151,7 @@ function User() {
                         <td className='name'>{user.fullname}</td>
                     </tr>
                     <tr>
-                        <td className='email'>{user.email}</td>
+                        <td className='email'>{user.status}</td>
                     </tr>
                     <tr>
                         <td>
@@ -171,29 +169,31 @@ function User() {
                 </div>
             </nav>
             </div>
-            <div className="container2">   
-                        <h1 style={{marginBottom:'20px'}}>User</h1>
-                        <div className="grid-container">
-                    {classList.map((room) => ( 
-                        <article key={room.class_id}>
-                    <div class="card primary" style={{width:'18rem'}}>
-                        <img src={room.class_image} alt='img'/>
-                        <div class="card-body list">
-                        <Link to={`/UserClass/${room.class_id}`} style={{color:'white',textDecoration:'none'}}>
-                            <h3 class="card-title">{room.class_name}</h3>
-                        </Link>
-                            <h6 class="card-title">{room.section}</h6>
-                            <p class="card-text">{room.class_description}</p>
-                            <ImInfo  onClick={() =>  navigator.clipboard.writeText(room.class_id)} className="info"/>
+            <div className="container3">   
+                <center>
+                    <div className="photoClass">
+                        <img src={classRoom.class_image} alt='img'/>
+                        <div className="about">
+                            <h1>{classRoom.class_name}</h1>
+                            <h3>{classRoom.section}</h3>
                         </div>
+                            <h5 className="codeClass" onClick={() =>  navigator.clipboard.writeText(classRoom.class_id)}>
+                                {classRoom.class_id}
+                            </h5>
                     </div>
-                    </article>
-                    ))}  
-        </div>
-        </div>
+                </center>
+                <div className="content">
+                <div className="left-content">
+                <h3>adadad</h3>
+                </div>
+                <div className="right-content">
+                    <h3>fafbfdsdfsd</h3>
+                </div>
+                </div>
+            </div>
         </div>
     );
 
 }
 
-export default User;
+export default Class;
