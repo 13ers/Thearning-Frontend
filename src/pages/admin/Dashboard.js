@@ -2,7 +2,7 @@ import { GoMortarBoard } from "react-icons/go";
 import { ImInfo } from "react-icons/im";
 import { Link } from "react-router-dom";
 
-import '../../style/dashboard.css';
+import '../../style/style.css';
 
 //import hook react
 import React, { useState, useEffect } from 'react';

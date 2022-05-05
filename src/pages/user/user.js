@@ -2,7 +2,7 @@ import { GoMortarBoard } from "react-icons/go";
 import { ImInfo } from "react-icons/im";
 import { Link } from "react-router-dom";
 
-import '../../style/dashboard.css';
+import '../../style/style.css';
 
 //import hook react
 import React, { useState, useEffect } from 'react';
@@ -117,17 +117,12 @@ function User() {
             history.push('/login');
     };
 
-    let url='http://localhost:8000/api/classroom/'+code;
-
     let photo = user.profile_photo;
 
     const joinHandler = async (e) => {
         e.preventDefault();
 
-        axios({
-            method: 'post',
-            url: url
-        });
+        axios.post('http://localhost:8000/api/classroom/'+code)
 
         window.location.reload(false);
     }

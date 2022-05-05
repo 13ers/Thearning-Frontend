@@ -1,5 +1,5 @@
 import '../style/index.css';
-import '../style/dashboard.css';
+import '../style/style.css';
 import { ImCross } from "react-icons/im";
 
 //import hook react

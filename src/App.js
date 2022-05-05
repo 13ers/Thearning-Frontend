@@ -24,6 +24,8 @@ import UserClass from './pages/user/UserClass';
 
 import CreateAssignment from './pages/admin/CreateAssignment';
 
+import UserAssignment from './pages/user/UserAssignment';
+
 const history = createBrowserHistory();
 
 
@@ -39,6 +41,7 @@ function App() {
         <Route path="/User" component={User} />
         <Route path="/Class/:id" component={Class} />
         <Route path="/UserClass/:id" component={UserClass} />
+        <Route path="/UserAssignment/:id" component={UserAssignment} />
         <Route path="/CreateAssignment" component={CreateAssignment} />
       </Switch>
     </div>

@@ -1,9 +1,12 @@
 import { GoMortarBoard } from "react-icons/go";
 import { useParams } from "react-router-dom";
-import { HiClipboardList } from "react-icons/hi";
-import { ImCross } from "react-icons/im";
+import { HiClipboardList , HiOutlineUpload } from "react-icons/hi";
+import { Link } from "react-router-dom";
+import { IoLink } from "react-icons/io5";
+import linkImg from '../../img/link.png';
+import fileImg from '../../img/file.png';
 
-import '../../style/dashboard.css';
+import '../../style/style.css';
 
 //import hook react
 import React, { useState, useEffect } from 'react';
@@ -18,20 +21,33 @@ function Class() {
 
 
     const { id } = useParams();
-
     const [classRoom, SetClass] = useState({});
     const [user, setUser] = useState({});
     const [assignment, setAssignment] = useState([]);
     const [idAs, setId] = useState("");
     const [main, setMain] = useState("wrapper");
     const [add, setAdd] = useState("wrappers2");
+    const [Assignment, setAssignments] = useState([]);
     const [name, setName] = useState("");
     const [date,setDate] = useState("");
     const [time, setTime] = useState("");
     const [instruction, setIntruction] = useState("");
     const [mark, setMark] = useState("");
-    
-    
+    const [selectedFile, setSelectedFile] = useState();
+    const [fileName, setSelectedFileName] = useState("");
+    const [isFilePicked, setIsFilePicked] = useState(false);
+    const [sizeFile, setSize] = useState();
+    const [linkUp,setLinkUp] = useState([]);
+    const [fileUp, setFileUp] = useState([]);
+    const [link, setLink] = useState("");
+    const [tab1, setTab1] = useState('tab1');
+    const [tab2, setTab2] = useState('tabs2');
+    const [tab3, setTab3] = useState('tabs3');
+    const [tab4, setTab4] = useState('tabs4');
+    const [linkTab, setLinkTab] = useState('link');
+    const [fileTab, setFileTab] = useState('file');
+
+    let FileName = fileName.substring(fileName.lastIndexOf("\\") + 1).split(".")[0];
     
     //define history
     const history = useHistory();
@@ -40,6 +56,7 @@ function Class() {
     const token = localStorage.getItem("token");
 
     let urlClass = 'http://localhost:8000/api/classroom/'+id;
+    let urlAs = 'http://localhost:8000/api/assignments/'+idAs;
     //function "fetchData"
     const fetchData = async () => {
 
@@ -57,6 +74,11 @@ function Class() {
         .then((response) => {
             SetClass(response.data.class);
             setAssignment(response.data.assignments);
+        })
+
+        await axios.get(urlAs)
+        .then((response) => {
+            setAssignments(response.data.attachments);
         })
     }
     
@@ -87,12 +109,6 @@ function Class() {
     };
 
     let photo = user.profile_photo;
-
-    
-    const [tab1, setTab1] = useState('tab1');
-    const [tab2, setTab2] = useState('tabs2');
-    const [tab3, setTab3] = useState('tabs3');
-    const [tab4, setTab4] = useState('tabs4');
 
     const changeTab1 = () => {
         if(tab1 === 'tabs1'){
@@ -129,7 +145,6 @@ function Class() {
             setTab3('tabs3');
         }
     }
-
 
     const [profile, setProfile] = useState("profile");
   
@@ -168,9 +183,6 @@ function Class() {
             });
             };
 
-            console.log(idAs);
-            console.log(id);
-
         const back = async (e) => {
             e.preventDefault();
     
@@ -195,12 +207,12 @@ function Class() {
     const addHandler = async (e) => {
         e.preventDefault();
         (async () => {
-          await fetch("http://localhost:8000/api/assignments/", {
+        await fetch("http://localhost:8000/api/assignments/", {
             method: "PATCH",
             headers: {
                 'Authorization': 'Bearer ' + token,
-              "Content-Type": "application/json",
-              Origin: "https://127.0.0.1:5000",
+            "Content-Type": "application/json",
+            Origin: "https://127.0.0.1:5000",
             },
 
             body: JSON.stringify({ id: idAs, assignment: {
@@ -217,8 +229,86 @@ function Class() {
     };
 
     function changePage(){
-history.push('/');
+        history.push('/');
+        window.location.reload(false);
     }
+
+    const changeHandler = (event) => {
+        setSelectedFile(event.target.files[0]);
+        setIsFilePicked(true);
+        setSelectedFileName(event.target.files[0].name);
+        setSize(event.target.files[0].size);
+        };
+
+        let size = sizeFile/1024;
+        console.log(size);
+        
+        const fileHandler = async (e) => {
+            e.preventDefault();
+            const formData = new FormData();
+
+            formData.append('file', selectedFile);
+            formData.append('assignment_id', idAs);
+            formData.append('filename', FileName);
+            //send data to server
+            await axios.post('http://localhost:8000/api/upload/', formData)
+            .then((response) => {
+                const fileData = response.data.file;
+                setFileUp(fileUp => fileUp.concat(fileData));
+            setFileTab('file');
+            setLinkTab('link');
+            console.log(fileData);
+            })
+            .catch((error) => {
+            })
+            };
+    
+        const linkHandler = async (e) => {
+            e.preventDefault();
+            (async () => {
+            const res = await fetch("http://localhost:8000/api/links/", {
+                method: "POST",
+                headers: {
+                    'Authorization': 'Bearer ' + token,
+                "Content-Type": "application/json",
+                Origin: "https://127.0.0.1:5000",
+                },
+    
+                body: JSON.stringify({ url: link, assignment_id: idAs}),
+            });
+            const content = await res.json();
+            const links = content.link;
+            setLinkUp(linkUp => linkUp.concat(links));
+            setFileTab('file');
+            setLinkTab('link');
+            })();
+            };
+
+            console.log(linkUp);
+
+        const showFile = () => {
+            if(fileTab === 'file'){
+                setFileTab('tabs');
+                setLinkTab('link');
+            }
+        }
+
+        const showLink = () => {
+            if(linkTab === 'link'){
+                setFileTab('file');
+                setLinkTab('tabs v2');
+            }
+        }
+
+        const hide = () => {
+            setFileTab('file');
+            setLinkTab('link');
+        }
+
+        function defSrc(ev){
+            ev.target.src = linkImg;
+        }
+
     return (
         <div className="wrapper-all">
         <div className={main}>
@@ -365,8 +455,44 @@ history.push('/');
                                     <input type="submit" value="Buat" className="btn-create"/>
                                 </div>
                             </form>
+                            <HiOutlineUpload className="logo-As2" onClick={showFile}/>
+                            <IoLink className="logo-As2" onClick={showLink}/>
+                            <div className={fileTab}>
+                                <form onSubmit={fileHandler}>
+                                <input type="file" className="form-control" onChange={changeHandler} placeholder="Pilih Gambar"/>
+                                <button className="btn btn-outline-primary" style={{marginRight:'5px'}} onClick={hide}>Batal</button>
+                                <button className="btn btn-primary">Submit</button>
+                                </form>
+                            </div>
+                            <div className={linkTab}>
+                                <form onSubmit={linkHandler}>
+                                <input type="text" className="form-control" value={link} onChange={(e) => setLink(e.target.value)} placeholder="Salin Link Disini"/>
+                                <button className="btn btn-outline-primary" style={{marginRight:'5px'}} onClick={hide}>Batal</button>
+                                <button className="btn btn-primary">Submit</button>
+                                </form>
+                            </div>
+                            <div className="upload-tab">
+                            {linkUp.map((link) => (   
+                        <div className="link-tab">
+                            <div className="link-info">
+                            <h6><img src={link.thumbnail} alt={defSrc} style={{width:"50px",height:"auto",marginRight:"10px"}} /></h6>
+                            <p>{link.title}</p>
+                            </div>
+                            <p style={{position: "absolute",top: "30px",left: "70px",textOverflow: "ellipsis",width: "100px"}}>{link.url}</p>
                         </div>
-        </div>
+                        ))}
+                    {fileUp.map((file) => (   
+                        <div className="link-tab">
+                            <div className="link-info">
+                            <h6><img src={fileImg} alt={defSrc} style={{width:"50px",height:"auto",marginRight:"10px"}} className="file-img" /></h6>
+                            <p>{file.filename}</p>
+                            </div>
+                            <p style={{position: "absolute",top: "30px",left: "70px",textOverflow: "ellipsis",width: "100px"}}>{file.filetype}</p>
+                        </div>
+                    ))}
+                            </div>
+                        </div>
+                </div>
         </div>
     );
 

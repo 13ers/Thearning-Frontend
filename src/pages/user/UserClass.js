@@ -1,7 +1,9 @@
 import { GoMortarBoard } from "react-icons/go";
 import { useParams } from "react-router-dom";
+import { HiClipboardList } from "react-icons/hi";
+import { Link } from "react-router-dom";
 
-import '../../style/dashboard.css';
+import '../../style/style.css';
 
 //import hook react
 import React, { useState, useEffect } from 'react';
@@ -12,56 +14,16 @@ import { useHistory } from 'react-router';
 //import axios
 import axios from 'axios';
 
-function Class() {
+function UserClass() {
+
+
     const { id } = useParams();
+
     const [classRoom, SetClass] = useState({});
-
-    const [display2, setDisplay2] = useState("join");
-
-    function changeDisplay3() {
-        if (display2 === "join")
-     {
-        setDisplay2("join2");
-        setProfile("profile");
-        setDisplay("classOp");}
-        else{
-            setDisplay2("join");
-            setProfile("profile");
-            setDisplay("classOp");}
-    }
-
-    const [display, setDisplay] = useState("classOp");
-  
-    const changeDisplay = () => {
-     if (display === "classOp")
-     {
-        setProfile("profile");
-        setDisplay("classOp2");
-        setDisplay2("join");}
-        else{
-            setProfile("profile");
-            setDisplay("classOp");
-            setDisplay2("join");}
-    };
-
-    const [profile, setProfile] = useState("profile");
-  
-    const changeDisplay2 = () => {
-     if (profile === "profile")
-     {
-        setProfile("profile2");
-        setDisplay("classOp");
-        setDisplay2("join");}
-        else{
-            setProfile("profile");
-            setDisplay("classOp");
-            setDisplay2("join");}
-    };
-    //state user
     const [user, setUser] = useState({});
-
-    const [code, setCode] = useState("");
-
+    const [assignment, setAssignment] = useState([]);
+    
+    
     //define history
     const history = useHistory();
 
@@ -69,14 +31,13 @@ function Class() {
     const token = localStorage.getItem("token");
 
     let urlClass = 'http://localhost:8000/api/classroom/'+id;
-    console.log(urlClass);
     //function "fetchData"
     const fetchData = async () => {
 
         //set axios header dengan type Authorization + Bearer token
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
         //fetch user from Rest API
-        await axios.get('http://localhost:8000/api/user')
+        await axios.get('http://localhost:8000/api/user/')
         .then((response) => {
 
             //set response user to state
@@ -86,6 +47,7 @@ function Class() {
         await axios.get(urlClass)
         .then((response) => {
             SetClass(response.data.class);
+            setAssignment(response.data.assignments);
         })
     }
     
@@ -115,32 +77,81 @@ function Class() {
             history.push('/login');
     };
 
-    let url='http://localhost:8000/api/classroom/'+code;
-
     let photo = user.profile_photo;
 
-    const joinHandler = async (e) => {
-        e.preventDefault();
+    
+    const [tab1, setTab1] = useState('tab1');
+    const [tab2, setTab2] = useState('tabs2');
+    const [tab3, setTab3] = useState('tabs3');
+    const [tab4, setTab4] = useState('tabs4');
 
-        axios({
-            method: 'post',
-            url: url
-        });
+    const changeTab1 = () => {
+        if(tab1 === 'tabs1'){
+            setTab1('tab1');
+            setTab2('tabs2');
+            setTab3('tabs3');
+            setTab4('tabs4');
+        }
+    }
 
-        window.location.reload(false);
+    const changeTab2 = () => {
+        if(tab2 === 'tabs2'){
+            setTab1('tabs1');
+            setTab2('tab2');
+            setTab3('tabs3');
+            setTab4('tabs4');
+        }
+    }
+
+    const changeTab3 = () => {
+        if(tab3 === 'tabs3'){
+            setTab3('tab3');
+            setTab1('tabs1');
+            setTab2('tabs2');
+            setTab4('tabs4');
+        }
+    }
+
+    const changeTab4 = () => {
+        if(tab4 === 'tabs4'){
+            setTab4('tab4');
+            setTab1('tabs1');
+            setTab2('tabs2');
+            setTab3('tabs3');
+        }
     }
 
 
+    const [profile, setProfile] = useState("profile");
+  
+    const changeDisplay2 = () => {
+     if (profile === "profile")
+     {
+        setProfile("profile2");}
+        else{
+            setProfile("profile");  
+}
+    };
+    function changePage(){
+history.push('/');
+window.location.reload(false);
+    }
     return (
+        <div className="wrapper-all">
         <div className="wrapper">
             <div>
              <nav className="nav fixed-top">
              <GoMortarBoard className='icon'/>
-                <h2>Thearning</h2>
-                <img src={photo} alt='img' className='prof'onClick={changeDisplay2}/>
-                <div className={display}>
-                <li className='display'><button className="btnOp" onClick={changeDisplay3}>Gabung Kelas</button></li>
+                <h2 onClick={changePage} className="title">Thearning</h2>
+                <center>
+                <div className="btn-nav">
+                    <button className="tab" onClick={changeTab1}>Forum</button>
+                    <button className="tab" onClick={changeTab2}>Tugas Kelas</button>
+                    <button className="tab" onClick={changeTab3}>Anggota</button>
+                    <button className="tab" onClick={changeTab4}>Nilai</button>
                 </div>
+                </center>
+                <img src={photo} alt='img' className='prof'onClick={changeDisplay2}/>
                 <div className={profile}>
                 <table>
                     <tbody>
@@ -161,15 +172,10 @@ function Class() {
                     </tbody>
                 </table>
                 </div>
-                <div className={display2}>
-                    <form onSubmit={joinHandler}>
-                    <input type='text' value={code} placeholder='Masukkan Code' className='form-control' onChange={e => setCode(e.target.value)}/>
-                    <input type='submit' value='Submit' className='btn btn-primary'/>
-                    </form>
-                </div>
             </nav>
             </div>
-            <div className="container3">   
+            <div className="container3"> 
+            <div className={tab1}>
                 <center>
                     <div className="photoClass">
                         <img src={classRoom.class_image} alt='img'/>
@@ -183,17 +189,53 @@ function Class() {
                     </div>
                 </center>
                 <div className="content">
-                <div className="left-content">
-                <h3>adadad</h3>
+                    <div className="left-content" >
+                    <h6 style={{textAlign: 'left',marginBottom:'20px'}}>Mendatang</h6>
+                    <p style={{textAlign: 'left', fontSize:'0.75em'}}>Tidak ada tugas yang perlu segera diselesaikan</p>
                 </div>
-                <div className="right-content">
-                    <h3>fafbfdsdfsd</h3>
+                {assignment.map((assignment) => (   
+                    <article key={assignment.assignment_id}>
+                        <div className="right-content">
+                            <HiClipboardList className="icons"/>
+                            <div className="infoAssignment">
+                            <Link to={`/UserAssignment/${assignment.assignment_id}`} style={{color:'black',textDecoration:'none'}}>
+                            <h6>{assignment.assignment_name}</h6>
+                            </Link>
+                            <p>Tenggat : {assignment.due_date}</p>
+                            </div>
+                        </div>
+                    </article>
+                    ))}
+                    </div>
+                </div>  
+                <div className={tab2}>
+                    <h3 style={{marginBottom:'30px',marginTop:'20px'}}>Tugas Kelas</h3>
+                    <hr></hr>
+                <div className="listAs">
+                {assignment.map((assignment) => (   
+                    <article key={assignment.assignment_id}>
+                        <div className="listItem">
+                            <HiClipboardList className="icons"/>
+                            <div className="infoAssignment">
+                            <h6>{assignment.assignment_name}</h6>
+                            <p>Tenggat : {assignment.due_date}</p>
+                            </div>
+                        </div>
+                    </article>
+                    ))}
                 </div>
+                </div>
+                <div className={tab3}>
+                    <h1>Anggota</h1>
+                </div>
+                <div className={tab4}>
+                    <h1>Nilai</h1>
                 </div>
             </div>
+        </div>
         </div>
     );
 
 }
 
-export default Class;
+export default UserClass;
