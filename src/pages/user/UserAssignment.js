@@ -3,17 +3,12 @@ import { useParams } from "react-router-dom";
 import { HiClipboardList } from "react-icons/hi";
 import fileImg from '../../img/file.png';
 import linkImg from '../../img/link.png';
-
-
+import { FaRegCommentDots } from "react-icons/fa";
+import { AiOutlineComment } from "react-icons/ai";
+import { IoSend} from "react-icons/io5";
 import '../../style/style.css';
-
-//import hook react
 import React, { useState, useEffect } from 'react';
-
-//import hook useHitory from react router dom
 import { useHistory } from 'react-router';
-
-//import axios
 import axios from 'axios';
 
 function UserAssignment() {
@@ -23,8 +18,12 @@ function UserAssignment() {
     const [user, setUser] = useState({});
     const [assignment, setAssignment] = useState({});
     const [attachments, setAttachment] = useState([]);
-    const [linkData , setLink] =useState([]);
-    const [fileData , setFile] =useState([])
+    const [time ,setTime]= useState("");
+    const [date ,setDate]= useState("");
+    const [privateInput,setPrivIn]= useState("com-input");
+    const [privateCom,setPrivCom]= useState("private-coms");
+    const [publicInput,setPubIn]= useState("com-input");
+    const [publicCom,setPubCom]= useState("public-coms");
     
     //define history
     const history = useHistory();
@@ -48,7 +47,8 @@ function UserAssignment() {
         .then((response) => {
             setAssignment(response.data.assignment);
             setAttachment(response.data.attachments);
-            console.log(response.data.attachments);
+            setTime(response.data.assignment.due_time);
+            setDate(response.data.assignment.due_date)
         })
     }    
     //hook useEffect
@@ -89,6 +89,29 @@ function UserAssignment() {
             setProfile("profile");  
 }
     };
+
+    const changeDisplay3 = () => {
+        if (privateCom === "private-coms")
+        {
+            setPrivCom("com-input");
+            setPrivIn("private-input")}
+           else{
+            setPrivCom("private-coms");
+            setPrivIn("com-input");  
+   }
+       };
+
+       const changeDisplay4 = () => {
+        if (publicCom === "public-coms")
+        {
+            setPubCom("com-input");
+            setPubIn("public-input")}
+           else{
+            setPubCom("public-coms");
+            setPubIn("com-input");  
+   }
+       };
+
     function changePage(){
 history.push('/');
 window.location.reload(false);
@@ -98,9 +121,19 @@ window.location.reload(false);
     let totalMark ="";
 
     if(total === 100){
-        totalMark = "100";
+        totalMark = "0/100";
     }
-    
+    let times = time.split(':');
+    let hour = times[0];
+    let min = times[1];
+    let arr = date.split('-');
+    let year = arr[0];
+    let month = arr[1];
+    let day = arr[2];
+    let  months = ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Des"];
+    let monthName=months[parseInt(month)-1];
+    let deadline ="Tenggat : "+day+" "+monthName+" "+year+" "+hour+"."+min;
+
     return (
         <div className="wrapper-all">
         <div className="wrapper">
@@ -136,7 +169,8 @@ window.location.reload(false);
                 <HiClipboardList className="logo-As"/>
         <h1>{assignment.assignment_name}</h1>
         <div className="detail-As">
-        <p>0/{totalMark}</p>
+        <p>{totalMark}</p>
+        <p>{deadline}</p>
         </div>
         <hr></hr>
         <p>{assignment.instructions}</p>
@@ -159,6 +193,21 @@ window.location.reload(false);
             </div>
         )))}
             </div>
+            <div className="footer">
+            <hr></hr>
+            <div className="public-com">
+            <AiOutlineComment className="public-icon"/>
+            <h6>Komentar kelas</h6>
+            <div className={publicCom} >
+            <p onClick={changeDisplay4}>Tambahkan Komentar Kelas</p>
+            </div>
+            </div>
+            <div className={publicInput}>
+            <img src={photo} alt='img'className='prof4'/>
+            <textarea className="form-control" placeholder="Masukkan Komentar"></textarea>
+            <IoSend className="public-send"/>
+            </div>
+            </div>
             </div>
             <div className="right-As">
             <div className="submission">
@@ -167,6 +216,20 @@ window.location.reload(false);
             <button className="btn btn-outline-primary">Tambah Data</button><br></br>
             <button className="btn btn-primary">Submit</button>
             </center>
+            </div>
+            <div className="private-com">
+            <FaRegCommentDots className="private-icon"/>
+            <h6>Komentar Pribadi</h6>
+            <div className={privateCom}>
+            <center >
+                <p onClick={changeDisplay3}>Tambahkan Komentar Pribadi</p>
+            </center>
+            </div>
+            <div className={privateInput}>
+            <img src={photo} alt='img'className='prof3'/>
+            <textarea className="form-control" placeholder="Masukkan Komentar"></textarea>
+            <IoSend className="private-send"/>
+            </div>
             </div>
             </div>
             </div>

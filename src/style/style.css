@@ -188,6 +188,18 @@ img.prof2{
     border-radius:40px;
 }
 
+img.prof3{
+    width: 30px;
+    height: 30px;
+    border-radius:40px;
+}
+
+img.prof4{
+    width: 50px;
+    height: 50px;
+    border-radius:40px;
+}
+
 .listClass{
     height:100%;
     width:100%;
@@ -722,5 +734,127 @@ overflow-y:hidden;
 
 .submission button:first-child{
     margin-bottom: 10px;
+}
+
+.private-com{
+    margin-top: 20px;
+    padding:10px 20px;
+    padding-bottom: 0px;
+    width:100%;
+    border: 1px solid rgba(184, 184, 184, 0.747);
+    border-radius: 10px;
+    position: relative;
+}
+
+.private-coms{
+    display:block;
+    border:none;
+}
+
+.private-com h6{
+    margin-bottom: 15px;
+    padding-left: 25px;
+}
+
+.private-com p{
+    color: rgb(0, 102, 255);
+}
+
+.private-com p:hover{
+    cursor: pointer;
+}
+
+.private-icon{
+    position: absolute;
+    top: 12px;
+    left: 20px;
+    font-size: 20px;
+}
+
+.private-input{
+    display:flex;
+    justify-content:space-around;
+}
+
+.private-input>*{
+    margin-right:5px;
+    margin-bottom: 10px;
+}
+
+.private-input textarea{
+    max-height: 100%;
+    width: 100%;
+    padding:3px;
+    font-size:15px;
+    resize:both;
+}
+
+.private-send{
+    font-size:35px;
+}
+
+.private-send:hover{
+    cursor: pointer;
+}
+
+.footer{
+    width: 100%;
+}
+
+.public-com{
+    width: 100%;
+    position: relative;
+}
+
+.public-coms{
+   display:block;
+}
+
+.public-com h6{
+    padding-left: 30px;
+}
+
+.public-com p{
+    color: rgb(0, 102, 255);
+}
+
+.public-com p:hover{
+    cursor: pointer;
+}
+
+.public-icon{
+    position: absolute;
+    font-size: 20px;
+}
+
+.detail-As{
+    display:flex;
+    justify-content: space-between;
+    padding-bottom:0px;
+}
+
+.public-input{
+    display:flex;
+    justify-content:space-around;
+}
+
+.public-input>*{
+    margin-right:10px;
+}
+
+.public-send{
+    font-size:40px;
+}
+
+.public-send:hover{
+    cursor: pointer;
+}
+
+.com-input{
+    display:none;
+}
+
+.com-private{
+    display:block;
 }
 
