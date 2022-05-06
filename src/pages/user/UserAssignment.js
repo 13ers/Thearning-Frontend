@@ -1,6 +1,8 @@
 import { GoMortarBoard } from "react-icons/go";
 import { useParams } from "react-router-dom";
 import { HiClipboardList } from "react-icons/hi";
+import fileImg from '../../img/file.png';
+import linkImg from '../../img/link.png';
 
 
 import '../../style/style.css';
@@ -20,7 +22,9 @@ function UserAssignment() {
     const { id } = useParams();
     const [user, setUser] = useState({});
     const [assignment, setAssignment] = useState({});
-    const [date,setDate] = useState("")
+    const [attachments, setAttachment] = useState([]);
+    const [linkData , setLink] =useState([]);
+    const [fileData , setFile] =useState([])
     
     //define history
     const history = useHistory();
@@ -43,9 +47,10 @@ function UserAssignment() {
         await axios.get(urlAs)
         .then((response) => {
             setAssignment(response.data.assignment);
+            setAttachment(response.data.attachments);
+            console.log(response.data.attachments);
         })
-    }
-    
+    }    
     //hook useEffect
     useEffect(() => {
 
@@ -95,8 +100,6 @@ window.location.reload(false);
     if(total === 100){
         totalMark = "100";
     }
-
-    console.log(totalMark);
     
     return (
         <div className="wrapper-all">
@@ -137,15 +140,38 @@ window.location.reload(false);
         </div>
         <hr></hr>
         <p>{assignment.instructions}</p>
+        <div className="upload-tab v2">
+        {attachments.map((attachments) => ( attachments.file === null ? (
+            <div className="link-tab">
+            <div className="link-info">
+            <h6><img src={attachments.link.thumbnail} alt="" style={{width:"50px",height:"auto",marginRight:"10px"}} /></h6>
+            <p>{attachments.link.title}</p>
+            </div>
+            <p style={{position: "absolute",top: "30px",left: "70px",textOverflow: "ellipsis",width: "100px"}}>{attachments.link.url}</p>
+        </div>
+          ) : (
+            <div className="link-tab">
+                <div className="link-info">
+                <h6><img src={fileImg} alt="" style={{width:"40px",height:"auto",marginRight:"10px"}} className="file-img" /></h6>
+                <p>{attachments.file.filename}</p>
+                </div>
+                <p style={{position: "absolute",top: "30px",left: "60px",textOverflow: "ellipsis",width: "100px"}}>{attachments.file.filetype}</p>
+            </div>
+        )))}
+            </div>
             </div>
             <div className="right-As">
-            <h1>{assignment.assignment_name}</h1>
+            <div className="submission">
+            <h5>Tugas Anda</h5>
+            <center>
+            <button className="btn btn-outline-primary">Tambah Data</button><br></br>
+            <button className="btn btn-primary">Submit</button>
+            </center>
+            </div>
             </div>
             </div>
         </div>
         </div>
     );
-
 }
-
 export default UserAssignment;

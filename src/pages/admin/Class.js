@@ -257,7 +257,6 @@ function Class() {
                 setFileUp(fileUp => fileUp.concat(fileData));
             setFileTab('file');
             setLinkTab('link');
-            console.log(fileData);
             })
             .catch((error) => {
             })
@@ -484,10 +483,10 @@ function Class() {
                     {fileUp.map((file) => (   
                         <div className="link-tab">
                             <div className="link-info">
-                            <h6><img src={fileImg} alt={defSrc} style={{width:"50px",height:"auto",marginRight:"10px"}} className="file-img" /></h6>
+                            <h6><img src={fileImg} alt={defSrc} style={{width:"40px",height:"auto",marginRight:"10px"}} className="file-img" /></h6>
                             <p>{file.filename}</p>
                             </div>
-                            <p style={{position: "absolute",top: "30px",left: "70px",textOverflow: "ellipsis",width: "100px"}}>{file.filetype}</p>
+                            <p style={{position: "absolute",top: "30px",left: "60px",textOverflow: "ellipsis",width: "100px"}}>{file.filetype}</p>
                         </div>
                     ))}
                             </div>
