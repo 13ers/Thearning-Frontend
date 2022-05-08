@@ -31,7 +31,7 @@ function UserAssignment() {
     //token
     const token = localStorage.getItem("token");
 
-    let urlAs = 'http://localhost:8000/api/assignments/'+id;
+    let urlAs = 'http://localhost:8000/api/assignments/students/'+id;
     //function "fetchData"
     const fetchData = async () => {
 
@@ -46,7 +46,7 @@ function UserAssignment() {
         await axios.get(urlAs)
         .then((response) => {
             setAssignment(response.data.assignment);
-            setAttachment(response.data.attachments);
+            setAttachment(response.data.assignment_attachments);
             setTime(response.data.assignment.due_time);
             setDate(response.data.assignment.due_date)
         })
