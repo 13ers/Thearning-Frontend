@@ -10,11 +10,13 @@ import '../../style/style.css';
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router';
 import axios from 'axios';
+import { Link } from "react-router-dom";
 
 function UserAssignment() {
 
 
-    const { id } = useParams();
+    const { idClass } = useParams();
+    const {idAs} = useParams();
     const [user, setUser] = useState({});
     const [assignment, setAssignment] = useState({});
     const [attachments, setAttachment] = useState([]);
@@ -31,7 +33,7 @@ function UserAssignment() {
     //token
     const token = localStorage.getItem("token");
 
-    let urlAs = 'http://localhost:8000/api/assignments/students/'+id;
+    let urlAs = 'http://localhost:8000/api/classroom/'+idClass+'/assignments/students/'+idAs;
     //function "fetchData"
     const fetchData = async () => {
 
@@ -179,7 +181,9 @@ window.location.reload(false);
             <div className="link-tab">
             <div className="link-info">
             <h6><img src={attachments.link.thumbnail} alt="" style={{width:"50px",height:"auto",marginRight:"10px"}} /></h6>
+            <Link to={{ pathname: attachments.link.url }} target="_blank" style={{textDecoration:'none'}}>
             <p>{attachments.link.title}</p>
+            </Link>
             </div>
             <p style={{position: "absolute",top: "30px",left: "70px",textOverflow: "ellipsis",width: "100px"}}>{attachments.link.url}</p>
         </div>

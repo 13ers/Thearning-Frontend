@@ -179,7 +179,9 @@ function Register() {
                                         <div className="mb-3">
                                             <label className="form-label">Status</label>
                                             <select name="stats" id="stats"value={status} onChange={(e) => setStatus(e.target.value)}>
+                                            <option value="">Pilih Status</option>
                                         <option value="admin">Admin</option>
+                                        <option value="teacher">Guru</option>
                                         <option value="student">Siswa</option>
                                     </select>
                                         </div>

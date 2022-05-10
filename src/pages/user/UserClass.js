@@ -18,7 +18,7 @@ function UserClass() {
 
 
     const { id } = useParams();
-
+    const idClass = id;
     const [classRoom, SetClass] = useState({});
     const [user, setUser] = useState({});
     const [assignment, setAssignment] = useState([]);
@@ -198,7 +198,7 @@ window.location.reload(false);
                         <div className="right-content">
                             <HiClipboardList className="icons"/>
                             <div className="infoAssignment">
-                            <Link to={`/UserAssignment/${assignment.assignment_id}`} style={{color:'black',textDecoration:'none'}}>
+                            <Link to={`/${idClass}/UserAssignment/${assignment.assignment_id}`} style={{color:'black',textDecoration:'none'}}>
                             <h6>{assignment.assignment_name}</h6>
                             </Link>
                             <p>Tenggat : {assignment.due_date}</p>
