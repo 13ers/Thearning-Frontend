@@ -2,7 +2,6 @@ import { GoMortarBoard } from "react-icons/go";
 import { useParams } from "react-router-dom";
 import { HiClipboardList } from "react-icons/hi";
 import fileImg from '../../img/file.png';
-import linkImg from '../../img/link.png';
 import { FaRegCommentDots } from "react-icons/fa";
 import { AiOutlineComment } from "react-icons/ai";
 import { IoSend} from "react-icons/io5";
@@ -20,13 +19,27 @@ function UserAssignment() {
     const [user, setUser] = useState({});
     const [assignment, setAssignment] = useState({});
     const [attachments, setAttachment] = useState([]);
+    const [submissionData, setSubmissionData] = useState([]);
     const [time ,setTime]= useState("");
     const [date ,setDate]= useState("");
     const [privateInput,setPrivIn]= useState("com-input");
     const [privateCom,setPrivCom]= useState("private-coms");
     const [publicInput,setPubIn]= useState("com-input");
     const [publicCom,setPubCom]= useState("public-coms");
+    const [selectedFile, setSelectedFile] = useState();
+    const [fileName, setSelectedFileName] = useState("");
+    const [isFilePicked, setIsFilePicked] = useState(false);
+    const [attId, setAttId] = useState();
+    const [linkUp,setLinkUp] = useState([]);
+    const [fileUp, setFileUp] = useState([]);
+    const [link, setLink] = useState("");
+    const [linkTab, setLinkTab] = useState('hide');
+    const [fileTab, setFileTab] = useState('hide');
+    const [listOp, setListOp] = useState('hide');
+    const [submission,setSubmission] = useState({});
+    let subIds = submission.submission_id;
     
+    let FileName = fileName.substring(fileName.lastIndexOf("\\") + 1).split(".")[0];
     //define history
     const history = useHistory();
 
@@ -44,13 +57,14 @@ function UserAssignment() {
         .then((response) => {
             setUser(response.data.data);
         })
-
         await axios.get(urlAs)
         .then((response) => {
             setAssignment(response.data.assignment);
             setAttachment(response.data.assignment_attachments);
+            setSubmissionData(response.data.submission_attachments);
+            setSubmission(response.data.submission);
             setTime(response.data.assignment.due_time);
-            setDate(response.data.assignment.due_date)
+            setDate(response.data.assignment.due_date);
         })
     }    
     //hook useEffect
@@ -119,6 +133,122 @@ history.push('/');
 window.location.reload(false);
     }
 
+    const changeHandler = (event) => {
+        setSelectedFile(event.target.files[0]);
+        setIsFilePicked(true);
+        setSelectedFileName(event.target.files[0].name);
+        };
+        
+        const fileHandler = async (e) => {
+            e.preventDefault();
+            const formData = new FormData();
+
+            formData.append('file', selectedFile);
+            formData.append('submission_id', subIds);
+            formData.append('filename', FileName);
+            //send data to server
+            await axios.post('http://localhost:8000/api/upload/', formData)
+            .then((response) => {
+                const fileData = response.data.file;
+            setFileTab('hide');
+            setLinkTab('hide');
+            setSelectedFile();
+        setIsFilePicked(false);
+        setSelectedFileName("");
+        window.location.reload(false);
+            })
+            .catch((error) => {
+            })
+            };
+    
+        const linkHandler = async (e) => {
+            e.preventDefault();
+            (async () => {
+            const res = await fetch("http://localhost:8000/api/links/", {
+                method: "POST",
+                headers: {
+                    'Authorization': 'Bearer ' + token,
+                "Content-Type": "application/json",
+                Origin: "https://127.0.0.1:5000",
+                },
+    
+                body: JSON.stringify({ url: link, submission_id: subIds}),
+            });
+            const content = await res.json();
+            const links = content.link;
+            setAttId(links.id);
+            setFileTab('hide');
+            setLinkTab('hide');
+            setLink("");
+            window.location.reload(false);
+            })();
+            };
+
+        const showOp = () => {
+            if(listOp === 'hide'){
+                setListOp('classOp2 v2');
+                setFileTab('hide');
+                setLinkTab('hide');
+            }
+        }
+            
+        const showFile = () => {
+            if(fileTab === 'hide'){
+                setFileTab('tabs v3');
+                setListOp('hide');
+                setLinkTab('hide');
+            }
+        }
+
+        const showLink = () => {
+            if(linkTab === 'hide'){
+                setListOp('hide');
+                setFileTab('hide');
+                setLinkTab('tabs v4');
+            }
+        }
+
+        const hide = () => {
+            setFileTab('hide');
+            setLinkTab('hide');
+            setListOp('hide');
+        }
+
+        const dellFile = function(value) {
+            return async function(e) {
+                e.preventDefault();
+                for(let i = 0; i < submissionData.length; i++) {
+                    let data = submissionData[i];
+                    if ( data.link === null && data.file !== null){
+                        console.log("File Ada");
+                        
+                        console.log(value);
+                        if(data.file.file_id === value){
+                        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+            axios.delete('http://localhost:8000/api/attachments/'+data.attachment.attachment_id,{
+                });window.location.reload(false);
+                        }
+                    }
+                }
+            };
+          };
+        
+        const dellLink = function(value) {
+            return async function(e) {
+                e.preventDefault();
+                for(let i = 0; i < submissionData.length; i++) {
+                    let data = submissionData[i];
+                    if ( data.file === null && data.link !== null){
+                        if(data.link.id === value){
+                            axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+            axios.delete('http://localhost:8000/api/attachments/'+data.attachment.attachment_id,{
+                });window.location.reload(false);
+                        }
+                    }
+                }
+                
+            };
+          };
     let total = assignment.total_marks;
     let totalMark ="";
 
@@ -187,7 +317,7 @@ window.location.reload(false);
             </div>
             <p style={{position: "absolute",top: "30px",left: "70px",textOverflow: "ellipsis",width: "100px"}}>{attachments.link.url}</p>
         </div>
-          ) : (
+        ) : (
             <div className="link-tab">
                 <div className="link-info">
                 <h6><img src={fileImg} alt="" style={{width:"40px",height:"auto",marginRight:"10px"}} className="file-img" /></h6>
@@ -215,12 +345,55 @@ window.location.reload(false);
             </div>
             <div className="right-As">
             <div className="submission">
-            <h5>Tugas Anda</h5>
-            <center>
-            <button className="btn btn-outline-primary">Tambah Data</button><br></br>
-            <button className="btn btn-primary">Submit</button>
-            </center>
+                <h5>Tugas Anda</h5>
+                {submissionData.map((attachments) => ( attachments.file === null ? (
+            <div className="sub-container v2">
+            <div className="link-info">
+            <form onSubmit={dellLink(attachments.link.id)}>
+                <button type="submit" className="btns v2"></button>
+            </form>
+            <img src={attachments.link.thumbnail} alt="img" style={{width:"50px",height:"auto",marginRight:"10px"}} />
+            <Link to={{ pathname: attachments.link.url }} target="_blank" style={{textDecoration:'none'}}>
+            <p>{attachments.link.title}</p>
+            </Link>
             </div>
+            <p style={{position: "absolute",top: "20px",left: "10px"}} className="url">{attachments.link.url}</p>
+            </div>
+        ) : (
+            <div className="sub-container v2">
+                <div className="link-info">
+                <form onSubmit={dellFile(attachments.file.file_id)}>
+                <button type="submit" className="btns v2"></button>
+            </form>
+                            <img src={fileImg} alt="img" style={{width:"30px",height:"auto",marginRight:"10px"}} className="file-img" />
+                            <p className="file-info">{attachments.file.filename}</p>
+                            </div>
+                            <p style={{position: "absolute",top: "20px",left: "7px"}} className="file-info">{attachments.file.filetype}</p>
+                </div>
+        )))}
+                <div className="btn-unsubmit">
+                <button className="btn btn-outline-primary" style={{marginBottom:'5px'}} onClick={showOp}>Tambah Data</button><br></br>
+                <button className="btn btn-primary">Submit</button>
+                <div className={listOp}>
+                <button onClick={showLink} className="btn-op">Link</button>
+                <button onClick={showFile} className="btn-op">File</button>
+                </div>
+                <div className={fileTab}>
+                <form onSubmit={fileHandler}>
+                <input type="file" className="form-control" onChange={changeHandler} placeholder="Pilih File"/>
+                <button className="btn btn-primary" type="submit">Submit</button>
+                </form>
+                <button className="btn btn-outline-primary" style={{marginRight:'5px'}} onClick={hide}>Batal</button>
+                </div>
+                <div className={linkTab}>
+                <form onSubmit={linkHandler}>
+                <input type="text" className="form-control" value={link} onChange={(e) => setLink(e.target.value)} placeholder="Salin Link Disini"/>
+                <button className="btn btn-primary" type="submit">Submit</button>
+                </form>
+                <button className="btn btn-outline-primary" style={{marginRight:'5px'}} onClick={hide}>Batal</button>
+                </div>
+                </div>
+                </div>
             <div className="private-com">
             <FaRegCommentDots className="private-icon"/>
             <h6>Komentar Pribadi</h6>

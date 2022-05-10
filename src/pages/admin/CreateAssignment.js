@@ -1,7 +1,5 @@
-import { GoMortarBoard } from "react-icons/go";
 import { useParams } from "react-router-dom";
-import { HiClipboardList , HiOutlineUpload } from "react-icons/hi";
-import { Link } from "react-router-dom";
+import { HiOutlineUpload } from "react-icons/hi";
 import { IoLink } from "react-icons/io5";
 import linkImg from '../../img/link.png';
 import fileImg from '../../img/file.png';

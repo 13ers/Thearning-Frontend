@@ -700,6 +700,13 @@ overflow-y:hidden;
     display:flex;
 }
 
+.link-info p{
+    width:300px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .link.info img{
     margin-right: 10px;
 }
@@ -717,10 +724,11 @@ overflow-y:hidden;
     width:100%;
     border: 1px solid rgba(184, 184, 184, 0.747);
     border-radius: 10px;
+    position: relative;
 }
 
 .submission h5{
-    margin-bottom: 50px;
+    margin-bottom: 15px;
 }
 
 .submission button{
@@ -858,3 +866,114 @@ overflow-y:hidden;
     display:block;
 }
 
+.sub-container{
+    border: 1px solid rgba(184, 184, 184, 0.747);
+    border-radius:10px;
+    font-size : 0.7em;
+    height:45px;
+    padding:7px;
+    margin:0px;
+    margin-bottom:10px;
+    position: relative;
+}
+
+.sub-container p{
+    padding:0px;
+    padding-left: 40px;
+    margin:0px;
+}
+
+.sub-container img{
+    width:32px;
+    background-color:black;
+    position: absolute;
+}
+
+.classOp2.v2{
+    display:block;
+    width: 86%;
+    top: 148px;
+    left: 17px;
+    border: 1px solid #0d6efd;
+    padding:5px;
+    margin:0px;
+    border-radius: 10px;
+}
+
+.classOp2.v2 button.btn-op{
+    margin:0px;
+    padding:0px;
+    background-color: white;
+    border:none;
+    border-radius: 10px;
+    height:100%;
+}
+
+.classOp2.v2 button.btn-op:hover{
+    background-color:rgb(223, 223, 223);
+}
+
+.tabs.v3{
+    width:100%;
+    position:absolute;
+    left:0;
+    bottom: -60px;
+    background-color:white;
+    z-index: 10;
+}
+.tabs.v3 input{
+    margin-bottom: 10px;
+}
+
+.tabs.v3 button{
+    width:30%;
+}
+
+.tabs.v4{
+    width: 100%;
+    position: absolute;
+    background-color:white;
+    left: 0px;
+    bottom: -95px;
+    z-index: 10;
+}
+
+.tabs.v4 input{
+    margin-bottom: 10px;
+}
+
+.tabs.v4 button{
+    width:30%;
+}
+
+.hide{
+    display:none;
+}
+
+
+.sub-container.v2 p{
+    font-size:0.9em;
+    width:150px;
+    margin-left: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.sub-container.v2 p.url{
+    margin-left: 10px;
+    width:150px;
+}
+
+.sub-container.v2 p.file-info{
+    margin-left:0px;
+    width: 160px;
+}
+
+.btns.v2{
+    position:absolute;
+    right:7px;
+    top: 13px;
+    width: 15px;
+    height: 15px;
+}

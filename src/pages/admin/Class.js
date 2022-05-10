@@ -21,7 +21,6 @@ function Class() {
     const [user, setUser] = useState({});
     const [assignment, setAssignment] = useState([]);
     const [idAs, setId] = useState("");
-    const [main, setMain] = useState("wrapper");
     const [tab1, setTab1] = useState('tab1');
     const [tab2, setTab2] = useState('tabs2');
     const [tab3, setTab3] = useState('tabs3');
