@@ -139,9 +139,7 @@ function Class() {
           );
         }
       })
-      .catch(function (error) {
-        console.log(error);
-      });
+      .catch(function (error) {});
   };
   function changePage() {
     history.push("/");

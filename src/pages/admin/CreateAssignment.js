@@ -24,7 +24,7 @@ function CreateAssignment() {
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [instruction, setIntruction] = useState("");
-  const [mark, setMark] = useState("");
+  const [mark, setMark] = useState();
   const [selectedFile, setSelectedFile] = useState();
   const [fileName, setSelectedFileName] = useState("");
   const [isFilePicked, setIsFilePicked] = useState(false);
@@ -85,6 +85,14 @@ function CreateAssignment() {
     history.goBack();
   };
 
+  let marks = "";
+
+  if (mark === "0") {
+    marks = null;
+  } else {
+    marks = parseInt(mark);
+  }
+
   const addHandler = async (e) => {
     e.preventDefault();
     (async () => {
@@ -106,7 +114,7 @@ function CreateAssignment() {
               due_date: date,
               due_time: time + ":00",
               instructions: instruction,
-              total_marks: parseInt(mark),
+              total_marks: marks,
             },
           }),
         }
