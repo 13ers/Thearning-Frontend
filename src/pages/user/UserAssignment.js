@@ -31,9 +31,6 @@ function UserAssignment() {
     const [selectedFile, setSelectedFile] = useState();
     const [fileName, setSelectedFileName] = useState("");
     const [isFilePicked, setIsFilePicked] = useState(false);
-    const [attId, setAttId] = useState();
-    const [linkUp,setLinkUp] = useState([]);
-    const [fileUp, setFileUp] = useState([]);
     const [link, setLink] = useState("");
     const [linkTab, setLinkTab] = useState('hide');
     const [fileTab, setFileTab] = useState('hide');
@@ -151,7 +148,6 @@ window.location.reload(false);
             //send data to server
             await axios.post('http://localhost:8000/api/upload/', formData)
             .then((response) => {
-                const fileData = response.data.file;
             setFileTab('hide');
             setLinkTab('hide');
             setSelectedFile();
@@ -166,7 +162,7 @@ window.location.reload(false);
         const linkHandler = async (e) => {
             e.preventDefault();
             (async () => {
-            const res = await fetch("http://localhost:8000/api/links/", {
+            await fetch("http://localhost:8000/api/links/", {
                 method: "POST",
                 headers: {
                     'Authorization': 'Bearer ' + token,
@@ -176,9 +172,6 @@ window.location.reload(false);
     
                 body: JSON.stringify({ url: link, submission_id: subIds}),
             });
-            const content = await res.json();
-            const links = content.link;
-            setAttId(links.id);
             setFileTab('hide');
             setLinkTab('hide');
             setLink("");

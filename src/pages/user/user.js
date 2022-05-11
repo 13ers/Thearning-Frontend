@@ -167,7 +167,6 @@ function User() {
             </nav>
             </div>
             <div className="container2">   
-                        <h1 style={{marginBottom:'20px'}}>User</h1>
                         <div className="grid-container">
                     {classList.map((room) => ( 
                         <article key={room.class_id}>

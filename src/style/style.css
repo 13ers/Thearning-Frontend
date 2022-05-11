@@ -976,3 +976,33 @@ overflow-y:hidden;
 p.link-title{
     width: 340px
 }
+
+.profile-student{
+    width:40px;
+    height:40px;
+    border-radius: 30px;
+}
+
+.list-student{
+    display:flex;
+    position: relative;
+    justify-content:flex-start;
+    align-items:center;
+    height:20px;
+    margin-bottom: 30px;
+}
+
+.info-student{
+    height:100%;
+    width: 100%;
+    padding-left: 15px;
+}
+
+.title-student{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    height:20px;
+    margin-top: 50px;
+}
+

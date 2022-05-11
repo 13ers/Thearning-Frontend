@@ -22,7 +22,10 @@ function UserClass() {
     const [classRoom, SetClass] = useState({});
     const [user, setUser] = useState({});
     const [assignment, setAssignment] = useState([]);
+    const [student, setStudent] = useState([]);
+    const [teacher, setTeacher] = useState([]);
     
+    let numOfStud = student.length;
     
     //define history
     const history = useHistory();
@@ -48,6 +51,8 @@ function UserClass() {
         .then((response) => {
             SetClass(response.data.class);
             setAssignment(response.data.assignments);
+            setStudent(response.data.students);
+            setTeacher(response.data.teachers);
         })
     }
     
@@ -148,7 +153,6 @@ window.location.reload(false);
                     <button className="tab" onClick={changeTab1}>Forum</button>
                     <button className="tab" onClick={changeTab2}>Tugas Kelas</button>
                     <button className="tab" onClick={changeTab3}>Anggota</button>
-                    <button className="tab" onClick={changeTab4}>Nilai</button>
                 </div>
                 </center>
                 <img src={photo} alt='img' className='prof'onClick={changeDisplay2}/>
@@ -225,11 +229,40 @@ window.location.reload(false);
                     ))}
                 </div>
                 </div>
-                <div className={tab3}>
-                    <h1>Anggota</h1>
+                <div className={tab3} style={{paddingLeft:"200px",paddingRight:"200px"}}>
+                <div className="title-student">
+                <h3 style={{marginBottom:'30px',marginTop:'20px'}}>Pengajar</h3>
                 </div>
-                <div className={tab4}>
-                    <h1>Nilai</h1>
+                    <hr style={{border:"1px solid #0d6efd", borderRadius:"5px"}}></hr>
+                    <br></br>
+                    {teacher.map((teacher) => (   
+                    <article key={teacher.user_id}>
+                        <div className="list-student">
+                            <img src={teacher.profile_photo } alt="img" className="profile-student"/>
+                            <div className="info-student">
+                            <h5>{teacher.fullname}</h5>
+                            </div>
+                        </div>
+                        <hr></hr>
+                    </article>
+                    ))}
+                    <div className="title-student v2">
+                <h3>Anggota</h3>
+                <h6>{numOfStud} Siswa</h6>
+                </div>
+                <hr style={{border:"1px solid #0d6efd", borderRadius:"5px"}}></hr>
+                <br></br>
+                    {student.map((student) => (   
+                    <article key={student.user_id}>
+                        <div className="list-student">
+                            <img src={student.profile_photo } alt="img" className="profile-student"/>
+                            <div className="info-student">
+                            <h5>{student.fullname}</h5>
+                            </div>
+                        </div>
+                        <hr></hr>
+                    </article>
+                    ))}
                 </div>
             </div>
         </div>
