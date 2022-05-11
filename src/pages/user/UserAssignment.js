@@ -37,6 +37,7 @@ function UserAssignment() {
   const [subMenu, setSubMenu] = useState("hide");
   const [unsubMenu, setUnsubMenu] = useState("hide");
   const [colorStatus, setColorStatus] = useState("");
+  const [delAtt, setDelAtt] = useState("");
   const [submission, setSubmission] = useState({});
   let subIds = submission.submission_id;
 
@@ -81,9 +82,11 @@ function UserAssignment() {
       }
 
       if (response.data.submission.submitted === true) {
+        setDelAtt("hide");
         setUnsubMenu("btn-unsubmit");
         setSubMenu("hide");
       } else if (response.data.submission.submitted === false) {
+        setDelAtt("");
         setUnsubMenu("hide");
         setSubMenu("btn-submit");
       }
@@ -505,7 +508,10 @@ function UserAssignment() {
                 attachments.file === null ? (
                   <div className="sub-container v2">
                     <div className="link-info">
-                      <form onSubmit={dellLink(attachments.link.id)}>
+                      <form
+                        onSubmit={dellLink(attachments.link.id)}
+                        className={delAtt}
+                      >
                         <button type="submit" className="btns v2"></button>
                       </form>
                       <img
@@ -539,7 +545,10 @@ function UserAssignment() {
                 ) : (
                   <div className="sub-container v2">
                     <div className="link-info">
-                      <form onSubmit={dellFile(attachments.file.file_id)}>
+                      <form
+                        onSubmit={dellFile(attachments.file.file_id)}
+                        className={delAtt}
+                      >
                         <button type="submit" className="btns v2"></button>
                       </form>
                       <img
