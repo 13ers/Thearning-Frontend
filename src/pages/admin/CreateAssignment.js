@@ -155,6 +155,8 @@ function CreateAssignment() {
     times2 = time + ":00";
   }
 
+  console.log(times2);
+
   const addHandler = async (e) => {
     e.preventDefault();
     (async () => {
@@ -324,7 +326,6 @@ function CreateAssignment() {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Masukkan Nama Tugas"
-                    autocomplete="off"
                   />
                 </div>
               </div>
@@ -338,7 +339,6 @@ function CreateAssignment() {
                     onChange={(e) => setIntruction(e.target.value)}
                     placeholder="Masukkan Instruksi"
                     style={{ height: "100px" }}
-                    autocomplete="off"
                   />
                 </div>
               </div>
@@ -353,7 +353,6 @@ function CreateAssignment() {
                     value={time}
                     onChange={(e) => setTime(e.target.value)}
                     placeholder=""
-                    autocomplete="off"
                   />
                 </div>
               </div>
@@ -366,7 +365,6 @@ function CreateAssignment() {
                     value={date}
                     onChange={(e) => setDate(e.target.value)}
                     placeholder=""
-                    autocomplete="off"
                   />
                 </div>
               </div>
@@ -378,7 +376,6 @@ function CreateAssignment() {
                     className="form-select"
                     value={mark}
                     onChange={(e) => setMark(e.target.value)}
-                    autocomplete="off"
                   >
                     <option value="">Pilih Opsi</option>
                     <option value="100">Dengan Nilai (100)</option>
