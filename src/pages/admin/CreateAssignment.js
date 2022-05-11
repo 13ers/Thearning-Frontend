@@ -24,7 +24,12 @@ function CreateAssignment() {
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [instruction, setIntruction] = useState("");
-  const [mark, setMark] = useState();
+  const [mark, setMark] = useState("");
+  const [names, setNames] = useState("");
+  const [dates, setDates] = useState("");
+  const [times, setTimes] = useState("");
+  const [instructions, setIntructions] = useState("");
+  const [marks, setMarks] = useState("");
   const [selectedFile, setSelectedFile] = useState();
   const [fileName, setSelectedFileName] = useState("");
   const [isFilePicked, setIsFilePicked] = useState(false);
@@ -69,6 +74,51 @@ function CreateAssignment() {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    const data = window.localStorage.getItem("name");
+    if (data !== null) setName(JSON.parse(data));
+  }, []);
+
+  useEffect(() => {
+    const data = window.localStorage.getItem("date");
+    if (data !== null) setDate(JSON.parse(data));
+  }, []);
+
+  useEffect(() => {
+    const data = window.localStorage.getItem("time");
+    if (data !== null) setTime(JSON.parse(data));
+  }, []);
+
+  useEffect(() => {
+    const data = window.localStorage.getItem("instruction");
+    if (data !== null) setIntruction(JSON.parse(data));
+  }, []);
+
+  useEffect(() => {
+    const data = window.localStorage.getItem("mark");
+    if (data !== null) setMark(JSON.parse(data));
+  }, []);
+
+  useEffect(() => {
+    window.localStorage.setItem("name", JSON.stringify(name));
+  }, [name]);
+
+  useEffect(() => {
+    window.localStorage.setItem("date", JSON.stringify(date));
+  }, [date]);
+
+  useEffect(() => {
+    window.localStorage.setItem("time", JSON.stringify(time));
+  }, [time]);
+
+  useEffect(() => {
+    window.localStorage.setItem("instruction", JSON.stringify(instruction));
+  }, [instruction]);
+
+  useEffect(() => {
+    window.localStorage.setItem("mark", JSON.stringify(mark));
+  }, [mark]);
+
   const back = async (e) => {
     e.preventDefault();
 
@@ -82,15 +132,20 @@ function CreateAssignment() {
         },
       }
     );
+    localStorage.removeItem("name");
+    localStorage.removeItem("date");
+    localStorage.removeItem("time");
+    localStorage.removeItem("instruction");
+    localStorage.removeItem("mark");
     history.goBack();
   };
 
-  let marks = "";
+  let marks2 = "";
 
   if (mark === "0") {
-    marks = null;
+    marks2 = null;
   } else {
-    marks = parseInt(mark);
+    marks2 = parseInt(mark);
   }
 
   const addHandler = async (e) => {
@@ -114,11 +169,16 @@ function CreateAssignment() {
               due_date: date,
               due_time: time + ":00",
               instructions: instruction,
-              total_marks: marks,
+              total_marks: marks2,
             },
           }),
         }
       );
+      localStorage.removeItem("name");
+      localStorage.removeItem("date");
+      localStorage.removeItem("time");
+      localStorage.removeItem("instruction");
+      localStorage.removeItem("mark");
       history.goBack();
     })();
   };
@@ -199,9 +259,6 @@ function CreateAssignment() {
       for (let i = 0; i < attachment.length; i++) {
         let data = attachment[i];
         if (data.link === null && data.file !== null) {
-          console.log("File Ada");
-
-          console.log(value);
           if (data.file.file_id === value) {
             axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
             axios
@@ -260,6 +317,7 @@ function CreateAssignment() {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Masukkan Nama Tugas"
+                    autocomplete="off"
                   />
                 </div>
               </div>
@@ -273,6 +331,7 @@ function CreateAssignment() {
                     onChange={(e) => setIntruction(e.target.value)}
                     placeholder="Masukkan Instruksi"
                     style={{ height: "100px" }}
+                    autocomplete="off"
                   />
                 </div>
               </div>
@@ -287,6 +346,7 @@ function CreateAssignment() {
                     value={time}
                     onChange={(e) => setTime(e.target.value)}
                     placeholder=""
+                    autocomplete="off"
                   />
                 </div>
               </div>
@@ -299,6 +359,7 @@ function CreateAssignment() {
                     value={date}
                     onChange={(e) => setDate(e.target.value)}
                     placeholder=""
+                    autocomplete="off"
                   />
                 </div>
               </div>
@@ -310,6 +371,7 @@ function CreateAssignment() {
                     className="form-select"
                     value={mark}
                     onChange={(e) => setMark(e.target.value)}
+                    autocomplete="off"
                   >
                     <option value="">Pilih Opsi</option>
                     <option value="100">Dengan Nilai (100)</option>
