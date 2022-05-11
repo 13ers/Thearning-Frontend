@@ -20,7 +20,6 @@ function Class() {
     const [classRoom, SetClass] = useState({});
     const [user, setUser] = useState({});
     const [assignment, setAssignment] = useState([]);
-    const [idAs, setId] = useState("");
     const [tab1, setTab1] = useState('tab1');
     const [tab2, setTab2] = useState('tabs2');
     const [tab3, setTab3] = useState('tabs3');
@@ -139,9 +138,8 @@ function Class() {
             },
             })
             .then(function(response) {
-            setId(response.data.assignment_id);
-            if(idAs !== ""){
-                history.push(`/${id}/CreateAssignment/${idAs}`);
+            if(response.data.assignment_id !== ""){
+                history.push(`/${id}/CreateAssignment/${response.data.assignment_id}`);
             }
             })
             .catch(function(error) {

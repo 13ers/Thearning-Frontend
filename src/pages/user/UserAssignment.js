@@ -1,6 +1,8 @@
 import { GoMortarBoard } from "react-icons/go";
 import { useParams } from "react-router-dom";
 import { HiClipboardList } from "react-icons/hi";
+import { HiOutlineUpload } from "react-icons/hi";
+import { IoLink } from "react-icons/io5";
 import fileImg from '../../img/file.png';
 import { FaRegCommentDots } from "react-icons/fa";
 import { AiOutlineComment } from "react-icons/ai";
@@ -189,12 +191,16 @@ window.location.reload(false);
                 setListOp('classOp2 v2');
                 setFileTab('hide');
                 setLinkTab('hide');
+            }else{
+                setListOp('hide');
+                setFileTab('hide');
+                setLinkTab('hide');
             }
         }
             
         const showFile = () => {
             if(fileTab === 'hide'){
-                setFileTab('tabs v3');
+                setFileTab('tabs v4');
                 setListOp('hide');
                 setLinkTab('hide');
             }
@@ -212,6 +218,10 @@ window.location.reload(false);
             setFileTab('hide');
             setLinkTab('hide');
             setListOp('hide');
+            setSelectedFile();
+            setIsFilePicked(false);
+            setSelectedFileName("");
+            setLink("");
         }
 
         const dellFile = function(value) {
@@ -225,8 +235,10 @@ window.location.reload(false);
                         console.log(value);
                         if(data.file.file_id === value){
                         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-            axios.delete('http://localhost:8000/api/attachments/'+data.attachment.attachment_id,{
-                });window.location.reload(false);
+            axios.delete('http://localhost:8000/api/attachments/'+data.attachment.attachment_id)
+            .then((response) => {
+                window.location.reload(false)
+            });
                         }
                     }
                 }
@@ -241,8 +253,10 @@ window.location.reload(false);
                     if ( data.file === null && data.link !== null){
                         if(data.link.id === value){
                             axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-            axios.delete('http://localhost:8000/api/attachments/'+data.attachment.attachment_id,{
-                });window.location.reload(false);
+            axios.delete('http://localhost:8000/api/attachments/'+data.attachment.attachment_id)
+            .then((response) => {
+                window.location.reload(false)
+            });
                         }
                     }
                 }
@@ -375,22 +389,22 @@ window.location.reload(false);
                 <button className="btn btn-outline-primary" style={{marginBottom:'5px'}} onClick={showOp}>Tambah Data</button><br></br>
                 <button className="btn btn-primary">Submit</button>
                 <div className={listOp}>
-                <button onClick={showLink} className="btn-op">Link</button>
-                <button onClick={showFile} className="btn-op">File</button>
+                <button onClick={showLink} className="btn-op"><IoLink style={{marginRight:'10px'}}/>Link</button>
+                <button onClick={showFile} className="btn-op"><HiOutlineUpload style={{marginRight:'10px'}}/>File</button>
                 </div>
                 <div className={fileTab}>
                 <form onSubmit={fileHandler}>
                 <input type="file" className="form-control" onChange={changeHandler} placeholder="Pilih File"/>
                 <button className="btn btn-primary" type="submit">Submit</button>
                 </form>
-                <button className="btn btn-outline-primary" style={{marginRight:'5px'}} onClick={hide}>Batal</button>
+                <button className="btn btn-outline-primary" style={{position: 'absolute',bottom: '20px',left: '75px'}} onClick={hide}>Batal</button>
                 </div>
                 <div className={linkTab}>
                 <form onSubmit={linkHandler}>
                 <input type="text" className="form-control" value={link} onChange={(e) => setLink(e.target.value)} placeholder="Salin Link Disini"/>
-                <button className="btn btn-primary" type="submit">Submit</button>
+                <button className="btn btn-primary" type="submit" >Submit</button>
                 </form>
-                <button className="btn btn-outline-primary" style={{marginRight:'5px'}} onClick={hide}>Batal</button>
+                <button className="btn btn-outline-primary" style={{position: 'absolute',bottom: '20px',left: '75px'}} onClick={hide}>Batal</button>
                 </div>
                 </div>
                 </div>

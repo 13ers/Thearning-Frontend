@@ -178,12 +178,12 @@ function Register() {
                                     <div className="col-md-6">
                                         <div className="mb-3">
                                             <label className="form-label">Status</label>
-                                            <select name="stats" id="stats"value={status} onChange={(e) => setStatus(e.target.value)}>
-                                            <option value="">Pilih Status</option>
-                                        <option value="admin">Admin</option>
-                                        <option value="teacher">Guru</option>
-                                        <option value="student">Siswa</option>
-                                    </select>
+                                            <select class="form-select" aria-label="Default select example" value={status} onChange={(e) => setStatus(e.target.value)}>
+                                                <option selected>Pilih Status</option>
+                                                <option value="admin">Admin</option>
+                                                <option value="teacher">Guru</option>
+                                                <option value="student">Siswa</option>
+                                            </select>                  
                                         </div>
                                         {
                                         validation.status && (

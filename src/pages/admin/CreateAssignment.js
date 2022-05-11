@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
 import { HiOutlineUpload } from "react-icons/hi";
 import { IoLink } from "react-icons/io5";
-import linkImg from '../../img/link.png';
 import fileImg from '../../img/file.png';
+import { Link } from "react-router-dom";
 
 import '../../style/style.css';
 
@@ -20,8 +20,7 @@ function CreateAssignment() {
 
     const { id } = useParams();
     const {idAs} = useParams();
-    const [main, setMain] = useState("wrapper");
-    const [add, setAdd] = useState("wrappers2");
+    const [attachment,setAttachment] = useState([]);
     const [name, setName] = useState("");
     const [date,setDate] = useState("");
     const [time, setTime] = useState("");
@@ -30,8 +29,6 @@ function CreateAssignment() {
     const [selectedFile, setSelectedFile] = useState();
     const [fileName, setSelectedFileName] = useState("");
     const [isFilePicked, setIsFilePicked] = useState(false);
-    const [linkUp,setLinkUp] = useState([]);
-    const [fileUp, setFileUp] = useState([]);
     const [link, setLink] = useState("");
     const [linkTab, setLinkTab] = useState('link');
     const [fileTab, setFileTab] = useState('file');
@@ -43,7 +40,17 @@ function CreateAssignment() {
 
     //token
     const token = localStorage.getItem("token");
+    //hook useEffect
+    const fetchData = async () => {
 
+        //set axios header dengan type Authorization + Bearer token
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
+        //fetch user from Rest API
+        await axios.get('http://localhost:8000/api/classroom/'+id+'/assignments/teachers/'+idAs)
+        .then((response) => {
+            setAttachment(response.data.assignment_attachments)
+        })
+    }    
     //hook useEffect
     useEffect(() => {
 
@@ -52,8 +59,12 @@ function CreateAssignment() {
 
             //redirect login page
             history.push('/login');
-        };
+        }
+        
+        //call function "fetchData"
+        fetchData();
     }, []);
+
 
         const back = async (e) => {
             e.preventDefault();
@@ -108,10 +119,10 @@ function CreateAssignment() {
             //send data to server
             await axios.post('http://localhost:8000/api/upload/', formData)
             .then((response) => {
-                const fileData = response.data.file;
-                setFileUp(fileUp => fileUp.concat(fileData));
             setFileTab('file');
             setLinkTab('link');
+            setLink("");
+            window.location.reload(false);
             })
             .catch((error) => {
             })
@@ -120,7 +131,7 @@ function CreateAssignment() {
         const linkHandler = async (e) => {
             e.preventDefault();
             (async () => {
-            const res = await fetch("http://localhost:8000/api/links/", {
+            await fetch("http://localhost:8000/api/links/", {
                 method: "POST",
                 headers: {
                     'Authorization': 'Bearer ' + token,
@@ -130,11 +141,12 @@ function CreateAssignment() {
     
                 body: JSON.stringify({ url: link, assignment_id: idAs}),
             });
-            const content = await res.json();
-            const links = content.link;
-            setLinkUp(linkUp => linkUp.concat(links));
             setFileTab('file');
             setLinkTab('link');
+            setSelectedFile();
+            setIsFilePicked(false);
+            setSelectedFileName("");
+            window.location.reload(false);
             })();
             };
 
@@ -155,11 +167,51 @@ function CreateAssignment() {
         const hide = () => {
             setFileTab('file');
             setLinkTab('link');
+            setSelectedFile();
+            setIsFilePicked(false);
+            setSelectedFileName("");
+            setLink("");
         }
 
-        function defSrc(ev){
-            ev.target.src = linkImg;
-        }
+        const dellFile = function(value) {
+            return async function(e) {
+                e.preventDefault();
+                for(let i = 0; i < attachment.length; i++) {
+                    let data = attachment[i];
+                    if ( data.link === null && data.file !== null){
+                        console.log("File Ada");
+                        
+                        console.log(value);
+                        if(data.file.file_id === value){
+                        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+            axios.delete('http://localhost:8000/api/attachments/'+data.attachment.attachment_id)
+            .then((response) => {
+                window.location.reload(false)
+            });
+                        }
+                    }
+                }
+            };
+          };
+        
+        const dellLink = function(value) {
+            return async function(e) {
+                e.preventDefault();
+                for(let i = 0; i < attachment.length; i++) {
+                    let data = attachment[i];
+                    if ( data.file === null && data.link !== null){
+                        if(data.link.id === value){
+                            axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+            axios.delete('http://localhost:8000/api/attachments/'+data.attachment.attachment_id)
+            .then((response) => {
+                window.location.reload(false)
+            });
+                        }
+                    }
+                }
+                
+            };
+          };        
 
     return (
         <div className="wrapper-all">
@@ -228,24 +280,31 @@ function CreateAssignment() {
                                 </form>
                             </div>
                             <div className="upload-tab">
-                            {linkUp.map((link) => (   
-                        <div className="link-tab">
-                            <div className="link-info">
-                            <h6><img src={link.thumbnail} alt={defSrc} style={{width:"50px",height:"auto",marginRight:"10px"}} /></h6>
-                            <p>{link.title}</p>
+                            {attachment.map((attachments) => ( attachments.file === null ? (
+                                <div className="link-tab">
+                                <div className="link-info">
+                                <form onSubmit={dellLink(attachments.link.id)}>
+                                <button type="submit" className="btns v3"></button>
+                                </form>
+                                <h6><img src={attachments.link.thumbnail} alt="" style={{width:"50px",height:"auto",marginRight:"10px"}} /></h6>
+                                <Link to={{ pathname: attachments.link.url }} target="_blank" style={{textDecoration:'none'}}>
+                                <p className="link-title">{attachments.link.title}</p>
+                                </Link>
+                                </div>
+                                <p style={{position: "absolute",top: "30px",left: "70px",textOverflow: "ellipsis",width: "100px"}}>{attachments.link.url}</p>
                             </div>
-                            <p style={{position: "absolute",top: "30px",left: "70px",textOverflow: "ellipsis",width: "100px"}}>{link.url}</p>
-                        </div>
-                        ))}
-                    {fileUp.map((file) => (   
-                        <div className="link-tab">
-                            <div className="link-info">
-                            <h6><img src={fileImg} alt={defSrc} style={{width:"40px",height:"auto",marginRight:"10px"}} className="file-img" /></h6>
-                            <p>{file.filename}</p>
-                            </div>
-                            <p style={{position: "absolute",top: "30px",left: "60px",textOverflow: "ellipsis",width: "100px"}}>{file.filetype}</p>
-                        </div>
-                    ))}
+                            ) : (
+                                <div className="link-tab">
+                                    <div className="link-info">
+                                    <form onSubmit={dellFile(attachments.file.file_id)}>
+                                        <button type="submit" className="btns v3"></button>
+                                    </form>
+                                    <h6><img src={fileImg} alt="" style={{width:"40px",height:"auto",marginRight:"10px"}} className="file-img" /></h6>
+                                    <p>{attachments.file.filename}</p>
+                                    </div>
+                                    <p style={{position: "absolute",top: "30px",left: "60px",textOverflow: "ellipsis",width: "100px"}}>{attachments.file.filetype}</p>
+                                </div>
+                            )))}
                             </div>
                         </div>
                 </div>

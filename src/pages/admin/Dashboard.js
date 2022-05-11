@@ -119,8 +119,6 @@ function Dashboard() {
             history.push('/login');
     };
 
-    let url='http://localhost:8000/api/classroom/'+code;
-
     let photo = user.profile_photo;
 
     let stats = user.status;
@@ -132,11 +130,7 @@ function Dashboard() {
     const joinHandler = async (e) => {
         e.preventDefault();
 
-        axios({
-            method: 'post',
-            url: url
-        });
-
+        axios.post('http://localhost:8000/api/classroom/'+code)
         window.location.reload(false);
     }
 
