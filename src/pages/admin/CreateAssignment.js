@@ -148,6 +148,13 @@ function CreateAssignment() {
     marks2 = parseInt(mark);
   }
 
+  let times2 = "";
+  if (time === "") {
+    times2 = null;
+  } else {
+    times2 = time + ":00";
+  }
+
   const addHandler = async (e) => {
     e.preventDefault();
     (async () => {
@@ -167,7 +174,7 @@ function CreateAssignment() {
               assignment_name: name,
               class_id: id,
               due_date: date,
-              due_time: time + ":00",
+              due_time: times2,
               instructions: instruction,
               total_marks: marks2,
             },
