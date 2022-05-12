@@ -519,9 +519,6 @@ button.show {
 .btn-add {
   height: 30px;
   width: 30px;
-  position: absolute;
-  top: 20px;
-  right: 100px;
   border: none;
   background-color: white;
   background-image: url("../img/add.png");
@@ -998,6 +995,10 @@ p.link-title {
   align-items: center;
   height: 20px;
   margin-top: 50px;
+}
+
+.title-student.v3{
+  margin-top: 20px;
 }
 
 .title-sub{

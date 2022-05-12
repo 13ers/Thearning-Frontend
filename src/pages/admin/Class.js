@@ -250,11 +250,13 @@ function Class() {
             </div>
           </div>
           <div className={tab2}>
-            <h3>Tugas Kelas</h3>
+            <div className="title-student v3">
+              <h3>Tugas Kelas</h3>
+              <form onSubmit={getId}>
+                <button type="submit" className="btn-add"></button>
+              </form>
+            </div>
             <hr></hr>
-            <form onSubmit={getId}>
-              <button type="submit" className="btn-add"></button>
-            </form>
             <div className="listAs">
               {assignment.map((assignment) => (
                 <article key={assignment.assignment_id}>
