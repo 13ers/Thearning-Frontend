@@ -362,7 +362,7 @@ function CreateAssignment() {
             <div className="right-add" style={{ width: "23%" }}>
               <div>
                 <div>
-                  <label className="form-label">Tenggat Waktu</label>
+                  <label className="form-label">Tenggat</label>
                   <select
                     name="times"
                     className="form-select"
@@ -374,8 +374,10 @@ function CreateAssignment() {
                     <option value="yes">Dengan Tenggat</option>
                   </select>
                 </div>
-                <br></br>
+              </div>
+              <div>
                 <div>
+                  <label className="form-label">Tenggat Waktu</label>
                   <input
                     type="text"
                     className="form-control"
@@ -395,7 +397,7 @@ function CreateAssignment() {
                     className="form-control"
                     value={date}
                     onChange={(e) => setDate(e.target.value)}
-                    placeholder="Masukkan Waktu"
+                    placeholder="Isi Jika Memakai Tenggat"
                     onFocus={(e) => (e.target.type = "date")}
                     onBlur={(e) => (e.target.type = "text")}
                   />
