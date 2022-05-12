@@ -160,11 +160,14 @@ function CreateAssignment() {
   }
 
   let times2 = "";
+  let date2 = "";
 
   if (time === "no") {
     times2 = null;
+    date2 = null;
   } else {
     times2 = time2 + ":00";
+    date2 = date;
   }
 
   console.log(times2);
@@ -187,7 +190,7 @@ function CreateAssignment() {
             assignment: {
               assignment_name: name,
               class_id: id,
-              due_date: date,
+              due_date: date2,
               due_time: times2,
               instructions: instruction,
               total_marks: marks2,
