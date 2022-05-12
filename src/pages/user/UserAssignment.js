@@ -322,34 +322,65 @@ function UserAssignment() {
 
   let total = assignment.total_marks;
   let totalMark = "";
+  let hour = "";
+  let min = "";
+  let day = "";
+  let monthName = "";
+  let year = "";
+  let deadline = "";
 
   if (total === 100) {
     totalMark = "0/100";
   }
-  let times = time.split(":");
-  let hour = times[0];
-  let min = times[1];
-  let arr = date.split("-");
-  let year = arr[0];
-  let month = arr[1];
-  let day = arr[2];
-  let months = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "Mei",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Des",
-  ];
-  let monthName = months[parseInt(month) - 1];
-  let deadline =
-    "Tenggat : " + day + " " + monthName + " " + year + " " + hour + "." + min;
+  if (time !== null) {
+    let times = time.split(":");
+    hour = times[0];
+    min = times[1];
+  }
+  if (date !== null) {
+    let arr = date.split("-");
+    year = arr[0];
+    let month = arr[1];
+    day = arr[2];
+    let months = [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "Mei",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Des",
+    ];
+    monthName = months[parseInt(month) - 1];
+  }
+
+  if (time === null && date === null) {
+    deadline = "";
+  } else if (time === null) {
+    deadline = "Tenggat : " + day + " " + monthName + " " + year;
+  } else if (date === null) {
+    deadline = "Tenggat : " + hour + "." + min;
+  } else if (time !== null && date === null) {
+    deadline =
+      "Tenggat : " +
+      day +
+      " " +
+      monthName +
+      " " +
+      year +
+      " " +
+      hour +
+      "." +
+      min;
+  }
+
+  console.log(time, date);
+  console.log(deadline);
 
   return (
     <div className="wrapper-all">

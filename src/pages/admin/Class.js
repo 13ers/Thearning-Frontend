@@ -236,7 +236,7 @@ function Class() {
                   Tidak ada tugas yang perlu segera diselesaikan
                 </p>
               </div>
-              {assignment.map((assignment) => (
+              {assignment.unshift().map((assignment) => (
                 <article key={assignment.assignment_id}>
                   <div className="right-content">
                     <HiClipboardList className="icons" />

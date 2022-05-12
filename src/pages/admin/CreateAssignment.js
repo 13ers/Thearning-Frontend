@@ -33,6 +33,7 @@ function CreateAssignment() {
   const [marks, setMarks] = useState("");
   const [selectedFile, setSelectedFile] = useState();
   const [fileName, setSelectedFileName] = useState("");
+  const [toggle, setToggle] = useState(false);
   const [isFilePicked, setIsFilePicked] = useState(false);
   const [link, setLink] = useState("");
   const [linkTab, setLinkTab] = useState("link");
@@ -165,12 +166,12 @@ function CreateAssignment() {
   if (time === "no") {
     times2 = null;
     date2 = null;
-  } else {
+  } else if (time === "yes") {
     times2 = time2 + ":00";
     date2 = date;
   }
 
-  console.log(times2);
+  console.log(times2, date2);
 
   const addHandler = async (e) => {
     e.preventDefault();
@@ -388,8 +389,6 @@ function CreateAssignment() {
                     onBlur={(e) => (e.target.type = "text")}
                   />
                 </div>
-              </div>
-              <div>
                 <div>
                   <label className="form-label">Tenggat Tanggal</label>
                   <input
