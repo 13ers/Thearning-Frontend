@@ -3,7 +3,6 @@ import { HiOutlineUpload } from "react-icons/hi";
 import { IoLink } from "react-icons/io5";
 import fileImg from "../../img/file.png";
 import { Link } from "react-router-dom";
-import FileViewer from "react-file-viewer";
 
 import "../../style/style.css";
 
@@ -15,6 +14,7 @@ import { useHistory } from "react-router";
 
 //import axios
 import axios from "axios";
+import { set } from "react-hook-form";
 
 function CreateAssignment() {
   const { id } = useParams();
@@ -23,6 +23,7 @@ function CreateAssignment() {
   const [name, setName] = useState("");
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
+  const [time2, setTime2] = useState("");
   const [instruction, setIntruction] = useState("");
   const [mark, setMark] = useState("");
   const [names, setNames] = useState("");
@@ -90,6 +91,11 @@ function CreateAssignment() {
   }, []);
 
   useEffect(() => {
+    const data = window.localStorage.getItem("time2");
+    if (data !== null) setTime2(JSON.parse(data));
+  }, []);
+
+  useEffect(() => {
     const data = window.localStorage.getItem("instruction");
     if (data !== null) setIntruction(JSON.parse(data));
   }, []);
@@ -110,6 +116,10 @@ function CreateAssignment() {
   useEffect(() => {
     window.localStorage.setItem("time", JSON.stringify(time));
   }, [time]);
+
+  useEffect(() => {
+    window.localStorage.setItem("time2", JSON.stringify(time2));
+  }, [time2]);
 
   useEffect(() => {
     window.localStorage.setItem("instruction", JSON.stringify(instruction));
@@ -135,6 +145,7 @@ function CreateAssignment() {
     localStorage.removeItem("name");
     localStorage.removeItem("date");
     localStorage.removeItem("time");
+    localStorage.removeItem("time2");
     localStorage.removeItem("instruction");
     localStorage.removeItem("mark");
     history.goBack();
@@ -149,10 +160,11 @@ function CreateAssignment() {
   }
 
   let times2 = "";
-  if (time === "") {
+
+  if (time === "no") {
     times2 = null;
   } else {
-    times2 = time + ":00";
+    times2 = time2 + ":00";
   }
 
   console.log(times2);
@@ -186,6 +198,7 @@ function CreateAssignment() {
       localStorage.removeItem("name");
       localStorage.removeItem("date");
       localStorage.removeItem("time");
+      localStorage.removeItem("time2");
       localStorage.removeItem("instruction");
       localStorage.removeItem("mark");
       history.goBack();
@@ -347,12 +360,27 @@ function CreateAssignment() {
               <div>
                 <div>
                   <label className="form-label">Tenggat Waktu</label>
-                  <input
-                    type="time"
-                    className="form-control"
+                  <select
+                    name="times"
+                    className="form-select"
                     value={time}
                     onChange={(e) => setTime(e.target.value)}
-                    placeholder=""
+                  >
+                    <option value="">Pilih Opsi</option>
+                    <option value="no">Tanpa Tenggat</option>
+                    <option value="yes">Dengan Tenggat</option>
+                  </select>
+                </div>
+                <br></br>
+                <div>
+                  <input
+                    type="text"
+                    className="form-control"
+                    value={time2}
+                    onChange={(e) => setTime2(e.target.value)}
+                    placeholder="Isi Jika Memakai Tenggat"
+                    onFocus={(e) => (e.target.type = "time")}
+                    onBlur={(e) => (e.target.type = "text")}
                   />
                 </div>
               </div>
@@ -360,11 +388,13 @@ function CreateAssignment() {
                 <div>
                   <label className="form-label">Tenggat Tanggal</label>
                   <input
-                    type="date"
+                    type="text"
                     className="form-control"
                     value={date}
                     onChange={(e) => setDate(e.target.value)}
-                    placeholder=""
+                    placeholder="Masukkan Waktu"
+                    onFocus={(e) => (e.target.type = "date")}
+                    onBlur={(e) => (e.target.type = "text")}
                   />
                 </div>
               </div>
