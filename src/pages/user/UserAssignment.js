@@ -20,12 +20,16 @@ function UserAssignment() {
   const [assignment, setAssignment] = useState({});
   const [attachments, setAttachment] = useState([]);
   const [submissionData, setSubmissionData] = useState([]);
+  const [comment, setComment] = useState([]);
+  const [privateComment, setPrivateComment] = useState([]);
   const [time, setTime] = useState("");
   const [date, setDate] = useState("");
   const [privateInput, setPrivIn] = useState("com-input");
   const [privateCom, setPrivCom] = useState("private-coms");
   const [publicInput, setPubIn] = useState("com-input");
   const [publicCom, setPubCom] = useState("public-coms");
+  const [privcom, setPrivComment] = useState("");
+  const [pubcom, setPubComment] = useState("");
   const [selectedFile, setSelectedFile] = useState();
   const [fileName, setSelectedFileName] = useState("");
   const [isFilePicked, setIsFilePicked] = useState(false);
@@ -70,6 +74,8 @@ function UserAssignment() {
       setTime(response.data.assignment.due_time);
       setDate(response.data.assignment.due_date);
       setSubmissionData(response.data.submission_attachments);
+      setComment(response.data.comments);
+      setPrivateComment(response.data.private_comments);
       if (response.data.submission.on_time === true) {
         setStatusSub("Diserahkan");
         setColorStatus("black");
@@ -128,8 +134,7 @@ function UserAssignment() {
   };
 
   const changeDisplay3 = () => {
-    if (privateCom === "private-coms") {
-      setPrivCom("com-input");
+    if (privateInput === "com-input") {
       setPrivIn("private-input");
     } else {
       setPrivCom("private-coms");
@@ -138,8 +143,7 @@ function UserAssignment() {
   };
 
   const changeDisplay4 = () => {
-    if (publicCom === "public-coms") {
-      setPubCom("com-input");
+    if (publicInput === "com-input") {
       setPubIn("public-input");
     } else {
       setPubCom("public-coms");
@@ -197,6 +201,104 @@ function UserAssignment() {
       setLink("");
       window.location.reload(false);
     })();
+  };
+
+  const privcomHandler = async (e) => {
+    e.preventDefault();
+    (async () => {
+      await fetch(
+        "http://localhost:8000/api/classroom/" + idClass + "/privatecomments",
+        {
+          method: "POST",
+          headers: {
+            Authorization: "Bearer " + token,
+            "Content-Type": "application/json",
+            Origin: "https://127.0.0.1:5000",
+          },
+
+          body: JSON.stringify({ submission_id: subIds, body: privcom }),
+        }
+      );
+      window.location.reload(false);
+    })();
+  };
+
+  console.log(privcom);
+
+  const privcomDelete = function (value) {
+    return async function (e) {
+      e.preventDefault();
+      for (let i = 0; i < privateComment.length; i++) {
+        let data = privateComment[i];
+        if (data.id === value) {
+          (async () => {
+            await fetch(
+              "http://localhost:8000/api/classroom/" +
+                idClass +
+                "/privatecomments",
+              {
+                method: "DELETE",
+                headers: {
+                  Authorization: "Bearer " + token,
+                  "Content-Type": "text/plain",
+                  Origin: "https://127.0.0.1:5000",
+                },
+
+                body: value,
+              }
+            );
+            window.location.reload(false);
+          })();
+        }
+      }
+    };
+  };
+
+  const pubcomHandler = async (e) => {
+    e.preventDefault();
+    (async () => {
+      await fetch(
+        "http://localhost:8000/api/classroom/" + idClass + "/comments",
+        {
+          method: "POST",
+          headers: {
+            Authorization: "Bearer " + token,
+            "Content-Type": "application/json",
+            Origin: "https://127.0.0.1:5000",
+          },
+
+          body: JSON.stringify({ assignment_id: idAs, body: pubcom }),
+        }
+      );
+      window.location.reload(false);
+    })();
+  };
+
+  const pubcomDelete = function (value) {
+    return async function (e) {
+      e.preventDefault();
+      for (let i = 0; i < comment.length; i++) {
+        let data = comment[i];
+        if (data.id === value) {
+          (async () => {
+            await fetch(
+              "http://localhost:8000/api/classroom/" + idClass + "/comments",
+              {
+                method: "DELETE",
+                headers: {
+                  Authorization: "Bearer " + token,
+                  "Content-Type": "text/plain",
+                  Origin: "https://127.0.0.1:5000",
+                },
+
+                body: value,
+              }
+            );
+            window.location.reload(false);
+          })();
+        }
+      }
+    };
   };
 
   const showOp = () => {
@@ -379,8 +481,7 @@ function UserAssignment() {
       min;
   }
 
-  console.log(time, date);
-  console.log(deadline);
+  console.log(privateComment);
 
   return (
     <div className="wrapper-all">
@@ -515,17 +616,37 @@ function UserAssignment() {
               <div className="public-com">
                 <AiOutlineComment className="public-icon" />
                 <h6>Komentar kelas</h6>
-                <div className={publicCom}>
-                  <p onClick={changeDisplay4}>Tambahkan Komentar Kelas</p>
-                </div>
+                <button className="btnClass3" onClick={changeDisplay4}></button>
+              </div>
+              <div className="public-comment" style={{ position: "relative" }}>
+                {comment.map((comment) => (
+                  <article key={comment.id} style={{ position: "relative" }}>
+                    <div className="list-comment v2">
+                      <img src={photo} alt="img" className="prof3" />
+                      <textarea
+                        className="form-control"
+                        placeholder="Masukkan Komentar"
+                        value={comment.body}
+                        readOnly
+                      ></textarea>
+                    </div>
+                    <form onSubmit={pubcomDelete(comment.id)}>
+                      <button type="submit" className="btns v2"></button>
+                    </form>
+                  </article>
+                ))}
               </div>
               <div className={publicInput}>
                 <img src={photo} alt="img" className="prof4" />
                 <textarea
                   className="form-control"
                   placeholder="Masukkan Komentar"
+                  value={pubcom}
+                  onChange={(e) => setPubComment(e.target.value)}
                 ></textarea>
-                <IoSend className="public-send" />
+                <form onSubmit={pubcomHandler}>
+                  <button type="submit"></button>
+                </form>
               </div>
             </div>
           </div>
@@ -690,18 +811,37 @@ function UserAssignment() {
             <div className="private-com">
               <FaRegCommentDots className="private-icon" />
               <h6>Komentar Pribadi</h6>
-              <div className={privateCom}>
-                <center>
-                  <p onClick={changeDisplay3}>Tambahkan Komentar Pribadi</p>
-                </center>
+              <button className="btnClass2" onClick={changeDisplay3}></button>
+              <div style={{ position: "relative" }}>
+                {privateComment.map((comment) => (
+                  <article key={comment.id} style={{ position: "relative" }}>
+                    <div className="list-comment">
+                      <img src={photo} alt="img" className="prof3" />
+                      <textarea
+                        className="form-control"
+                        placeholder="Masukkan Komentar"
+                        value={comment.body}
+                        readOnly
+                        style={{ backgroundColor: "white" }}
+                      ></textarea>
+                    </div>
+                    <form onSubmit={privcomDelete(comment.id)}>
+                      <button type="submit" className="btns v2"></button>
+                    </form>
+                  </article>
+                ))}
               </div>
               <div className={privateInput}>
                 <img src={photo} alt="img" className="prof3" />
                 <textarea
                   className="form-control"
                   placeholder="Masukkan Komentar"
+                  value={privcom}
+                  onChange={(e) => setPrivComment(e.target.value)}
                 ></textarea>
-                <IoSend className="private-send" />
+                <form onSubmit={privcomHandler}>
+                  <button type="submit" className="btn btn-primary"></button>
+                </form>
               </div>
             </div>
           </div>

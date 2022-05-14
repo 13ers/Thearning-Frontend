@@ -81,6 +81,32 @@ img.prof {
   height: 30px;
 }
 
+.btnClass2 {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: transparent;
+  border: none;
+  background-image: url("../img/add.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 25px;
+  height: 25px;
+}
+
+.btnClass3 {
+  position: absolute;
+  top: 0px;
+  right: 10px;
+  background-color: transparent;
+  border: none;
+  background-image: url("../img/add.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 25px;
+  height: 25px;
+}
+
 .container2 {
   overflow-y: auto;
   background-color: white;
@@ -738,7 +764,7 @@ button.show {
 
 .private-com {
   margin-top: 20px;
-  padding: 10px 20px;
+  padding: 10px 10px;
   padding-bottom: 0px;
   width: 100%;
   border: 1px solid rgba(184, 184, 184, 0.747);
@@ -767,36 +793,40 @@ button.show {
 .private-icon {
   position: absolute;
   top: 12px;
-  left: 20px;
+  left: 10px;
   font-size: 20px;
 }
 
 .private-input {
   display: flex;
-  justify-content: space-around;
-}
-
-.private-input > * {
-  margin-right: 5px;
+  justify-content: space-between;
   margin-bottom: 10px;
+  width: 230px;
 }
 
 .private-input textarea {
+  height: 40px;
   max-height: 100%;
-  width: 100%;
+  width: 1000px;
   padding: 3px;
-  font-size: 15px;
-  resize: both;
+  font-size: 13px;
+  margin-right: 5px;
+  flex-grow: 2;
 }
 
-.private-send {
-  font-size: 35px;
+.private-input img {
+  margin-right: 10px;
 }
 
-.private-send:hover {
-  cursor: pointer;
+.private-input button {
+  width: 15px;
+  height: 15px;
+  background-color: transparent;
+  border: none;
+  background-image: url("../img/send.png");
+  background-size: contain;
+  background-repeat: no-repeat;
 }
-
 .footer {
   width: 100%;
 }
@@ -804,6 +834,7 @@ button.show {
 .public-com {
   width: 100%;
   position: relative;
+  margin-bottom: 15px;
 }
 
 .public-coms {
@@ -835,19 +866,30 @@ button.show {
 
 .public-input {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  align-items: center;
+  width: 790px;
 }
 
-.public-input > * {
-  margin-right: 10px;
+.public-input button {
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+  border: none;
+  background-image: url("../img/send.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.public-input img {
+  width: 40px;
+  height: 40px;
+  margin-right: 12px;
 }
 
-.public-send {
-  font-size: 40px;
-}
-
-.public-send:hover {
-  cursor: pointer;
+.public-input textarea {
+  width: 990px;
+  height: 40px;
+  margin: 5px;
 }
 
 .com-input {
@@ -948,10 +990,11 @@ button.show {
 
 .btns.v2 {
   position: absolute;
-  right: 7px;
+  right: 0px;
   top: 13px;
   width: 15px;
   height: 15px;
+  background-color: transparent;
 }
 
 .btn-unsubmit {
@@ -997,25 +1040,52 @@ p.link-title {
   margin-top: 50px;
 }
 
-.title-student.v3{
+.title-student.v3 {
   margin-top: 20px;
 }
 
-.title-sub{
+.title-sub {
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: 0.8em;
 }
 
-.red{
+.red {
   color: red;
 }
 
-.green{
+.green {
   color: rgb(53, 139, 53);
 }
 
-.black{
+.black {
   color: black;
+}
+
+.list-comment {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.list-comment textarea {
+  font-size: 0.8em;
+  padding: 0 5px;
+  height: fit-content;
+  width: 160px;
+  margin-right: 20px;
+  background-color: white;
+}
+
+.list-comment.v2 textarea {
+  font-size: 1em;
+  width: 90%;
+  background-color: white;
+  padding: 0px 10px;
+}
+
+.list-comment.v2 img {
+  width: 40px;
+  height: 40px;
 }

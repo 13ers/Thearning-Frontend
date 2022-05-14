@@ -14,7 +14,6 @@ import { useHistory } from "react-router";
 
 //import axios
 import axios from "axios";
-import { set } from "react-hook-form";
 
 function CreateAssignment() {
   const { id } = useParams();
@@ -26,14 +25,8 @@ function CreateAssignment() {
   const [time2, setTime2] = useState("");
   const [instruction, setIntruction] = useState("");
   const [mark, setMark] = useState("");
-  const [names, setNames] = useState("");
-  const [dates, setDates] = useState("");
-  const [times, setTimes] = useState("");
-  const [instructions, setIntructions] = useState("");
-  const [marks, setMarks] = useState("");
   const [selectedFile, setSelectedFile] = useState();
   const [fileName, setSelectedFileName] = useState("");
-  const [toggle, setToggle] = useState(false);
   const [isFilePicked, setIsFilePicked] = useState(false);
   const [link, setLink] = useState("");
   const [linkTab, setLinkTab] = useState("link");
@@ -136,12 +129,7 @@ function CreateAssignment() {
     axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
     axios.delete(
-      "http://localhost:8000/api/classroom/" + id + "/assignments/" + idAs,
-      {
-        headers: {
-          "content-type": "application/json",
-        },
-      }
+      "http://localhost:8000/api/classroom/" + id + "/assignments/" + idAs
     );
     localStorage.removeItem("name");
     localStorage.removeItem("date");
@@ -389,17 +377,21 @@ function CreateAssignment() {
                     onBlur={(e) => (e.target.type = "text")}
                   />
                 </div>
+              </div>
+              <div>
                 <div>
-                  <label className="form-label">Tenggat Tanggal</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    value={date}
-                    onChange={(e) => setDate(e.target.value)}
-                    placeholder="Isi Jika Memakai Tenggat"
-                    onFocus={(e) => (e.target.type = "date")}
-                    onBlur={(e) => (e.target.type = "text")}
-                  />
+                  <div>
+                    <label className="form-label">Tenggat Tanggal</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      value={date}
+                      onChange={(e) => setDate(e.target.value)}
+                      placeholder="Isi Jika Memakai Tenggat"
+                      onFocus={(e) => (e.target.type = "date")}
+                      onBlur={(e) => (e.target.type = "text")}
+                    />
+                  </div>
                 </div>
               </div>
               <div>

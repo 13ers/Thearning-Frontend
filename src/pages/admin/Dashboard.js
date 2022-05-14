@@ -94,11 +94,16 @@ function Dashboard() {
     if (!token) {
       //redirect login page
       history.push("/login");
+    } else if (token === "undefined") {
+      localStorage.removeItem("token");
+      history.push("/login");
     }
 
     //call function "fetchData"
     fetchData();
   }, []);
+
+  console.log(token);
 
   //function logout
   const logoutHandler = async () => {
