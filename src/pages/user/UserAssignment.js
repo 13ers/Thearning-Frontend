@@ -477,13 +477,13 @@ function UserAssignment() {
       "." +
       min;
   }
-
+  let userid = user.user_id;
   let statusComment = "";
   let statusComment2 = "";
 
   for (let i = 0; i < comment.length; i++) {
     let data = comment[i];
-    if (data.comment.user_id !== user.user_id) {
+    if (data.comment.user_id !== userid) {
       statusComment = "hide";
     } else {
       statusComment = "";
@@ -492,7 +492,7 @@ function UserAssignment() {
 
   for (let i = 0; i < privateComment.length; i++) {
     let data = privateComment[i];
-    if (data.privateComment.user_id !== user.user_id) {
+    if (data.comment.user_id !== userid) {
       statusComment2 = "hide";
     } else {
       statusComment2 = "";
