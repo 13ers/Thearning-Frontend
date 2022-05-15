@@ -479,6 +479,7 @@ function UserAssignment() {
   }
 
   let statusComment = "";
+  let statusComment2 = "";
 
   for (let i = 0; i < comment.length; i++) {
     let data = comment[i];
@@ -486,6 +487,15 @@ function UserAssignment() {
       statusComment = "hide";
     } else {
       statusComment = "";
+    }
+  }
+
+  for (let i = 0; i < privateComment.length; i++) {
+    let data = privateComment[i];
+    if (data.privateComment.user_id !== user.user_id) {
+      statusComment2 = "hide";
+    } else {
+      statusComment2 = "";
     }
   }
 
@@ -869,7 +879,7 @@ function UserAssignment() {
                   value={privcom}
                   onChange={(e) => setPrivComment(e.target.value)}
                 ></textarea>
-                <form onSubmit={privcomHandler}>
+                <form onSubmit={privcomHandler} className={statusComment2}>
                   <button type="submit" className="btn btn-primary"></button>
                 </form>
               </div>
