@@ -48,7 +48,7 @@ function Register() {
     formData.append("image", selectedFile);
     //send data to server
     await axios
-      .post("http://localhost:8000/api/user", formData)
+      .post("http://thearning.resultoption.tech/api/user", formData)
       .then(() => {
         //redirect to logi page
         history.push("/login");
