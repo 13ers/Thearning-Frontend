@@ -482,28 +482,30 @@ function UserAssignment() {
       min;
   }
   let userid = user.user_id;
-  let statusComment = "";
-  let statusComment2 = "";
+  let statusComment = [];
+  let statusComment2 = [];
 
   for (let i = 0; i < comment.length; i++) {
     let data = comment[i];
     if (data.commenter.user_id === userid) {
-      statusComment = "";
+      let stats = "";
+      statusComment2.push(stats);
     } else {
-      statusComment = "hide";
+      let stats = "hide";
+      statusComment2.push(stats);
     }
   }
 
   for (let i = 0; i < privateComment.length; i++) {
     let data = privateComment[i];
     if (data.commenter.user_id === userid) {
-      console.log(data.commenter.user_id, userid);
+      let stats = "";
+      statusComment.push(stats);
     } else {
-      console.log(data.commenter.user_id, userid);
+      let stats = "hide";
+      statusComment.push(stats);
     }
   }
-
-  console.log(statusComment2);
 
   return (
     <div className="wrapper-all">
@@ -641,8 +643,8 @@ function UserAssignment() {
                 <button className="btnClass3" onClick={changeDisplay4}></button>
               </div>
               <div className="public-comment" style={{ position: "relative" }}>
-                {comment.map((comment) => (
-                  <article key={comment.id} style={{ position: "relative" }}>
+                {comment.map((comment, i) => (
+                  <article key={comment.id} className="article-comment">
                     <img
                       src={comment.commenter.profile_photo}
                       alt="img"
@@ -663,14 +665,13 @@ function UserAssignment() {
                     </div>
                     <form
                       onSubmit={pubcomDelete(comment.comment.id)}
-                      className={statusComment}
+                      className={statusComment2[i]}
                     >
                       <button type="submit" className="btns v2"></button>
                     </form>
                   </article>
                 ))}
               </div>
-
               <div className={publicInput}>
                 <img src={photo} alt="img" className="prof4" />
                 <textarea
@@ -699,7 +700,7 @@ function UserAssignment() {
                         onSubmit={dellLink(attachments.link.id)}
                         className={delAtt}
                       >
-                        <button type="submit" className="btns v2"></button>
+                        <button type="submit" className="btns v4"></button>
                       </form>
                       <img
                         src={attachments.link.thumbnail}
@@ -736,7 +737,7 @@ function UserAssignment() {
                         onSubmit={dellFile(attachments.file.file_id)}
                         className={delAtt}
                       >
-                        <button type="submit" className="btns v2"></button>
+                        <button type="submit" className="btns v4"></button>
                       </form>
                       <img
                         src={fileImg}
@@ -848,7 +849,7 @@ function UserAssignment() {
               <h6>Komentar Pribadi</h6>
               <button className="btnClass2" onClick={changeDisplay3}></button>
               <div style={{ position: "relative" }}>
-                {privateComment.map((comment) => (
+                {privateComment.map((comment, i) => (
                   <article
                     key={comment.comment.id}
                     style={{ position: "relative", marginBottom: "10px" }}
@@ -873,7 +874,7 @@ function UserAssignment() {
                     </div>
                     <form
                       onSubmit={privcomDelete(comment.comment.id)}
-                      className={statusComment2}
+                      className={statusComment[i]}
                     >
                       <button type="submit" className="btns v2"></button>
                     </form>
@@ -889,7 +890,7 @@ function UserAssignment() {
                   onChange={(e) => setPrivComment(e.target.value)}
                 ></textarea>
                 <form onSubmit={privcomHandler}>
-                  <button type="submit" className="btn btn-primary"></button>
+                  <button type="submit" className="btn"></button>
                 </form>
               </div>
             </div>

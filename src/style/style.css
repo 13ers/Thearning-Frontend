@@ -997,6 +997,15 @@ button.show {
   background-color: transparent;
 }
 
+.btns.v4 {
+  position: absolute;
+  right: 5px;
+  top: 13px;
+  width: 15px;
+  height: 15px;
+  background-color: transparent;
+}
+
 .btn-unsubmit {
   position: relative;
 }
@@ -1080,4 +1089,13 @@ p.link-title {
 .prof3.v2 {
   width: 40px;
   height: 40px;
+}
+
+.article-comment {
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.article-comment:nth-last-child(1) {
+  margin-bottom: 100px;
 }
