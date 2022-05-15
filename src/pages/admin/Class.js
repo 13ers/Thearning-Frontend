@@ -1,6 +1,7 @@
 import { GoMortarBoard } from "react-icons/go";
 import { useParams } from "react-router-dom";
 import { HiClipboardList, HiOutlineUpload } from "react-icons/hi";
+import { Link } from "react-router-dom";
 
 import "../../style/style.css";
 
@@ -241,8 +242,17 @@ function Class() {
                   <div className="right-content">
                     <HiClipboardList className="icons" />
                     <div className="infoAssignment">
-                      <h6>{assignment.assignment_name}</h6>
-                      <p>Tenggat : {assignment.due_date}</p>
+                      <Link
+                        to={`/${id}/Assignment/${assignment.assignment_id}`}
+                        style={{ color: "black", textDecoration: "none" }}
+                      >
+                        <h6>{assignment.assignment_name}</h6>
+                      </Link>
+                      <p>
+                        {assignment.due_date === null
+                          ? "Tanpa tenggat"
+                          : "Tenggat : " + assignment.due_date}
+                      </p>
                     </div>
                   </div>
                 </article>
@@ -263,7 +273,12 @@ function Class() {
                   <div className="listItem">
                     <HiClipboardList className="icons" />
                     <div className="infoAssignment">
-                      <h6>{assignment.assignment_name}</h6>
+                      <Link
+                        to={`/${id}/Assignment/${assignment.assignment_id}`}
+                        style={{ color: "black", textDecoration: "none" }}
+                      >
+                        <h6>{assignment.assignment_name}</h6>
+                      </Link>
                       <p>Tenggat : {assignment.due_date}</p>
                     </div>
                   </div>

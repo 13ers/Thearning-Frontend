@@ -243,7 +243,12 @@ function UserClass() {
                   <div className="listItem">
                     <HiClipboardList className="icons" />
                     <div className="infoAssignment">
-                      <h6>{assignment.assignment_name}</h6>
+                      <Link
+                        to={`/${idClass}/UserAssignment/${assignment.assignment_id}`}
+                        style={{ color: "black", textDecoration: "none" }}
+                      >
+                        <h6>{assignment.assignment_name}</h6>
+                      </Link>
                       <p>Tenggat : {assignment.due_date}</p>
                     </div>
                   </div>

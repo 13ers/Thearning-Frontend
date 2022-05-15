@@ -43,6 +43,7 @@ function UserAssignment() {
   const [colorStatus, setColorStatus] = useState("");
   const [delAtt, setDelAtt] = useState("");
   const [submission, setSubmission] = useState({});
+  const [datacoba, setDataCoba] = useState({});
   let subIds = submission.submission_id;
 
   let FileName = fileName
@@ -223,14 +224,12 @@ function UserAssignment() {
     })();
   };
 
-  console.log(privcom);
-
   const privcomDelete = function (value) {
     return async function (e) {
       e.preventDefault();
       for (let i = 0; i < privateComment.length; i++) {
         let data = privateComment[i];
-        if (data.id === value) {
+        if (data.comment.id === value) {
           (async () => {
             await fetch(
               "http://localhost:8000/api/classroom/" +
@@ -279,7 +278,7 @@ function UserAssignment() {
       e.preventDefault();
       for (let i = 0; i < comment.length; i++) {
         let data = comment[i];
-        if (data.id === value) {
+        if (data.comment.id === value) {
           (async () => {
             await fetch(
               "http://localhost:8000/api/classroom/" + idClass + "/comments",
@@ -345,9 +344,6 @@ function UserAssignment() {
       for (let i = 0; i < submissionData.length; i++) {
         let data = submissionData[i];
         if (data.link === null && data.file !== null) {
-          console.log("File Ada");
-
-          console.log(value);
           if (data.file.file_id === value) {
             axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
             axios
@@ -481,7 +477,10 @@ function UserAssignment() {
       min;
   }
 
-  console.log(privateComment);
+  let username = "";
+  let photo_user = "";
+
+  console.log(username, photo_user);
 
   return (
     <div className="wrapper-all">
@@ -615,27 +614,37 @@ function UserAssignment() {
               <hr></hr>
               <div className="public-com">
                 <AiOutlineComment className="public-icon" />
-                <h6>Komentar kelas</h6>
+                <h6>{comment.length} Komentar kelas</h6>
                 <button className="btnClass3" onClick={changeDisplay4}></button>
               </div>
               <div className="public-comment" style={{ position: "relative" }}>
                 {comment.map((comment) => (
                   <article key={comment.id} style={{ position: "relative" }}>
+                    <img
+                      src={comment.commenter.profile_photo}
+                      alt="img"
+                      className="prof3 v2"
+                    />
                     <div className="list-comment v2">
-                      <img src={photo} alt="img" className="prof3" />
-                      <textarea
-                        className="form-control"
-                        placeholder="Masukkan Komentar"
-                        value={comment.body}
-                        readOnly
-                      ></textarea>
+                      <span
+                        style={{
+                          fontWeight: "bold",
+                          margin: "0px",
+                          padding: "0px",
+                        }}
+                      >
+                        {comment.commenter.fullname}
+                      </span>
+                      <br></br>
+                      {comment.comment.body}
                     </div>
-                    <form onSubmit={pubcomDelete(comment.id)}>
+                    <form onSubmit={pubcomDelete(comment.comment.id)}>
                       <button type="submit" className="btns v2"></button>
                     </form>
                   </article>
                 ))}
               </div>
+
               <div className={publicInput}>
                 <img src={photo} alt="img" className="prof4" />
                 <textarea
@@ -814,18 +823,29 @@ function UserAssignment() {
               <button className="btnClass2" onClick={changeDisplay3}></button>
               <div style={{ position: "relative" }}>
                 {privateComment.map((comment) => (
-                  <article key={comment.id} style={{ position: "relative" }}>
+                  <article
+                    key={comment.comment.id}
+                    style={{ position: "relative", marginBottom: "10px" }}
+                  >
+                    <img
+                      src={comment.commenter.profile_photo}
+                      alt="img"
+                      className="prof3"
+                    />
                     <div className="list-comment">
-                      <img src={photo} alt="img" className="prof3" />
-                      <textarea
-                        className="form-control"
-                        placeholder="Masukkan Komentar"
-                        value={comment.body}
-                        readOnly
-                        style={{ backgroundColor: "white" }}
-                      ></textarea>
+                      <span
+                        style={{
+                          fontWeight: "bold",
+                          margin: "0px",
+                          padding: "0px",
+                        }}
+                      >
+                        {comment.commenter.fullname}
+                      </span>
+                      <br></br>
+                      {comment.comment.body}
                     </div>
-                    <form onSubmit={privcomDelete(comment.id)}>
+                    <form onSubmit={privcomDelete(comment.comment.id)}>
                       <button type="submit" className="btns v2"></button>
                     </form>
                   </article>

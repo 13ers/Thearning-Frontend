@@ -26,6 +26,8 @@ import CreateAssignment from "./pages/admin/CreateAssignment";
 
 import UserAssignment from "./pages/user/UserAssignment";
 
+import Assignment from "./pages/admin/Assignment";
+
 const history = createBrowserHistory();
 
 function App() {
@@ -44,6 +46,7 @@ function App() {
             path="/:idClass/UserAssignment/:idAs"
             component={UserAssignment}
           />
+          <Route path="/:idclass/Assignment/:idAs" component={Assignment} />
           <Route
             path="/:id/CreateAssignment/:idAs"
             component={CreateAssignment}
