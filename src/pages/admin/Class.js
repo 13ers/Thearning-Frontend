@@ -32,13 +32,13 @@ function Class() {
   //token
   const token = localStorage.getItem("token");
 
-  let urlClass = "http://thearning.resultoption.tech/api/classroom/" + id;
+  let urlClass = "https://thearning.resultoption.tech/api/classroom/" + id;
   //function "fetchData"
   const fetchData = async () => {
     //set axios header dengan type Authorization + Bearer token
     axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     //fetch user from Rest API
-    await axios.get("http://thearning.resultoption.tech/api/user/").then((response) => {
+    await axios.get("https://thearning.resultoption.tech/api/user/").then((response) => {
       //set response user to state
       setUser(response.data.data);
     });
@@ -128,7 +128,7 @@ function Class() {
     axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
     axios
-      .post("http://thearning.resultoption.tech/api/classroom/" + id + "/assignments/", {
+      .post("https://thearning.resultoption.tech/api/classroom/" + id + "/assignments/", {
         headers: {
           "content-type": "application/json",
         },

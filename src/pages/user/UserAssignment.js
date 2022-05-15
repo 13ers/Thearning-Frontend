@@ -56,7 +56,7 @@ function UserAssignment() {
   const token = localStorage.getItem("token");
 
   let urlAs =
-    "http://thearning.resultoption.tech/api/classroom/" +
+    "https://thearning.resultoption.tech/api/classroom/" +
     idClass +
     "/assignments/students/" +
     idAs;
@@ -65,7 +65,7 @@ function UserAssignment() {
     //set axios header dengan type Authorization + Bearer token
     axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     //fetch user from Rest API
-    await axios.get("http://thearning.resultoption.tech/api/user/").then((response) => {
+    await axios.get("https://thearning.resultoption.tech/api/user/").then((response) => {
       setUser(response.data.data);
     });
     await axios.get(urlAs).then((response) => {
@@ -177,7 +177,7 @@ function UserAssignment() {
     formData.append("filename", FileName);
     //send data to server
     await axios
-      .post("http://thearning.resultoption.tech/api/upload/", formData)
+      .post("https://thearning.resultoption.tech/api/upload/", formData)
       .then((response) => {
         setFileTab("hide");
         setLinkTab("hide");
@@ -192,7 +192,7 @@ function UserAssignment() {
   const linkHandler = async (e) => {
     e.preventDefault();
     (async () => {
-      await fetch("http://thearning.resultoption.tech/api/links/", {
+      await fetch("https://thearning.resultoption.tech/api/links/", {
         method: "POST",
         headers: {
           Authorization: "Bearer " + token,
@@ -213,7 +213,7 @@ function UserAssignment() {
     e.preventDefault();
     (async () => {
       await fetch(
-        "http://thearning.resultoption.tech/api/classroom/" + idClass + "/privatecomments",
+        "https://thearning.resultoption.tech/api/classroom/" + idClass + "/privatecomments",
         {
           method: "POST",
           headers: {
@@ -237,7 +237,7 @@ function UserAssignment() {
         if (data.comment.id === value) {
           (async () => {
             await fetch(
-              "http://thearning.resultoption.tech/api/classroom/" +
+              "https://thearning.resultoption.tech/api/classroom/" +
                 idClass +
                 "/privatecomments",
               {
@@ -262,7 +262,7 @@ function UserAssignment() {
     e.preventDefault();
     (async () => {
       await fetch(
-        "http://thearning.resultoption.tech/api/classroom/" + idClass + "/comments",
+        "https://thearning.resultoption.tech/api/classroom/" + idClass + "/comments",
         {
           method: "POST",
           headers: {
@@ -286,7 +286,7 @@ function UserAssignment() {
         if (data.comment.id === value) {
           (async () => {
             await fetch(
-              "http://thearning.resultoption.tech/api/classroom/" + idClass + "/comments",
+              "https://thearning.resultoption.tech/api/classroom/" + idClass + "/comments",
               {
                 method: "DELETE",
                 headers: {
@@ -353,7 +353,7 @@ function UserAssignment() {
             axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
             axios
               .delete(
-                "http://thearning.resultoption.tech/api/attachments/" +
+                "https://thearning.resultoption.tech/api/attachments/" +
                   data.attachment.attachment_id
               )
               .then((response) => {
@@ -375,7 +375,7 @@ function UserAssignment() {
             axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
             axios
               .delete(
-                "http://thearning.resultoption.tech/api/attachments/" +
+                "https://thearning.resultoption.tech/api/attachments/" +
                   data.attachment.attachment_id
               )
               .then((response) => {
@@ -392,7 +392,7 @@ function UserAssignment() {
 
     axios
       .post(
-        "http://thearning.resultoption.tech/api/classroom/" +
+        "https://thearning.resultoption.tech/api/classroom/" +
           idClass +
           "/submissions/" +
           submission.submission_id +
@@ -410,7 +410,7 @@ function UserAssignment() {
 
     axios
       .post(
-        "http://thearning.resultoption.tech/api/classroom/" +
+        "https://thearning.resultoption.tech/api/classroom/" +
           idClass +
           "/submissions/" +
           submission.submission_id +

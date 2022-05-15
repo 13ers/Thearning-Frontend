@@ -35,7 +35,7 @@ function Assignment() {
   const token = localStorage.getItem("token");
 
   let urlAs =
-    "http://thearning.resultoption.tech/api/classroom/" +
+    "https://thearning.resultoption.tech/api/classroom/" +
     idclass +
     "/assignments/teachers/" +
     idAs;
@@ -44,7 +44,7 @@ function Assignment() {
     //set axios header dengan type Authorization + Bearer token
     axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     //fetch user from Rest API
-    await axios.get("http://thearning.resultoption.tech/api/user/").then((response) => {
+    await axios.get("https://thearning.resultoption.tech/api/user/").then((response) => {
       setUser(response.data.data);
     });
     await axios.get(urlAs).then((response) => {
@@ -109,7 +109,7 @@ function Assignment() {
     e.preventDefault();
     (async () => {
       await fetch(
-        "http://thearning.resultoption.tech/api/classroom/" + idclass + "/comments",
+        "https://thearning.resultoption.tech/api/classroom/" + idclass + "/comments",
         {
           method: "POST",
           headers: {
@@ -133,7 +133,7 @@ function Assignment() {
         if (data.id === value) {
           (async () => {
             await fetch(
-              "http://thearning.resultoption.tech/api/classroom/" + idclass + "/comments",
+              "https://thearning.resultoption.tech/api/classroom/" + idclass + "/comments",
               {
                 method: "DELETE",
                 headers: {
