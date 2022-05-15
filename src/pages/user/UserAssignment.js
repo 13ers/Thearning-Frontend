@@ -77,25 +77,27 @@ function UserAssignment() {
       setSubmissionData(response.data.submission_attachments);
       setComment(response.data.comments);
       setPrivateComment(response.data.private_comments);
-      if (response.data.submission.on_time === true) {
-        setStatusSub("Diserahkan");
-        setColorStatus("black");
-      } else if (response.data.submission.on_time === false) {
-        setStatusSub("Terlambat");
-        setColorStatus("red");
-      } else if (response.data.submission.on_time === null) {
-        setStatusSub("Ditugaskan");
-        setColorStatus("green");
-      }
 
       if (response.data.submission.submitted === true) {
         setDelAtt("hide");
         setUnsubMenu("btn-unsubmit");
         setSubMenu("hide");
+        if (response.data.submission.on_time === true) {
+          setStatusSub("Diserahkan");
+          setColorStatus("black");
+        } else if (response.data.submission.on_time === false) {
+          setStatusSub("Terlambat");
+          setColorStatus("red");
+        } else if (response.data.submission.on_time === null) {
+          setStatusSub("Ditugaskan");
+          setColorStatus("green");
+        }
       } else if (response.data.submission.submitted === false) {
         setDelAtt("");
         setUnsubMenu("hide");
         setSubMenu("btn-submit");
+        setStatusSub("Ditugaskan");
+        setColorStatus("green");
       }
     });
   };
@@ -480,22 +482,23 @@ function UserAssignment() {
   let userid = user.user_id;
   let statusComment = "";
   let statusComment2 = "";
+  console.log(userid, comment);
 
   for (let i = 0; i < comment.length; i++) {
     let data = comment[i];
-    if (data.comment.user_id !== userid) {
-      statusComment = "hide";
-    } else {
+    if (data.commenter.user_id === userid) {
       statusComment = "";
+    } else {
+      statusComment = "hide";
     }
   }
 
   for (let i = 0; i < privateComment.length; i++) {
     let data = privateComment[i];
-    if (data.comment.user_id !== userid) {
-      statusComment2 = "hide";
-    } else {
+    if (data.commenter.user_id === userid) {
       statusComment2 = "";
+    } else {
+      statusComment2 = "hide";
     }
   }
 
