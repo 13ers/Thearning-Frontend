@@ -48,7 +48,7 @@ function CreateAssignment() {
     //fetch user from Rest API
     await axios
       .get(
-        "http://localhost:8000/api/classroom/" +
+        "http://thearning.resultoption.tech/api/classroom/" +
           id +
           "/assignments/teachers/" +
           idAs
@@ -129,7 +129,7 @@ function CreateAssignment() {
     axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
     axios.delete(
-      "http://localhost:8000/api/classroom/" + id + "/assignments/" + idAs
+      "http://thearning.resultoption.tech/api/classroom/" + id + "/assignments/" + idAs
     );
     localStorage.removeItem("name");
     localStorage.removeItem("date");
@@ -165,7 +165,7 @@ function CreateAssignment() {
     e.preventDefault();
     (async () => {
       await fetch(
-        "http://localhost:8000/api/classroom/" + id + "/assignments/",
+        "http://thearning.resultoption.tech/api/classroom/" + id + "/assignments/",
         {
           method: "PATCH",
           headers: {
@@ -212,7 +212,7 @@ function CreateAssignment() {
     formData.append("filename", FileName);
     //send data to server
     await axios
-      .post("http://localhost:8000/api/upload/", formData)
+      .post("http://thearning.resultoption.tech/api/upload/", formData)
       .then((response) => {
         setFileTab("file");
         setLinkTab("link");
@@ -225,7 +225,7 @@ function CreateAssignment() {
   const linkHandler = async (e) => {
     e.preventDefault();
     (async () => {
-      await fetch("http://localhost:8000/api/links/", {
+      await fetch("http://thearning.resultoption.tech/api/links/", {
         method: "POST",
         headers: {
           Authorization: "Bearer " + token,
@@ -277,7 +277,7 @@ function CreateAssignment() {
             axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
             axios
               .delete(
-                "http://localhost:8000/api/attachments/" +
+                "http://thearning.resultoption.tech/api/attachments/" +
                   data.attachment.attachment_id
               )
               .then((response) => {
@@ -299,7 +299,7 @@ function CreateAssignment() {
             axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
             axios
               .delete(
-                "http://localhost:8000/api/attachments/" +
+                "http://thearning.resultoption.tech/api/attachments/" +
                   data.attachment.attachment_id
               )
               .then((response) => {
