@@ -808,11 +808,10 @@ button.show {
 .private-input textarea {
   height: 40px;
   max-height: 100%;
-  width: 1000px;
+  width: 165px;
   padding: 3px;
   font-size: 13px;
-  margin-right: 5px;
-  flex-grow: 2;
+  margin-left: 35px;
 }
 
 .private-input img {

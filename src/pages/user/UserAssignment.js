@@ -99,6 +99,7 @@ function UserAssignment() {
       }
     });
   };
+
   //hook useEffect
   useEffect(() => {
     //check token empty
@@ -477,10 +478,16 @@ function UserAssignment() {
       min;
   }
 
-  let username = "";
-  let photo_user = "";
+  let statusComment = "";
 
-  console.log(username, photo_user);
+  for (let i = 0; i < comment.length; i++) {
+    let data = comment[i];
+    if (data.comment.user_id !== user.user_id) {
+      statusComment = "hide";
+    } else {
+      statusComment = "";
+    }
+  }
 
   return (
     <div className="wrapper-all">
@@ -638,7 +645,10 @@ function UserAssignment() {
                       <br></br>
                       {comment.comment.body}
                     </div>
-                    <form onSubmit={pubcomDelete(comment.comment.id)}>
+                    <form
+                      onSubmit={pubcomDelete(comment.comment.id)}
+                      className={statusComment}
+                    >
                       <button type="submit" className="btns v2"></button>
                     </form>
                   </article>
