@@ -865,7 +865,10 @@ function UserAssignment() {
                       <br></br>
                       {comment.comment.body}
                     </div>
-                    <form onSubmit={privcomDelete(comment.comment.id)}>
+                    <form
+                      onSubmit={privcomDelete(comment.comment.id)}
+                      className={statusComment2}
+                    >
                       <button type="submit" className="btns v2"></button>
                     </form>
                   </article>
@@ -879,7 +882,7 @@ function UserAssignment() {
                   value={privcom}
                   onChange={(e) => setPrivComment(e.target.value)}
                 ></textarea>
-                <form onSubmit={privcomHandler} className={statusComment2}>
+                <form onSubmit={privcomHandler}>
                   <button type="submit" className="btn btn-primary"></button>
                 </form>
               </div>
