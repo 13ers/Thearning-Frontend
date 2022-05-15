@@ -88,16 +88,18 @@ function UserAssignment() {
         } else if (response.data.submission.on_time === false) {
           setStatusSub("Terlambat");
           setColorStatus("red");
-        } else if (response.data.submission.on_time === null) {
-          setStatusSub("Ditugaskan");
-          setColorStatus("green");
         }
       } else if (response.data.submission.submitted === false) {
         setDelAtt("");
         setUnsubMenu("hide");
         setSubMenu("btn-submit");
-        setStatusSub("Ditugaskan");
-        setColorStatus("green");
+        if (response.data.submission.on_time === false) {
+          setStatusSub("Terlambat");
+          setColorStatus("red");
+        } else {
+          setStatusSub("Ditugaskan");
+          setColorStatus("green");
+        }
       }
     });
   };
@@ -482,7 +484,6 @@ function UserAssignment() {
   let userid = user.user_id;
   let statusComment = "";
   let statusComment2 = "";
-  console.log(userid, comment);
 
   for (let i = 0; i < comment.length; i++) {
     let data = comment[i];
@@ -496,11 +497,13 @@ function UserAssignment() {
   for (let i = 0; i < privateComment.length; i++) {
     let data = privateComment[i];
     if (data.commenter.user_id === userid) {
-      statusComment2 = "";
+      console.log(data.commenter.user_id, userid);
     } else {
-      statusComment2 = "hide";
+      console.log(data.commenter.user_id, userid);
     }
   }
+
+  console.log(statusComment2);
 
   return (
     <div className="wrapper-all">
