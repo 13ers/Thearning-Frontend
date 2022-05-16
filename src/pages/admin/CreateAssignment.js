@@ -129,7 +129,10 @@ function CreateAssignment() {
     axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
     axios.delete(
-      "http://thearning.resultoption.tech/api/classroom/" + id + "/assignments/" + idAs
+      "http://thearning.resultoption.tech/api/classroom/" +
+        id +
+        "/assignments/" +
+        idAs
     );
     localStorage.removeItem("name");
     localStorage.removeItem("date");
@@ -165,7 +168,9 @@ function CreateAssignment() {
     e.preventDefault();
     (async () => {
       await fetch(
-        "http://thearning.resultoption.tech/api/classroom/" + id + "/assignments/",
+        "http://thearning.resultoption.tech/api/classroom/" +
+          id +
+          "/assignments/",
         {
           method: "PATCH",
           headers: {
