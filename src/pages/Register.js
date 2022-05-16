@@ -48,7 +48,7 @@ function Register() {
     formData.append("image", selectedFile);
     //send data to server
     await axios
-      .post("http://thearning.resultoption.tech/api/user", formData)
+      .post("https://thearning.resultoption.tech/api/user", formData)
       .then(() => {
         //redirect to logi page
         history.push("/login");
@@ -203,12 +203,12 @@ function Register() {
                     <div className="mb-3">
                       <label className="form-label">Status</label>
                       <select
-                        class="form-select"
+                        className="form-select"
                         aria-label="Default select example"
                         value={status}
                         onChange={(e) => setStatus(e.target.value)}
                       >
-                        <option selected>Pilih Status</option>
+                        <option defaultValue>Pilih Status</option>
                         <option value="admin">Admin</option>
                         <option value="teacher">Guru</option>
                         <option value="student">Siswa</option>

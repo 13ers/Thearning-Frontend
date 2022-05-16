@@ -48,7 +48,7 @@ function CreateAssignment() {
     //fetch user from Rest API
     await axios
       .get(
-        "http://thearning.resultoption.tech/api/classroom/" +
+        "https://thearning.resultoption.tech/api/classroom/" +
           id +
           "/assignments/teachers/" +
           idAs
@@ -129,7 +129,7 @@ function CreateAssignment() {
     axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
     axios.delete(
-      "http://thearning.resultoption.tech/api/classroom/" +
+      "https://thearning.resultoption.tech/api/classroom/" +
         id +
         "/assignments/" +
         idAs
@@ -153,13 +153,16 @@ function CreateAssignment() {
 
   let times2 = "";
   let date2 = "";
+  let statusDeadline = "hide";
 
   if (time === "no") {
     times2 = null;
     date2 = null;
+    statusDeadline = "hide";
   } else if (time === "yes") {
     times2 = time2 + ":00";
     date2 = date;
+    statusDeadline = "";
   }
 
   console.log(times2, date2);
@@ -168,7 +171,7 @@ function CreateAssignment() {
     e.preventDefault();
     (async () => {
       await fetch(
-        "http://thearning.resultoption.tech/api/classroom/" +
+        "https://thearning.resultoption.tech/api/classroom/" +
           id +
           "/assignments/",
         {
@@ -217,7 +220,7 @@ function CreateAssignment() {
     formData.append("filename", FileName);
     //send data to server
     await axios
-      .post("http://thearning.resultoption.tech/api/upload/", formData)
+      .post("https://thearning.resultoption.tech/api/upload/", formData)
       .then((response) => {
         setFileTab("file");
         setLinkTab("link");
@@ -230,7 +233,7 @@ function CreateAssignment() {
   const linkHandler = async (e) => {
     e.preventDefault();
     (async () => {
-      await fetch("http://thearning.resultoption.tech/api/links/", {
+      await fetch("https://thearning.resultoption.tech/api/links/", {
         method: "POST",
         headers: {
           Authorization: "Bearer " + token,
@@ -282,7 +285,7 @@ function CreateAssignment() {
             axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
             axios
               .delete(
-                "http://thearning.resultoption.tech/api/attachments/" +
+                "https://thearning.resultoption.tech/api/attachments/" +
                   data.attachment.attachment_id
               )
               .then((response) => {
@@ -304,7 +307,7 @@ function CreateAssignment() {
             axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
             axios
               .delete(
-                "http://thearning.resultoption.tech/api/attachments/" +
+                "https://thearning.resultoption.tech/api/attachments/" +
                   data.attachment.attachment_id
               )
               .then((response) => {
@@ -355,7 +358,7 @@ function CreateAssignment() {
             </div>
             <div className="right-add" style={{ width: "23%" }}>
               <div>
-                <div>
+                <div style={{ marginBottom: "10px" }}>
                   <label className="form-label">Tenggat</label>
                   <select
                     name="times"
@@ -363,27 +366,28 @@ function CreateAssignment() {
                     value={time}
                     onChange={(e) => setTime(e.target.value)}
                   >
-                    <option value="">Pilih Opsi</option>
+                    <option defaultValue="no">Pilih Opsi</option>
                     <option value="no">Tanpa Tenggat</option>
                     <option value="yes">Dengan Tenggat</option>
                   </select>
                 </div>
               </div>
-              <div>
+              <div className={statusDeadline}>
                 <div>
-                  <label className="form-label">Tenggat Waktu</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    value={time2}
-                    onChange={(e) => setTime2(e.target.value)}
-                    placeholder="Isi Jika Memakai Tenggat"
-                    onFocus={(e) => (e.target.type = "time")}
-                    onBlur={(e) => (e.target.type = "text")}
-                  />
+                  <div>
+                    <label className="form-label">Tenggat Waktu</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      value={time2}
+                      onChange={(e) => setTime2(e.target.value)}
+                      placeholder="Masukkan Waktu"
+                      onFocus={(e) => (e.target.type = "time")}
+                      onBlur={(e) => (e.target.type = "text")}
+                    />
+                  </div>
                 </div>
-              </div>
-              <div>
+
                 <div>
                   <div>
                     <label className="form-label">Tenggat Tanggal</label>
@@ -392,7 +396,7 @@ function CreateAssignment() {
                       className="form-control"
                       value={date}
                       onChange={(e) => setDate(e.target.value)}
-                      placeholder="Isi Jika Memakai Tenggat"
+                      placeholder="Masukkan Tanggal"
                       onFocus={(e) => (e.target.type = "date")}
                       onBlur={(e) => (e.target.type = "text")}
                     />

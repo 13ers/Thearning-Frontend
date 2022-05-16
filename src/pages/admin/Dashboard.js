@@ -79,14 +79,14 @@ function Dashboard() {
     axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     //fetch user from Rest API
     await axios
-      .get("http://thearning.resultoption.tech/api/user")
+      .get("https://thearning.resultoption.tech/api/user")
       .then((response) => {
         //set response user to state
         setUser(response.data.data);
       });
 
     await axios
-      .get("http://thearning.resultoption.tech/api/classroom")
+      .get("https://thearning.resultoption.tech/api/classroom")
       .then((response) => {
         setList(response.data.class_ids);
       });
@@ -131,7 +131,7 @@ function Dashboard() {
   const joinHandler = async (e) => {
     e.preventDefault();
 
-    axios.post("http://thearning.resultoption.tech/api/classroom/" + code);
+    axios.post("https://thearning.resultoption.tech/api/classroom/" + code);
     window.location.reload(false);
   };
 
