@@ -31,13 +31,13 @@ function UserClass() {
   //token
   const token = localStorage.getItem("token");
 
-  let urlClass = "https://thearning.resultoption.tech/api/classroom/" + id;
+  let urlClass = "http://localhost:8000/api/classroom/" + id;
   //function "fetchData"
   const fetchData = async () => {
     //set axios header dengan type Authorization + Bearer token
     axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     //fetch user from Rest API
-    await axios.get("https://thearning.resultoption.tech/api/user/").then((response) => {
+    await axios.get("http://localhost:8000/api/user/").then((response) => {
       //set response user to state
       setUser(response.data.data);
     });

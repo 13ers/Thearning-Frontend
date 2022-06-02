@@ -20,13 +20,26 @@ function Assignment() {
   const [assignment, setAssignment] = useState({});
   const [attachments, setAttachment] = useState([]);
   const [comment, setComment] = useState([]);
+  const [student, setStudent] = useState([]);
+  const [dataUser, setDataUser] = useState({});
+  const [dataSubmission, setDataSubmission] = useState({});
+  const [assignmentStudent, setAssignmentStudent] = useState([]);
+  const [privateComment, setPrivateComment] = useState([]);
+  const [statsSub, setStatusSub] = useState(false);
+  const [privateInput, setPrivIn] = useState("com-input");
+  const [privateCom, setPrivCom] = useState("private-coms");
+  const [display, setDisplay] = useState("hide");
+  const [display2, setDisplay2] = useState("");
+  const [privcom, setPrivComment] = useState("");
   const [time, setTime] = useState("");
   const [date, setDate] = useState("");
   const [publicInput, setPubIn] = useState("com-input");
   const [pubcom, setPubComment] = useState("");
-
+  const [tab1, setTab1] = useState("left-As");
+  const [tab2, setTab2] = useState("tabs2");
+  const [abc, setA] = useState([]);
   const [submission, setSubmission] = useState({});
-  console.log(submission);
+  const [idsub, setDatasubid] = useState({});
   let subIds = submission.submission_id;
   //define history
   const history = useHistory();
@@ -35,16 +48,18 @@ function Assignment() {
   const token = localStorage.getItem("token");
 
   let urlAs =
-    "https://thearning.resultoption.tech/api/classroom/" +
+    "http://localhost:8000/api/classroom/" +
     idclass +
     "/assignments/teachers/" +
     idAs;
+
+  let urlClass = "http://localhost:8000/api/classroom/" + idclass;
   //function "fetchData"
   const fetchData = async () => {
     //set axios header dengan type Authorization + Bearer token
     axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     //fetch user from Rest API
-    await axios.get("https://thearning.resultoption.tech/api/user/").then((response) => {
+    await axios.get("http://localhost:8000/api/user/").then((response) => {
       setUser(response.data.data);
     });
     await axios.get(urlAs).then((response) => {
@@ -54,6 +69,11 @@ function Assignment() {
       setTime(response.data.assignment.due_time);
       setDate(response.data.assignment.due_date);
       setComment(response.data.comments);
+      setA(response.data.submissions);
+    });
+
+    await axios.get(urlClass).then((response) => {
+      setStudent(response.data.students);
     });
   };
   //hook useEffect
@@ -109,7 +129,7 @@ function Assignment() {
     e.preventDefault();
     (async () => {
       await fetch(
-        "https://thearning.resultoption.tech/api/classroom/" + idclass + "/comments",
+        "http://localhost:8000/api/classroom/" + idclass + "/comments",
         {
           method: "POST",
           headers: {
@@ -133,7 +153,103 @@ function Assignment() {
         if (data.id === value) {
           (async () => {
             await fetch(
-              "https://thearning.resultoption.tech/api/classroom/" + idclass + "/comments",
+              "http://localhost:8000/api/classroom/" + idclass + "/comments",
+              {
+                method: "DELETE",
+                headers: {
+                  Authorization: "Bearer " + token,
+                  "Content-Type": "text/plain",
+                  Origin: "https://127.0.0.1:5000",
+                },
+
+                body: value,
+              }
+            );
+            window.location.reload(false);
+          })();
+        }
+      }
+    };
+  };
+  let userid = user.user_id;
+  let statusComment2 = [];
+
+  for (let i = 0; i < comment.length; i++) {
+    let data = comment[i];
+    if (data.commenter.user_id === userid) {
+      let stats = "";
+      statusComment2.push(stats);
+    } else {
+      let stats = "hide";
+      statusComment2.push(stats);
+    }
+  }
+
+  const chooseFunction = function (value) {
+    return async function (e) {
+      e.preventDefault();
+      for (let i = 0; i < submission.length; i++) {
+        let data = submission[i];
+        if (data.user.user_id === value) {
+          setStatusSub(true);
+          setDataUser(data.user);
+          setDataSubmission(data.submission);
+          setDatasubid(data.submission.submission_id);
+          setDisplay("submissionStudents");
+          setDisplay2("hide");
+          (async () => {
+            axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+
+            axios
+              .get(
+                "http://localhost:8000/api/classroom/" +
+                  idclass +
+                  "/assignments/teachers/" +
+                  idAs +
+                  "/submissions/" +
+                  data.submission.submission_id
+              )
+              .then(function (response) {
+                setAssignmentStudent(response.data.submission_attachments);
+                setPrivateComment(response.data.private_comments);
+              });
+          })();
+        }
+      }
+    };
+  };
+
+  const privcomHandler = async (e) => {
+    e.preventDefault();
+    (async () => {
+      await fetch(
+        "http://localhost:8000/api/classroom/" + idclass + "/privatecomments",
+        {
+          method: "POST",
+          headers: {
+            Authorization: "Bearer " + token,
+            "Content-Type": "application/json",
+            Origin: "https://127.0.0.1:5000",
+          },
+
+          body: JSON.stringify({ submission_id: idsub, body: privcom }),
+        }
+      );
+      window.location.reload(false);
+    })();
+  };
+
+  const privcomDelete = function (value) {
+    return async function (e) {
+      e.preventDefault();
+      for (let i = 0; i < privateComment.length; i++) {
+        let data = privateComment[i];
+        if (data.id === value) {
+          (async () => {
+            await fetch(
+              "http://localhost:8000/api/classroom/" +
+                idclass +
+                "/privatecomments",
               {
                 method: "DELETE",
                 headers: {
@@ -152,6 +268,15 @@ function Assignment() {
     };
   };
 
+  const changeDisplay3 = () => {
+    if (privateInput === "com-input") {
+      setPrivIn("private-input v2");
+    } else {
+      setPrivCom("private-coms");
+      setPrivIn("com-input");
+    }
+  };
+
   let total = assignment.total_marks;
   let totalMark = "";
   let hour = "";
@@ -162,7 +287,7 @@ function Assignment() {
   let deadline = "";
 
   if (total === 100) {
-    totalMark = "0/100";
+    totalMark = "100 point";
   }
   if (time !== null) {
     let times = time.split(":");
@@ -211,7 +336,31 @@ function Assignment() {
       min;
   }
 
-  console.log(assignment);
+  const changeTab1 = () => {
+    if (tab1 === "tabs1") {
+      setTab1("left-As");
+      setTab2("tabs2");
+    }
+  };
+
+  const changeTab2 = () => {
+    if (tab2 === "tabs2") {
+      setTab1("tabs1");
+      setTab2("tab2-As");
+    }
+  };
+
+  let statusComment = [];
+  for (let i = 0; i < privateComment.length; i++) {
+    let data = privateComment[i];
+    if (data.user_id === userid) {
+      let stats = "";
+      statusComment.push(stats);
+    } else {
+      let stats = "hide";
+      statusComment.push(stats);
+    }
+  }
 
   return (
     <div className="wrapper-all">
@@ -222,6 +371,18 @@ function Assignment() {
             <h2 onClick={changePage} className="title">
               Thearning
             </h2>
+            <div style={{ marginLeft: "100px" }}>
+              <center>
+                <div className="btn-nav">
+                  <button className="tab" onClick={changeTab1}>
+                    Petunjuk
+                  </button>
+                  <button className="tab" onClick={changeTab2}>
+                    Tugas Siswa
+                  </button>
+                </div>
+              </center>
+            </div>
             <img
               src={photo}
               alt="img"
@@ -257,8 +418,8 @@ function Assignment() {
             </div>
           </nav>
         </div>
-        <div className="container3 v2">
-          <div className="left-As">
+        <div className="container3 v4">
+          <div className={tab1} style={{ width: "100%" }}>
             <HiClipboardList className="logo-As" />
             <h1>{assignment.assignment_name}</h1>
             <div className="detail-As">
@@ -349,18 +510,30 @@ function Assignment() {
                 <button className="btnClass3" onClick={changeDisplay4}></button>
               </div>
               <div className="public-comment" style={{ position: "relative" }}>
-                {comment.map((comment) => (
-                  <article key={comment.id} style={{ position: "relative" }}>
+                {comment.map((comment, i) => (
+                  <article key={comment.id} className="article-comment">
+                    <img
+                      src={comment.commenter.profile_photo}
+                      alt="img"
+                      className="prof3 v2"
+                    />
                     <div className="list-comment v2">
-                      <img src={photo} alt="img" className="prof3" />
-                      <textarea
-                        className="form-control"
-                        placeholder="Masukkan Komentar"
-                        value={comment.body}
-                        readOnly
-                      ></textarea>
+                      <span
+                        style={{
+                          fontWeight: "bold",
+                          margin: "0px",
+                          padding: "0px",
+                        }}
+                      >
+                        {comment.commenter.fullname}
+                      </span>
+                      <br></br>
+                      {comment.comment.body}
                     </div>
-                    <form onSubmit={pubcomDelete(comment.id)}>
+                    <form
+                      onSubmit={pubcomDelete(comment.comment.id)}
+                      className={statusComment2[i]}
+                    >
                       <button type="submit" className="btns v2"></button>
                     </form>
                   </article>
@@ -377,6 +550,192 @@ function Assignment() {
                 <form onSubmit={pubcomHandler}>
                   <button type="submit"></button>
                 </form>
+              </div>
+            </div>
+          </div>
+          <div className={tab2} style={{ width: "100%" }}>
+            <div className="list-student">
+              <h4 style={{ marginBottom: "30px" }}>Nama Siswa</h4>
+              <div>
+                {student.map((student, i) => (
+                  <article key={student.user_id}>
+                    <div className="li-student">
+                      <img
+                        src={student.profile_photo}
+                        alt="img"
+                        className="profile-student"
+                      />
+                      <div>
+                        <h5
+                          onClick={chooseFunction(student.user_id)}
+                          className="chooseName"
+                        >
+                          {student.fullname}
+                        </h5>
+                      </div>
+                    </div>
+                    <hr></hr>
+                  </article>
+                ))}
+              </div>
+            </div>
+            <div className="student-sub">
+              <div className={display}>
+                <div
+                  className="wrapper-submission"
+                  style={{ paddingRight: "10px" }}
+                >
+                  <h1 style={{ marginBottom: "10px" }}>{dataUser.fullname}</h1>
+                  {assignmentStudent.map((attachments) =>
+                    attachments.file === null ? (
+                      <div
+                        className="link-tab"
+                        style={{ marginBottom: "10px" }}
+                      >
+                        <div className="link-info">
+                          <h6>
+                            <img
+                              src={attachments.link.thumbnail}
+                              alt=""
+                              style={{
+                                width: "50px",
+                                height: "auto",
+                                marginRight: "10px",
+                              }}
+                            />
+                          </h6>
+                          <Link
+                            to={{ pathname: attachments.link.url }}
+                            target="_blank"
+                            style={{ textDecoration: "none" }}
+                          >
+                            <p className="link-title">
+                              {attachments.link.title}
+                            </p>
+                          </Link>
+                        </div>
+                        <p
+                          style={{
+                            position: "absolute",
+                            top: "30px",
+                            left: "70px",
+                            textOverflow: "ellipsis",
+                            width: "100px",
+                          }}
+                        >
+                          {attachments.link.url}
+                        </p>
+                      </div>
+                    ) : (
+                      <div
+                        className="link-tab"
+                        style={{ marginBottom: "10px" }}
+                      >
+                        <div className="link-info">
+                          <h6>
+                            <img
+                              src={fileImg}
+                              alt=""
+                              style={{
+                                width: "40px",
+                                height: "auto",
+                                marginRight: "10px",
+                              }}
+                              className="file-img"
+                            />
+                          </h6>
+                          <Link
+                            to={{ pathname: attachments.file.file_url }}
+                            target="_blank"
+                            style={{ textDecoration: "none" }}
+                          >
+                            <p>{attachments.file.filename}</p>
+                          </Link>
+                        </div>
+                        <p
+                          style={{
+                            position: "absolute",
+                            top: "30px",
+                            left: "60px",
+                            textOverflow: "ellipsis",
+                            width: "100px",
+                          }}
+                        >
+                          {attachments.file.filetype}
+                        </p>
+                      </div>
+                    )
+                  )}
+                </div>
+                <div className="privatecomAs" style={{ position: "relative" }}>
+                  <FaRegCommentDots className="private-icon" />
+                  <h6>Komentar Pribadi</h6>
+                  <button
+                    onClick={changeDisplay3}
+                    className="btnClass2"
+                  ></button>
+                  <div style={{ position: "relative" }}>
+                    {privateComment.map((comment, i) => (
+                      <article
+                        key={comment.id}
+                        style={{ position: "relative", marginBottom: "10px" }}
+                      >
+                        <div className="list-comment v3">
+                          <span
+                            style={{
+                              fontWeight: "bold",
+                              margin: "0px",
+                              padding: "0px",
+                            }}
+                          >
+                            {comment.user_id}
+                          </span>
+                          <br></br>
+                          {comment.body}
+                        </div>
+                        <form
+                          onSubmit={privcomDelete(comment.id)}
+                          className={statusComment[i]}
+                        >
+                          <button type="submit" className="btns v2"></button>
+                        </form>
+                      </article>
+                    ))}
+                  </div>
+                  <div className={privateInput}>
+                    <textarea
+                      className="form-control"
+                      placeholder="Masukkan Komentar"
+                      value={privcom}
+                      onChange={(e) => setPrivComment(e.target.value)}
+                    ></textarea>
+                    <form onSubmit={privcomHandler}>
+                      <button type="submit" className="btn"></button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <div className={display2}>
+                <center>
+                  <img
+                    src={fileImg}
+                    alt=""
+                    style={{
+                      width: "200px",
+                      height: "auto",
+                      marginTop: "70px",
+                      marginBottom: "20px",
+                    }}
+                    className="file-img v2"
+                  />
+                  <h3>
+                    Terkumpul{" "}
+                    <font style={{ color: "green" }}>{submission.length}</font>{" "}
+                    Dari{" "}
+                    <font style={{ color: "green" }}>{student.length}</font>{" "}
+                    Siswa
+                  </h3>
+                </center>
               </div>
             </div>
           </div>

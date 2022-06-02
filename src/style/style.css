@@ -618,12 +618,21 @@ button.show {
   position: relative;
 }
 
+.container3.v4 {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  padding-left: 0px;
+  padding-right: 0px;
+  position: relative;
+}
+
 .left-As {
   height: 100%;
   width: 75%;
   padding: 10px;
-  padding-right: 30px;
-  padding-left: 30px;
+  padding-right: 10%;
+  padding-left: 10%;
 }
 
 .right-As {
@@ -738,6 +747,12 @@ button.show {
   border-radius: 30px;
 }
 
+.file-img.v2 {
+  padding: 5px;
+  background-color: rgb(0, 58, 146);
+  border-radius: 80px;
+}
+
 .submission {
   margin-top: 10px;
   padding: 20px;
@@ -806,6 +821,13 @@ button.show {
   width: 230px;
 }
 
+.private-input.v2 {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  width: 99%;
+}
+
 .private-input textarea {
   height: 40px;
   max-height: 100%;
@@ -813,6 +835,15 @@ button.show {
   padding: 3px;
   font-size: 13px;
   margin-left: 35px;
+}
+
+.private-input.v2 textarea {
+  height: 40px;
+  max-height: 100%;
+  width: 91%;
+  padding: 3px;
+  font-size: 13px;
+  margin-bottom: 5px;
 }
 
 .private-input img {
@@ -828,6 +859,16 @@ button.show {
   background-size: contain;
   background-repeat: no-repeat;
 }
+
+.private-input.v2 button {
+  width: 25px;
+  height: 25px;
+  background-color: transparent;
+  border: none;
+  background-image: url("../img/send.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
 .footer {
   width: 100%;
 }
@@ -835,7 +876,6 @@ button.show {
 .public-com {
   width: 100%;
   position: relative;
-  margin-bottom: 15px;
 }
 
 .public-coms {
@@ -869,7 +909,8 @@ button.show {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 790px;
+  width: 100%;
+  margin-top: -90px;
 }
 
 .public-input button {
@@ -888,7 +929,7 @@ button.show {
 }
 
 .public-input textarea {
-  width: 990px;
+  width: 90%;
   height: 40px;
   margin: 5px;
 }
@@ -1087,6 +1128,13 @@ p.link-title {
   background-color: white;
 }
 
+.list-comment.v3 {
+  padding-left: 50px;
+  font-size: 1em;
+  width: 90%;
+  background-color: white;
+}
+
 .prof3.v2 {
   width: 40px;
   height: 40px;
@@ -1099,4 +1147,63 @@ p.link-title {
 
 .article-comment:nth-last-child(1) {
   margin-bottom: 100px;
+}
+
+.tab2-As {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.tab2-As .list-student {
+  display: block;
+  margin: 0px;
+  padding: 20px 10px;
+  width: 30%;
+  height: 100%;
+  border-right: 1px solid rgb(184, 184, 184);
+}
+
+.tab2-As .li-student {
+  width: 100%;
+  display: flex;
+  gap: 6%;
+}
+
+.tab2-As .student-sub {
+  width: 70%;
+  height: 100%;
+}
+
+.student-sub {
+  position: relative;
+  padding: 30px;
+  padding-top: 20px;
+}
+
+.submissionStudents {
+}
+
+.wrapper-submission {
+  width: 100%;
+  height: 300px;
+  overflow-y: auto;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgb(184, 184, 184);
+  margin-bottom: 10px;
+}
+
+.privatecomAs {
+  width: 100%;
+  height: 17%;
+}
+
+.privatecomAs h6 {
+  padding-left: 40px;
+  padding-top: 10px;
+}
+
+h5.chooseName:hover {
+  cursor: pointer;
+  color: rgb(184, 184, 184);
 }

@@ -56,7 +56,7 @@ function UserAssignment() {
   const token = localStorage.getItem("token");
 
   let urlAs =
-    "https://thearning.resultoption.tech/api/classroom/" +
+    "http://localhost:8000/api/classroom/" +
     idClass +
     "/assignments/students/" +
     idAs;
@@ -65,7 +65,7 @@ function UserAssignment() {
     //set axios header dengan type Authorization + Bearer token
     axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     //fetch user from Rest API
-    await axios.get("https://thearning.resultoption.tech/api/user/").then((response) => {
+    await axios.get("http://localhost:8000/api/user/").then((response) => {
       setUser(response.data.data);
     });
     await axios.get(urlAs).then((response) => {
@@ -77,6 +77,7 @@ function UserAssignment() {
       setSubmissionData(response.data.submission_attachments);
       setComment(response.data.comments);
       setPrivateComment(response.data.private_comments);
+      console.log(response.data);
 
       if (response.data.submission.submitted === true) {
         setDelAtt("hide");
@@ -177,7 +178,7 @@ function UserAssignment() {
     formData.append("filename", FileName);
     //send data to server
     await axios
-      .post("https://thearning.resultoption.tech/api/upload/", formData)
+      .post("http://localhost:8000/api/upload/", formData)
       .then((response) => {
         setFileTab("hide");
         setLinkTab("hide");
@@ -192,7 +193,7 @@ function UserAssignment() {
   const linkHandler = async (e) => {
     e.preventDefault();
     (async () => {
-      await fetch("https://thearning.resultoption.tech/api/links/", {
+      await fetch("http://localhost:8000/api/links/", {
         method: "POST",
         headers: {
           Authorization: "Bearer " + token,
@@ -213,7 +214,7 @@ function UserAssignment() {
     e.preventDefault();
     (async () => {
       await fetch(
-        "https://thearning.resultoption.tech/api/classroom/" + idClass + "/privatecomments",
+        "http://localhost:8000/api/classroom/" + idClass + "/privatecomments",
         {
           method: "POST",
           headers: {
@@ -237,7 +238,7 @@ function UserAssignment() {
         if (data.comment.id === value) {
           (async () => {
             await fetch(
-              "https://thearning.resultoption.tech/api/classroom/" +
+              "http://localhost:8000/api/classroom/" +
                 idClass +
                 "/privatecomments",
               {
@@ -262,7 +263,7 @@ function UserAssignment() {
     e.preventDefault();
     (async () => {
       await fetch(
-        "https://thearning.resultoption.tech/api/classroom/" + idClass + "/comments",
+        "http://localhost:8000/api/classroom/" + idClass + "/comments",
         {
           method: "POST",
           headers: {
@@ -286,7 +287,7 @@ function UserAssignment() {
         if (data.comment.id === value) {
           (async () => {
             await fetch(
-              "https://thearning.resultoption.tech/api/classroom/" + idClass + "/comments",
+              "http://localhost:8000/api/classroom/" + idClass + "/comments",
               {
                 method: "DELETE",
                 headers: {
@@ -353,7 +354,7 @@ function UserAssignment() {
             axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
             axios
               .delete(
-                "https://thearning.resultoption.tech/api/attachments/" +
+                "http://localhost:8000/api/attachments/" +
                   data.attachment.attachment_id
               )
               .then((response) => {
@@ -375,7 +376,7 @@ function UserAssignment() {
             axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
             axios
               .delete(
-                "https://thearning.resultoption.tech/api/attachments/" +
+                "http://localhost:8000/api/attachments/" +
                   data.attachment.attachment_id
               )
               .then((response) => {
@@ -392,7 +393,7 @@ function UserAssignment() {
 
     axios
       .post(
-        "https://thearning.resultoption.tech/api/classroom/" +
+        "http://localhost:8000/api/classroom/" +
           idClass +
           "/submissions/" +
           submission.submission_id +
@@ -410,7 +411,7 @@ function UserAssignment() {
 
     axios
       .post(
-        "https://thearning.resultoption.tech/api/classroom/" +
+        "http://localhost:8000/api/classroom/" +
           idClass +
           "/submissions/" +
           submission.submission_id +
@@ -635,7 +636,7 @@ function UserAssignment() {
                 )
               )}
             </div>
-            <div className="footer">
+            <div className="footer" style={{ height: "200px" }}>
               <hr></hr>
               <div className="public-com">
                 <AiOutlineComment className="public-icon" />

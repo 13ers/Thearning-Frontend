@@ -36,7 +36,7 @@ function CreateClass() {
     formData.append("image", selectedFile);
     //send data to server
     await axios
-      .post("https://thearning.resultoption.tech/api/classroom", formData)
+      .post("http://localhost:8000/api/classroom", formData)
       .then(() => {
         //redirect to logi page
         history.push("/");

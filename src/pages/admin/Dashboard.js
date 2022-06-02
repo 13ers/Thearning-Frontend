@@ -78,18 +78,14 @@ function Dashboard() {
     //set axios header dengan type Authorization + Bearer token
     axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     //fetch user from Rest API
-    await axios
-      .get("https://thearning.resultoption.tech/api/user")
-      .then((response) => {
-        //set response user to state
-        setUser(response.data.data);
-      });
+    await axios.get("http://localhost:8000/api/user").then((response) => {
+      //set response user to state
+      setUser(response.data.data);
+    });
 
-    await axios
-      .get("https://thearning.resultoption.tech/api/classroom")
-      .then((response) => {
-        setList(response.data.class_ids);
-      });
+    await axios.get("http://localhost:8000/api/classroom").then((response) => {
+      setList(response.data.class_ids);
+    });
   };
 
   //hook useEffect
@@ -131,7 +127,7 @@ function Dashboard() {
   const joinHandler = async (e) => {
     e.preventDefault();
 
-    axios.post("https://thearning.resultoption.tech/api/classroom/" + code);
+    axios.post("http://localhost:8000/api/classroom/" + code);
     window.location.reload(false);
   };
 

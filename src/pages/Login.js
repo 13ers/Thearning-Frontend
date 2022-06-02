@@ -20,7 +20,7 @@ function Login() {
     let a = user_id;
     let b = password;
     let mystorage = window.localStorage;
-    let url = "https://thearning.resultoption.tech/api/auth";
+    let url = "http://localhost:8000/api/auth";
     (async () => {
       const rawResponse = await fetch(url, {
         method: "POST",
