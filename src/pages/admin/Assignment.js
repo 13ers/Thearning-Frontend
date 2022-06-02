@@ -555,7 +555,9 @@ function Assignment() {
           </div>
           <div className={tab2} style={{ width: "100%" }}>
             <div className="list-student">
-              <h4 style={{ marginBottom: "30px" }}>Nama Siswa</h4>
+              <h4 style={{ marginBottom: "30px" }}>
+                {assignment.assignment_name}
+              </h4>
               <div>
                 {student.map((student, i) => (
                   <article key={student.user_id}>
@@ -669,7 +671,7 @@ function Assignment() {
                 </div>
                 <div className="privatecomAs" style={{ position: "relative" }}>
                   <FaRegCommentDots className="private-icon" />
-                  <h6>Komentar Pribadi</h6>
+                  <h6>{privateComment.length} Komentar Pribadi</h6>
                   <button
                     onClick={changeDisplay3}
                     className="btnClass2"
