@@ -48,7 +48,7 @@ function App() {
           />
           <Route path="/:idclass/Assignment/:idAs" component={Assignment} />
           <Route
-            path="/:id/CreateAssignment/:idAs"
+            path="/:id/CreateAssignment/:idAs/:idAn"
             component={CreateAssignment}
           />
         </Switch>

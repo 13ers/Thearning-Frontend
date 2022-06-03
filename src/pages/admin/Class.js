@@ -124,8 +124,21 @@ function Class() {
 
   const getId = async (e) => {
     e.preventDefault();
-
+    let idAnnouncement = "";
     axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+
+    axios
+      .post("http://localhost:8000/api/classroom/" + id + "/announcements/", {
+        headers: {
+          "content-type": "application/json",
+        },
+      })
+      .then(function (response) {
+        if (response.data.announcement_id !== "") {
+          idAnnouncement = response.data.announcement_id;
+        }
+      })
+      .catch(function (error) {});
 
     axios
       .post("http://localhost:8000/api/classroom/" + id + "/assignments/", {
@@ -136,7 +149,7 @@ function Class() {
       .then(function (response) {
         if (response.data.assignment_id !== "") {
           history.push(
-            `/${id}/CreateAssignment/${response.data.assignment_id}`
+            `/${id}/CreateAssignment/${response.data.assignment_id}/${idAnnouncement}`
           );
         }
       })
@@ -279,7 +292,11 @@ function Class() {
                       >
                         <h6>{assignment.assignment_name}</h6>
                       </Link>
-                      <p>Tenggat : {assignment.due_date}</p>
+                      <p>
+                        {assignment.due_date === null
+                          ? "Tanpa tenggat"
+                          : "Tenggat : " + assignment.due_date}
+                      </p>
                     </div>
                   </div>
                 </article>

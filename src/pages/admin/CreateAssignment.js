@@ -18,6 +18,7 @@ import axios from "axios";
 function CreateAssignment() {
   const { id } = useParams();
   const { idAs } = useParams();
+  const { idAn } = useParams();
   const [attachment, setAttachment] = useState([]);
   const [name, setName] = useState("");
   const [date, setDate] = useState("");
@@ -131,6 +132,9 @@ function CreateAssignment() {
     axios.delete(
       "http://localhost:8000/api/classroom/" + id + "/assignments/" + idAs
     );
+    axios.delete(
+      "http://localhost:8000/api/classroom/" + id + "/announcements/" + idAn
+    );
     localStorage.removeItem("name");
     localStorage.removeItem("date");
     localStorage.removeItem("time");
@@ -185,6 +189,24 @@ function CreateAssignment() {
               instructions: instruction,
               total_marks: marks2,
             },
+          }),
+        }
+      );
+      await fetch(
+        "http://localhost:8000/api/classroom/" + id + "/announcements/",
+        {
+          method: "PATCH",
+          headers: {
+            Authorization: "Bearer " + token,
+            "Content-Type": "application/json",
+            Origin: "https://127.0.0.1:5000",
+          },
+
+          body: JSON.stringify({
+            announcement_id: idAn,
+            announcement_name: name,
+            class_id: id,
+            body: instruction,
           }),
         }
       );

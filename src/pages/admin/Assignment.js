@@ -4,6 +4,7 @@ import { HiClipboardList } from "react-icons/hi";
 import { HiOutlineUpload } from "react-icons/hi";
 import { IoLink } from "react-icons/io5";
 import fileImg from "../../img/file.png";
+import assignmentIcon from "../../img/assignment.png";
 import { FaRegCommentDots } from "react-icons/fa";
 import { AiOutlineComment } from "react-icons/ai";
 import { IoSend } from "react-icons/io5";
@@ -25,6 +26,7 @@ function Assignment() {
   const [dataSubmission, setDataSubmission] = useState({});
   const [assignmentStudent, setAssignmentStudent] = useState([]);
   const [privateComment, setPrivateComment] = useState([]);
+  const [mark, setMark] = useState("");
   const [statsSub, setStatusSub] = useState(false);
   const [privateInput, setPrivIn] = useState("com-input");
   const [privateCom, setPrivCom] = useState("private-coms");
@@ -40,6 +42,12 @@ function Assignment() {
   const [abc, setA] = useState([]);
   const [submission, setSubmission] = useState({});
   const [idsub, setDatasubid] = useState({});
+  const [arrayBaru, setArrayBaru] = useState([]);
+  const [total_mark, setMarks] = useState("");
+  const [mark2, setMark2] = useState("hide");
+  const [editMark2, setEditMark2] = useState("hide");
+  const [buttonAdd, setButtonAdd] = useState("hide");
+  const [buttonEdit, setButtonEdit] = useState("hide");
   let subIds = submission.submission_id;
   //define history
   const history = useHistory();
@@ -70,6 +78,7 @@ function Assignment() {
       setDate(response.data.assignment.due_date);
       setComment(response.data.comments);
       setA(response.data.submissions);
+      console.log(response.data);
     });
 
     await axios.get(urlClass).then((response) => {
@@ -100,6 +109,7 @@ function Assignment() {
   };
 
   let photo = user.profile_photo;
+  let total_Marks = "belum Berhasil";
 
   const [profile, setProfile] = useState("profile");
 
@@ -185,6 +195,31 @@ function Assignment() {
     }
   }
 
+  for (let i = 0; i < comment.length; i++) {
+    let data = comment[i];
+    if (data.commenter.user_id === userid) {
+      let stats = "";
+      statusComment2.push(stats);
+    } else {
+      let stats = "hide";
+      statusComment2.push(stats);
+    }
+  }
+
+  let dataSubmit = "";
+
+  for (let i = 0; i < submission.length; i++) {
+    let data = submission[i];
+    if (data.submission.submitted === true) {
+      dataSubmit = i;
+    }
+  }
+
+  if (dataSubmit > 0) {
+    dataSubmit += 1;
+  } else {
+    dataSubmit = 0;
+  }
   const chooseFunction = function (value) {
     return async function (e) {
       e.preventDefault();
@@ -215,9 +250,20 @@ function Assignment() {
               });
           })();
         }
+        if (data.submission.marks_allotted === null) {
+          setMarks("0");
+          setButtonEdit("hide");
+          setButtonAdd("btnClass2 v2");
+        } else {
+          setMarks(data.submission.marks_allotted);
+          setButtonEdit("btnClass2 v3");
+          setButtonAdd("hide");
+        }
       }
     };
   };
+
+  console.log(total_mark);
 
   const privcomHandler = async (e) => {
     e.preventDefault();
@@ -268,6 +314,68 @@ function Assignment() {
     };
   };
 
+  const addMark = function (value1, value2) {
+    return async function (e) {
+      e.preventDefault();
+      (async () => {
+        await fetch(
+          "http://localhost:8000/api/classroom/" +
+            idclass +
+            "/submissions/" +
+            value2 +
+            "/mark",
+          {
+            method: "POST",
+            headers: {
+              Authorization: "Bearer " + token,
+              "Content-Type": "application/json",
+              Origin: "https://127.0.0.1:5000",
+            },
+
+            body: JSON.stringify({
+              submission_id: value2,
+              student_id: value1,
+              value: parseInt(mark),
+            }),
+          }
+        ).then((response) => {
+          window.location.reload(false);
+        });
+      })();
+    };
+  };
+
+  const changeMark = function (value1, value2) {
+    return async function (e) {
+      e.preventDefault();
+      (async () => {
+        await fetch(
+          "http://localhost:8000/api/classroom/" +
+            idclass +
+            "/submissions/" +
+            value2 +
+            "/mark",
+          {
+            method: "PATCH",
+            headers: {
+              Authorization: "Bearer " + token,
+              "Content-Type": "application/json",
+              Origin: "https://127.0.0.1:5000",
+            },
+
+            body: JSON.stringify({
+              submission_id: value2,
+              student_id: value1,
+              value: parseInt(mark),
+            }),
+          }
+        ).then((response) => {
+          window.location.reload(false);
+        });
+      })();
+    };
+  };
+
   const changeDisplay3 = () => {
     if (privateInput === "com-input") {
       setPrivIn("private-input v2");
@@ -289,6 +397,8 @@ function Assignment() {
   if (total === 100) {
     totalMark = "100 point";
   }
+
+  let marks = total_mark + "/" + totalMark;
   if (time !== null) {
     let times = time.split(":");
     hour = times[0];
@@ -349,6 +459,28 @@ function Assignment() {
       setTab2("tab2-As");
     }
   };
+
+  const showMark = () => {
+    if (mark2 === "hide") {
+      setMark2("join2 v2");
+      setEditMark2("hide");
+    } else {
+      setMark2("hide");
+      setEditMark2("hide");
+    }
+  };
+
+  const showEdit = () => {
+    if (editMark2 === "hide") {
+      setEditMark2("Join2 v2");
+      setMark2("hide");
+    } else {
+      setMark2("hide");
+      setEditMark2("hide");
+    }
+  };
+
+  console.log(mark2, editMark2);
 
   let statusComment = [];
   for (let i = 0; i < privateComment.length; i++) {
@@ -587,7 +719,58 @@ function Assignment() {
                   className="wrapper-submission"
                   style={{ paddingRight: "10px" }}
                 >
-                  <h1 style={{ marginBottom: "10px" }}>{dataUser.fullname}</h1>
+                  <div
+                    style={{ display: "flex", justifyContent: "space-between" }}
+                  >
+                    <h1 style={{ marginBottom: "10px" }}>
+                      {dataUser.fullname}
+                    </h1>
+                    <h6>{marks}</h6>
+                    <button className={buttonAdd} onClick={showMark}></button>
+                    <button className={buttonEdit} onClick={showEdit}></button>
+                  </div>
+                  <div className={mark2}>
+                    <form
+                      onSubmit={addMark(
+                        dataUser.user_id,
+                        dataSubmission.submission_id
+                      )}
+                    >
+                      <input
+                        type="text"
+                        value={mark}
+                        placeholder="Masukkan Nilai"
+                        className="form-control"
+                        onChange={(e) => setMark(e.target.value)}
+                      />
+                      <input
+                        type="submit"
+                        value="Submit"
+                        className="btn btn-primary"
+                      />
+                    </form>
+                  </div>
+                  <div className={editMark2}>
+                    <form
+                      onSubmit={changeMark(
+                        dataUser.user_id,
+                        dataSubmission.submission_id
+                      )}
+                    >
+                      <input
+                        type="text"
+                        value={mark}
+                        placeholder="Masukkan Nilai"
+                        className="form-control"
+                        onChange={(e) => setMark(e.target.value)}
+                      />
+                      <input
+                        type="submit"
+                        value="Submit"
+                        className="btn btn-primary"
+                      />
+                    </form>
+                  </div>
                   {assignmentStudent.map((attachments) =>
                     attachments.file === null ? (
                       <div
@@ -720,7 +903,7 @@ function Assignment() {
               <div className={display2}>
                 <center>
                   <img
-                    src={fileImg}
+                    src={assignmentIcon}
                     alt=""
                     style={{
                       width: "200px",
@@ -732,8 +915,7 @@ function Assignment() {
                   />
                   <h3>
                     Terkumpul{" "}
-                    <font style={{ color: "green" }}>{submission.length}</font>{" "}
-                    Dari{" "}
+                    <font style={{ color: "green" }}>{dataSubmit}</font> Dari{" "}
                     <font style={{ color: "green" }}>{student.length}</font>{" "}
                     Siswa
                   </h3>

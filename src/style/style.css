@@ -94,6 +94,32 @@ img.prof {
   height: 25px;
 }
 
+.btnClass2.v2 {
+  position: absolute;
+  top: 20px;
+  right: 10px;
+  background-color: transparent;
+  border: none;
+  background-image: url("../img/add.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 25px;
+  height: 25px;
+}
+
+.btnClass2.v3 {
+  position: absolute;
+  top: 20px;
+  right: 10px;
+  background-color: transparent;
+  border: none;
+  background-image: url("../img/edit.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 25px;
+  height: 25px;
+}
+
 .btnClass3 {
   position: absolute;
   top: 0px;
@@ -301,6 +327,32 @@ img.prof4 {
   z-index: 2;
   top: 20px;
   right: 100px;
+  width: 150px;
+  border: 1px solid rgb(184, 184, 184);
+  border-radius: 5px;
+  background-color: white;
+  padding: 10px;
+}
+
+.join2.v2 {
+  display: block;
+  position: absolute;
+  z-index: 2;
+  top: 50px;
+  right: 20px;
+  width: 150px;
+  border: 1px solid rgb(184, 184, 184);
+  border-radius: 5px;
+  background-color: white;
+  padding: 10px;
+}
+
+.join2.v3 {
+  display: block;
+  position: absolute;
+  z-index: 2;
+  top: 50px;
+  right: 20px;
   width: 150px;
   border: 1px solid rgb(184, 184, 184);
   border-radius: 5px;
@@ -748,9 +800,8 @@ button.show {
 }
 
 .file-img.v2 {
-  padding: 5px;
-  background-color: rgb(0, 58, 146);
-  border-radius: 80px;
+  background: none;
+  border: none;
 }
 
 .submission {
@@ -1206,4 +1257,16 @@ p.link-title {
 h5.chooseName:hover {
   cursor: pointer;
   color: rgb(184, 184, 184);
+}
+
+button.btn-mark {
+  height: 30px;
+  width: 100px;
+  font-size: 0.9em;
+  padding: 0px;
+}
+.addMark {
+  width: 100px;
+  position: absolute;
+  z-index: 5;
 }
