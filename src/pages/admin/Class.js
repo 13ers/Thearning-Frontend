@@ -18,7 +18,7 @@ function Class() {
   const { id } = useParams();
   const [classRoom, SetClass] = useState({});
   const [user, setUser] = useState({});
-  const [assignment, setAssignment] = useState([]);
+  let [assignment, setAssignment] = useState([]);
   const [student, setStudent] = useState([]);
   const [teacher, setTeacher] = useState([]);
   const [tab1, setTab1] = useState("tab1");
@@ -45,7 +45,7 @@ function Class() {
 
     await axios.get(urlClass).then((response) => {
       SetClass(response.data.class);
-      setAssignment(response.data.assignments);
+      setAssignment(response.data.assignments.reverse());
       setStudent(response.data.students);
       setTeacher(response.data.teachers);
     });
