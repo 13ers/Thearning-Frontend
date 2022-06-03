@@ -62,6 +62,7 @@ function Assignment() {
     idAs;
 
   let urlClass = "http://localhost:8000/api/classroom/" + idclass;
+
   //function "fetchData"
   const fetchData = async () => {
     //set axios header dengan type Authorization + Bearer token
@@ -472,7 +473,7 @@ function Assignment() {
 
   const showEdit = () => {
     if (editMark2 === "hide") {
-      setEditMark2("Join2 v2");
+      setEditMark2("edit-mark");
       setMark2("hide");
     } else {
       setMark2("hide");

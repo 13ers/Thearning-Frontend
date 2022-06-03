@@ -16,6 +16,8 @@ import Dashboard from "./pages/admin/Dashboard";
 
 import CreateClass from "./pages/admin/CreateClass";
 
+import EditClass from "./pages/admin/EditClass";
+
 import Class from "./pages/admin/Class";
 
 import User from "./pages/user/user";
@@ -39,6 +41,7 @@ function App() {
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
           <Route path="/CreateClass" component={CreateClass} />
+          <Route path="/EditClass/:ClassId" component={EditClass} />
           <Route path="/User" component={User} />
           <Route path="/Class/:id" component={Class} />
           <Route path="/UserClass/:id" component={UserClass} />

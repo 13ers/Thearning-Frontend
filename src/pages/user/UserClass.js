@@ -44,7 +44,7 @@ function UserClass() {
 
     await axios.get(urlClass).then((response) => {
       SetClass(response.data.class);
-      setAssignment(response.data.assignments);
+      setAssignment(response.data.assignments.reverse());
       setStudent(response.data.students);
       setTeacher(response.data.teachers);
     });

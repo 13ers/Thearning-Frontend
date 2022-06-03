@@ -120,6 +120,19 @@ img.prof {
   height: 25px;
 }
 
+.btnClass2.v3.v2 {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  background-color: transparent;
+  border: none;
+  background-image: url("../img/edit2.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 30px;
+  height: 30px;
+}
+
 .btnClass3 {
   position: absolute;
   top: 0px;
@@ -1269,4 +1282,26 @@ button.btn-mark {
   width: 100px;
   position: absolute;
   z-index: 5;
+}
+
+.edit-mark {
+  display: block;
+  position: absolute;
+  z-index: 2;
+  top: 50px;
+  right: 20px;
+  width: 150px;
+  border: 1px solid rgb(184, 184, 184);
+  border-radius: 5px;
+  background-color: white;
+  padding: 10px;
+}
+
+.edit-mark input {
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+
+.edit-mark input.btn {
+  padding: 3px;
 }

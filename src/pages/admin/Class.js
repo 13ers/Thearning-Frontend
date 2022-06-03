@@ -21,6 +21,7 @@ function Class() {
   let [assignment, setAssignment] = useState([]);
   const [student, setStudent] = useState([]);
   const [teacher, setTeacher] = useState([]);
+  let [announcement, setAnnouncement] = useState([]);
   const [tab1, setTab1] = useState("tab1");
   const [tab2, setTab2] = useState("tabs2");
   const [tab3, setTab3] = useState("tabs3");
@@ -33,6 +34,7 @@ function Class() {
   const token = localStorage.getItem("token");
 
   let urlClass = "http://localhost:8000/api/classroom/" + id;
+  let urlAn = "http://localhost:8000/api/classroom/" + id + "/announcements";
   //function "fetchData"
   const fetchData = async () => {
     //set axios header dengan type Authorization + Bearer token
@@ -48,8 +50,15 @@ function Class() {
       setAssignment(response.data.assignments.reverse());
       setStudent(response.data.students);
       setTeacher(response.data.teachers);
+      console.log(response.data);
+    });
+    await axios.get(urlAn).then((response) => {
+      setAnnouncement(response.data.reverse());
     });
   };
+
+  const arr3 = [...announcement, ...assignment];
+  console.log(arr3);
 
   //hook useEffect
   useEffect(() => {
@@ -63,6 +72,34 @@ function Class() {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    window.localStorage.setItem(
+      "class_name",
+      JSON.stringify(classRoom.class_name)
+    );
+  }, [classRoom.class_name]);
+
+  useEffect(() => {
+    window.localStorage.setItem("section", JSON.stringify(classRoom.section));
+  }, [classRoom.section]);
+
+  useEffect(() => {
+    window.localStorage.setItem(
+      "class_description",
+      JSON.stringify(classRoom.class_description)
+    );
+  }, [classRoom.class_description]);
+
+  useEffect(() => {
+    window.localStorage.setItem(
+      "class_image",
+      JSON.stringify(classRoom.class_image)
+    );
+  }, [classRoom.class_image]);
+
+  function changePage2() {
+    history.push(`/EditClass/${id}`);
+  }
   //function logout
   const logoutHandler = async () => {
     //set axios header dengan type Authorization + Bearer token
@@ -182,9 +219,6 @@ function Class() {
                 <button className="tab" onClick={changeTab3}>
                   Anggota
                 </button>
-                <button className="tab" onClick={changeTab4}>
-                  Nilai
-                </button>
               </div>
             </center>
             <img
@@ -239,6 +273,10 @@ function Class() {
                 >
                   {classRoom.class_id}
                 </h5>
+                <button
+                  className={"btnClass2 v3 v2"}
+                  onClick={changePage2}
+                ></button>
               </div>
             </center>
             <div className="content">
@@ -354,9 +392,6 @@ function Class() {
                 <hr></hr>
               </article>
             ))}
-          </div>
-          <div className={tab4}>
-            <h1>Nilai</h1>
           </div>
         </div>
       </div>

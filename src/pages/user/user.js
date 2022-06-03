@@ -118,6 +118,8 @@ function User() {
     window.location.reload(false);
   };
 
+  console.log(classList);
+
   return (
     <div className="wrapper">
       <div>
