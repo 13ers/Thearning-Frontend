@@ -253,25 +253,26 @@ function Assignment() {
               });
           })();
 
-          if (data.submission.marks_allotted === null) {
-            setButtonEdit("hide");
-            setButtonAdd("btnClass2 v2");
-          } else {
-            setButtonEdit("btnClass2 v3");
-            setButtonAdd("hide");
-          }
+          console.log(data.submission.marks_allotted);
 
           if (data.submission.submitted === false) {
             setButtonEdit("hide");
             setButtonAdd("hide");
           } else {
-            setButtonEdit("hide");
-            setButtonAdd("btnClass2 v2");
+            if (data.submission.marks_allotted === null) {
+              setButtonEdit("hide");
+              setButtonAdd("btnClass2 v2");
+            } else {
+              setButtonEdit("btnClass2 v2");
+              setButtonAdd("hide");
+            }
           }
         }
       }
     };
   };
+
+  console.log(buttonEdit, buttonAdd);
 
   const privcomHandler = async (e) => {
     e.preventDefault();
@@ -322,34 +323,63 @@ function Assignment() {
     };
   };
 
-  const addMark = function (value1, value2) {
+  const addMark = function (value1, value2, value3) {
     return async function (e) {
       e.preventDefault();
-      (async () => {
-        await fetch(
-          "http://localhost:8000/api/classroom/" +
-            idclass +
-            "/submissions/" +
-            value2 +
-            "/mark",
-          {
-            method: "POST",
-            headers: {
-              Authorization: "Bearer " + token,
-              "Content-Type": "application/json",
-              Origin: "https://127.0.0.1:5000",
-            },
 
-            body: JSON.stringify({
-              submission_id: value2,
-              student_id: value1,
-              value: parseInt(mark),
-            }),
-          }
-        ).then((response) => {
-          window.location.reload(false);
-        });
-      })();
+      if (value3 === null) {
+        (async () => {
+          await fetch(
+            "http://localhost:8000/api/classroom/" +
+              idclass +
+              "/submissions/" +
+              value2 +
+              "/mark",
+            {
+              method: "POST",
+              headers: {
+                Authorization: "Bearer " + token,
+                "Content-Type": "application/json",
+                Origin: "https://127.0.0.1:5000",
+              },
+
+              body: JSON.stringify({
+                submission_id: value2,
+                student_id: value1,
+                value: parseInt(mark),
+              }),
+            }
+          ).then((response) => {
+            window.location.reload(false);
+          });
+        })();
+      } else {
+        (async () => {
+          await fetch(
+            "http://localhost:8000/api/classroom/" +
+              idclass +
+              "/submissions/" +
+              value2 +
+              "/mark",
+            {
+              method: "PATCH",
+              headers: {
+                Authorization: "Bearer " + token,
+                "Content-Type": "application/json",
+                Origin: "https://127.0.0.1:5000",
+              },
+
+              body: JSON.stringify({
+                submission_id: value2,
+                student_id: value1,
+                value: parseInt(mark),
+              }),
+            }
+          ).then((response) => {
+            window.location.reload(false);
+          });
+        })();
+      }
     };
   };
 
@@ -798,7 +828,8 @@ function Assignment() {
                     <form
                       onSubmit={changeMark(
                         dataUser.user_id,
-                        dataSubmission.submission_id
+                        dataSubmission.submission_id,
+                        dataSubmission.marks_allotted
                       )}
                     >
                       <input
