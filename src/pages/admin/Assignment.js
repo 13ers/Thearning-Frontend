@@ -213,13 +213,11 @@ function Assignment() {
   for (let i = 0; i < submission.length; i++) {
     let data = submission[i];
     if (data.submission.submitted === true) {
-      dataSubmit = i;
+      dataSubmit = i + 1;
     }
   }
 
-  if (dataSubmit > 0) {
-    dataSubmit += 1;
-  } else {
+  if (dataSubmit === "") {
     dataSubmit = 0;
   }
 
