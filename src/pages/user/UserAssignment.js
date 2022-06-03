@@ -84,12 +84,12 @@ function UserAssignment() {
         setUnsubMenu("btn-unsubmit");
         setSubMenu("hide");
         if (response.data.submission.marks_allotted === null) {
-          if (response.data.submission.on_time === true) {
-            setStatusSub("Diserahkan");
-            setColorStatus("black");
-          } else if (response.data.submission.on_time === false) {
+          if (response.data.submission.on_time === false) {
             setStatusSub("Terlambat");
             setColorStatus("red");
+          } else {
+            setStatusSub("Diserahkan");
+            setColorStatus("black");
           }
         } else {
           setStatusSub("Dinilai");
