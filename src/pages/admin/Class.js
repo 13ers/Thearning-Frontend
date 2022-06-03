@@ -1,7 +1,10 @@
 import { GoMortarBoard } from "react-icons/go";
 import { useParams } from "react-router-dom";
-import { HiClipboardList, HiOutlineUpload } from "react-icons/hi";
+import { HiClipboardList } from "react-icons/hi";
 import { Link } from "react-router-dom";
+import IconAn from "../../img/add2.png";
+import { HiOutlineUpload } from "react-icons/hi";
+import { IoLink } from "react-icons/io5";
 
 import "../../style/style.css";
 
@@ -26,6 +29,12 @@ function Class() {
   const [tab2, setTab2] = useState("tabs2");
   const [tab3, setTab3] = useState("tabs3");
   const [tab4, setTab4] = useState("tabs4");
+  const [tabAn, setTabAn] = useState("hide");
+  const [buttonAn, setButtonAn] = useState("right-content v2");
+  const [idAn, setIdAn] = useState("");
+  const [link, setLink] = useState("hide");
+  const [file, setFile] = useState("hide");
+  const [bodyAn, setBody] = useState("");
 
   //define history
   const history = useHistory();
@@ -58,7 +67,6 @@ function Class() {
   };
 
   const arr3 = [...announcement, ...assignment];
-  console.log(arr3);
 
   //hook useEffect
   useEffect(() => {
@@ -96,6 +104,11 @@ function Class() {
       JSON.stringify(classRoom.class_image)
     );
   }, [classRoom.class_image]);
+
+  useEffect(() => {
+    const data = window.localStorage.getItem("stats2");
+    if (data !== null) setButtonAn(JSON.parse(data));
+  }, []);
 
   function changePage2() {
     history.push(`/EditClass/${id}`);
@@ -149,6 +162,26 @@ function Class() {
     }
   };
 
+  const linkTab = () => {
+    if (link === "hide") {
+      setLink("tabs v3");
+      setFile("hide");
+    } else {
+      setLink("hide");
+      setFile("hide");
+    }
+  };
+
+  const fileTab = () => {
+    if (file === "hide") {
+      setLink("hide");
+      setFile("tabs v3");
+    } else {
+      setLink("hide");
+      setFile("hide");
+    }
+  };
+
   const [profile, setProfile] = useState("profile");
 
   const changeDisplay2 = () => {
@@ -198,6 +231,81 @@ function Class() {
   }
 
   let numOfStud = student.length;
+  let register = "hide";
+  if (user.status === "admin") {
+    register = "btn btn-outline-primary";
+  }
+
+  const showTabAn = async (e) => {
+    e.preventDefault();
+    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+
+    axios
+      .post("http://localhost:8000/api/classroom/" + id + "/announcements/", {
+        headers: {
+          "content-type": "application/json",
+        },
+      })
+      .then(function (response) {
+        if (response.data.announcement_id !== "") {
+          setIdAn(response.data.announcement_id);
+        }
+        if (tabAn === "hide") {
+          setTabAn("right-content v3");
+          setButtonAn("hide");
+        } else {
+          setTabAn("hide");
+          setButtonAn("right-content v2");
+        }
+      })
+      .catch(function (error) {});
+  };
+
+  const hideTabAn = async (e) => {
+    e.preventDefault();
+
+    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+
+    axios
+      .delete(
+        "http://localhost:8000/api/classroom/" + id + "/announcements/" + idAn
+      )
+      .then(function (response) {
+        if (buttonAn === "hide") {
+          setTabAn("hide");
+          setButtonAn("right-content v2");
+        } else {
+          setTabAn("right-content v3");
+          setButtonAn("hide");
+        }
+      })
+      .catch(function (error) {});
+  };
+
+  const addHandler = async (e) => {
+    e.preventDefault();
+    (async () => {
+      await fetch(
+        "http://localhost:8000/api/classroom/" + id + "/announcements/",
+        {
+          method: "PATCH",
+          headers: {
+            Authorization: "Bearer " + token,
+            "Content-Type": "application/json",
+            Origin: "https://127.0.0.1:5000",
+          },
+
+          body: JSON.stringify({
+            announcement_id: idAn,
+            announcement_name: user.fullname,
+            class_id: id,
+            body: bodyAn,
+          }),
+        }
+      );
+      window.location.reload(false);
+    })();
+  };
 
   return (
     <div className="wrapper-all">
@@ -244,6 +352,15 @@ function Class() {
                   <tr>
                     <td>
                       <button
+                        onClick={() => {
+                          history.push("/register");
+                        }}
+                        className={register}
+                        style={{ padding: "5px", marginRight: "10px" }}
+                      >
+                        Register
+                      </button>
+                      <button
                         onClick={logoutHandler}
                         className="btn btn-md btn-danger"
                       >
@@ -287,6 +404,85 @@ function Class() {
                 <p style={{ textAlign: "left", fontSize: "0.75em" }}>
                   Tidak ada tugas yang perlu segera diselesaikan
                 </p>
+              </div>
+              <div className={buttonAn} style={{ textAlign: "center" }}>
+                <img
+                  src={IconAn}
+                  alt=""
+                  style={{ width: "30px", color: "#7AABD9" }}
+                />
+                <h5 onClick={showTabAn}>Tambahkan Pengumuman</h5>
+              </div>
+              <div className={tabAn}>
+                <textarea
+                  className="form-control"
+                  placeholder="Masukkan Komentar"
+                  value={bodyAn}
+                  onChange={(e) => setBody(e.target.value)}
+                ></textarea>
+                <div
+                  style={{
+                    position: "absolute",
+                    bottom: "10px",
+                    right: "20px",
+                  }}
+                >
+                  <button
+                    className="btn btn-outline-primary"
+                    onClick={hideTabAn}
+                    style={{
+                      padding: "3px",
+                      marginRight: "10px",
+                      marginLeft: "10px",
+                      zIndex: "5",
+                    }}
+                  >
+                    Batal
+                  </button>
+                  <button
+                    className="btn btn-primary"
+                    style={{ padding: "3px" }}
+                    onClick={addHandler}
+                  >
+                    Kirim
+                  </button>
+                </div>
+                <div className={file}>
+                  <form>
+                    <input
+                      type="file"
+                      className="form-control"
+                      placeholder="Pilih File"
+                      style={{ marginBottom: "10px" }}
+                    />
+                    <button
+                      className="btn btn-outline-primary"
+                      style={{ marginRight: "5px" }}
+                      onClick={fileTab}
+                    >
+                      Batal
+                    </button>
+                    <button className="btn btn-primary">Submit</button>
+                  </form>
+                </div>
+                <div className={link}>
+                  <form>
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="Salin Link Disini"
+                      style={{ marginBottom: "10px" }}
+                    />
+                    <button
+                      className="btn btn-outline-primary"
+                      style={{ marginRight: "5px" }}
+                      onClick={linkTab}
+                    >
+                      Batal
+                    </button>
+                    <button className="btn btn-primary">Submit</button>
+                  </form>
+                </div>
               </div>
               {assignment.map((assignment) => (
                 <article key={assignment.assignment_id}>

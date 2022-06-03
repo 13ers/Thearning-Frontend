@@ -53,9 +53,6 @@ function EditClass() {
     );
   }, [class_description]);
 
-  useEffect(() => {
-    window.localStorage.setItem("class_image", JSON.stringify(selectedFile));
-  }, [selectedFile]);
   //define state validation
   const [validation, setValidation] = useState([]);
 

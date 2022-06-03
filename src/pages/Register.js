@@ -51,7 +51,7 @@ function Register() {
       .post("http://localhost:8000/api/user", formData)
       .then(() => {
         //redirect to logi page
-        history.push("/login");
+        history.push("/");
       })
       .catch((error) => {
         //assign error to state "validation"
@@ -64,7 +64,7 @@ function Register() {
   };
 
   function back() {
-    history.push("/login");
+    history.push("/");
   }
 
   return (

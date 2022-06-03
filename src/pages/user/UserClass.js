@@ -225,7 +225,11 @@ function UserClass() {
                       >
                         <h6>{assignment.assignment_name}</h6>
                       </Link>
-                      <p>Tenggat : {assignment.due_date}</p>
+                      <p>
+                        {assignment.due_date === null
+                          ? "Tanpa tenggat"
+                          : "Tenggat : " + assignment.due_date}
+                      </p>
                     </div>
                   </div>
                 </article>
@@ -249,7 +253,11 @@ function UserClass() {
                       >
                         <h6>{assignment.assignment_name}</h6>
                       </Link>
-                      <p>Tenggat : {assignment.due_date}</p>
+                      <p>
+                        {assignment.due_date === null
+                          ? "Tanpa tenggat"
+                          : "Tenggat : " + assignment.due_date}
+                      </p>
                     </div>
                   </div>
                 </article>

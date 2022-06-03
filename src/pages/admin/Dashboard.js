@@ -131,6 +131,13 @@ function Dashboard() {
     window.location.reload(false);
   };
 
+  let list = "hide";
+  let register = "hide";
+  if (stats === "admin") {
+    list = "display";
+    register = "btn btn-outline-primary";
+  }
+
   return (
     <div className="wrapper">
       <div>
@@ -145,7 +152,7 @@ function Dashboard() {
             onClick={changeDisplay2}
           />
           <div className={display}>
-            <li className="display">
+            <li className={list}>
               <button className="btnOp" onClick={changePage}>
                 Buat Kelas
               </button>
@@ -157,7 +164,7 @@ function Dashboard() {
             </li>
           </div>
           <div className={profile}>
-            <table>
+            <table style={{ marginBottom: "10px" }}>
               <tbody>
                 <tr>
                   <td>
@@ -173,8 +180,18 @@ function Dashboard() {
                 <tr>
                   <td>
                     <button
+                      onClick={() => {
+                        history.push("/register");
+                      }}
+                      className={register}
+                      style={{ padding: "5px", marginRight: "10px" }}
+                    >
+                      Register
+                    </button>
+                    <button
                       onClick={logoutHandler}
-                      className="btn btn-md btn-danger"
+                      className="btn btn-md btn-outline-danger"
+                      style={{ padding: "5px" }}
                     >
                       LOGOUT
                     </button>

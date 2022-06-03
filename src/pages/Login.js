@@ -76,17 +76,6 @@ function Login() {
                   </button>
                 </div>
               </form>
-              <div className="pt-2 d-grid gap-2">
-                <button
-                  type="button"
-                  className="btn btn-outline-primary"
-                  onClick={() => {
-                    history.push("/register");
-                  }}
-                >
-                  Register
-                </button>
-              </div>
             </div>
           </div>
         </div>

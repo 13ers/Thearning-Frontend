@@ -48,6 +48,7 @@ function Assignment() {
   const [editMark2, setEditMark2] = useState("hide");
   const [buttonAdd, setButtonAdd] = useState("hide");
   const [buttonEdit, setButtonEdit] = useState("hide");
+  const [marks3, setMarks3] = useState();
   let subIds = submission.submission_id;
   //define history
   const history = useHistory();
@@ -221,12 +222,15 @@ function Assignment() {
   } else {
     dataSubmit = 0;
   }
+
+  let finalMark = "";
   const chooseFunction = function (value) {
     return async function (e) {
       e.preventDefault();
       for (let i = 0; i < submission.length; i++) {
         let data = submission[i];
         if (data.user.user_id === value) {
+          setMarks3(data.submission.marks_allotted);
           setStatusSub(true);
           setDataUser(data.user);
           setDataSubmission(data.submission);
@@ -250,21 +254,26 @@ function Assignment() {
                 setPrivateComment(response.data.private_comments);
               });
           })();
-        }
-        if (data.submission.marks_allotted === null) {
-          setMarks("0");
-          setButtonEdit("hide");
-          setButtonAdd("btnClass2 v2");
-        } else {
-          setMarks(data.submission.marks_allotted);
-          setButtonEdit("btnClass2 v3");
-          setButtonAdd("hide");
+
+          if (data.submission.marks_allotted === null) {
+            setButtonEdit("hide");
+            setButtonAdd("btnClass2 v2");
+          } else {
+            setButtonEdit("btnClass2 v3");
+            setButtonAdd("hide");
+          }
+
+          if (data.submission.submitted === false) {
+            setButtonEdit("hide");
+            setButtonAdd("hide");
+          } else {
+            setButtonEdit("hide");
+            setButtonAdd("btnClass2 v2");
+          }
         }
       }
     };
   };
-
-  console.log(total_mark);
 
   const privcomHandler = async (e) => {
     e.preventDefault();
@@ -395,16 +404,35 @@ function Assignment() {
   let year = "";
   let deadline = "";
 
+  let totalMarks = "";
+
+  if (dataSubmission.marks_allotted === null) {
+    totalMarks = "0";
+  } else {
+    totalMarks = dataSubmission.marks_allotted;
+  }
+
   if (total === 100) {
     totalMark = "100 point";
   }
 
-  let marks = total_mark + "/" + totalMark;
+  let marks = "";
+  if (dataSubmission.submitted === true) {
+    if (marks3 === null) {
+      marks = 0 + "/" + totalMark;
+    } else {
+      marks = marks3 + "/" + totalMark;
+    }
+  } else {
+    marks = "Belum Diserahkan";
+  }
+
   if (time !== null) {
     let times = time.split(":");
     hour = times[0];
     min = times[1];
   }
+
   if (date !== null) {
     let arr = date.split("-");
     year = arr[0];
@@ -447,6 +475,11 @@ function Assignment() {
       min;
   }
 
+  let margin = "";
+  if (comment.length > 0) {
+    margin = "-90px";
+  }
+
   const changeTab1 = () => {
     if (tab1 === "tabs1") {
       setTab1("left-As");
@@ -481,8 +514,6 @@ function Assignment() {
     }
   };
 
-  console.log(mark2, editMark2);
-
   let statusComment = [];
   for (let i = 0; i < privateComment.length; i++) {
     let data = privateComment[i];
@@ -493,6 +524,11 @@ function Assignment() {
       let stats = "hide";
       statusComment.push(stats);
     }
+  }
+
+  let register = "hide";
+  if (user.status === "admin") {
+    register = "btn btn-outline-primary";
   }
 
   return (
@@ -539,6 +575,15 @@ function Assignment() {
                   <tr>
                     <td>
                       <button
+                        onClick={() => {
+                          history.push("/register");
+                        }}
+                        className={register}
+                        style={{ padding: "5px", marginRight: "10px" }}
+                      >
+                        Register
+                      </button>
+                      <button
                         onClick={logoutHandler}
                         className="btn btn-md btn-danger"
                       >
@@ -553,7 +598,7 @@ function Assignment() {
         </div>
         <div className="container3 v4">
           <div className={tab1} style={{ width: "100%" }}>
-            <HiClipboardList className="logo-As" />
+            <HiClipboardList className="logo-As3" />
             <h1>{assignment.assignment_name}</h1>
             <div className="detail-As">
               <p>{totalMark}</p>
@@ -639,7 +684,7 @@ function Assignment() {
               <hr></hr>
               <div className="public-com">
                 <AiOutlineComment className="public-icon" />
-                <h6>Komentar kelas</h6>
+                <h6>{comment.length} Komentar kelas</h6>
                 <button className="btnClass3" onClick={changeDisplay4}></button>
               </div>
               <div className="public-comment" style={{ position: "relative" }}>
@@ -672,7 +717,7 @@ function Assignment() {
                   </article>
                 ))}
               </div>
-              <div className={publicInput}>
+              <div className={publicInput} style={{ marginTop: margin }}>
                 <img src={photo} alt="img" className="prof4" />
                 <textarea
                   className="form-control"
@@ -761,7 +806,7 @@ function Assignment() {
                       <input
                         type="text"
                         value={mark}
-                        placeholder="Masukkan Nilai"
+                        placeholder="Edit Nilai Nilai"
                         className="form-control"
                         onChange={(e) => setMark(e.target.value)}
                       />

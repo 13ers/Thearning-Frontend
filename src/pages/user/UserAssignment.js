@@ -83,7 +83,10 @@ function UserAssignment() {
         setDelAtt("hide");
         setUnsubMenu("btn-unsubmit");
         setSubMenu("hide");
-        if (response.data.submission.on_time === true) {
+        if (response.data.submission.marks_allotted !== null) {
+          setStatusSub("Dinilai");
+          setColorStatus("black");
+        } else if (response.data.submission.on_time === true) {
           setStatusSub("Diserahkan");
           setColorStatus("black");
         } else if (response.data.submission.on_time === false) {
@@ -425,6 +428,7 @@ function UserAssignment() {
   };
 
   let total = assignment.total_marks;
+  let mark = submission.marks_allotted;
   let totalMark = "";
   let hour = "";
   let min = "";
@@ -433,9 +437,14 @@ function UserAssignment() {
   let year = "";
   let deadline = "";
 
-  if (total === 100) {
-    totalMark = "0/100";
+  if (mark === null) {
+    if (total === 100) {
+      totalMark = "100 poin";
+    }
+  } else {
+    totalMark = mark + "/" + total;
   }
+
   if (time !== null) {
     let times = time.split(":");
     hour = times[0];
@@ -506,6 +515,11 @@ function UserAssignment() {
       let stats = "hide";
       statusComment.push(stats);
     }
+  }
+
+  let margin = "";
+  if (comment.length > 0) {
+    margin = "-90px";
   }
 
   return (
@@ -673,7 +687,7 @@ function UserAssignment() {
                   </article>
                 ))}
               </div>
-              <div className={publicInput}>
+              <div className={publicInput} style={{ marginTop: margin }}>
                 <img src={photo} alt="img" className="prof4" />
                 <textarea
                   className="form-control"
